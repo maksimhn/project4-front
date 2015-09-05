@@ -1,0 +1,18 @@
+{
+  "name": "angular_address_book",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "1.4",
+    "angular-messages": "~1.4.5",
+    "angular-route": "~1.4.1"
+  },
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
