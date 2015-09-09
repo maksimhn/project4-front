@@ -50,7 +50,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
                         <li class="nav-item"><a class="scrollto" href="#about">How...</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#features">Login</a></li>
+                        <li class="nav-item"><a class="scrollto" data-toggle="modal" data-target="#loginModal">Login</a></li>
                         <li class="nav-item"><a class="scrollto" href="#docs">Register</a></li>
                         <li class="nav-item last"><a class="scrollto" href="#contact">Logout</a></li>
                     </ul><!--//nav-->
@@ -120,6 +120,34 @@ promote their personal projects</p>
             <small class="copyright">Developed by Maksim Hranin</small>
         </div><!--//container-->
     </footer><!--//footer-->
+
+    <!-- ******MODALS****** -->
+    <div class="modal fade model-sm" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Please enter email and password</h4>
+          </div>
+          <div class="modal-body">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2">
+                <span class="input-group-addon" id="basic-addon2">Email</span>
+             </div>
+            <p></p>
+             <div class="input-group">
+                <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2">
+                <span class="input-group-addon" id="basic-addon2">Password</span>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
     <!-- Javascript -->
     <script type="text/javascript" src="https://cdnjs.com/libraries/chart.js"></script>
