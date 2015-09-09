@@ -22,7 +22,7 @@
 
 
 
-  CarsController.$inject = ['carFactory', 'appSettings'];
+  CarsController.$inject = ['carsFactory', 'appSettings'];
   angular.module('carsApp').controller('carsController', CarsController);
 
 })();

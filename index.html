@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="assets/plugins/prism/prism.css">
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles-4.css">
+    <link rel="stylesheet" href="assets/css/customcss.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -61,21 +62,7 @@
 
     <ng-view></ng-view>
 
-    <!-- ******PROMO****** -->
-    <section id="promo" class="promo section offset-header">
-        <div class="container text-center">
-            <h2 class="title">dev<span class="highlight">Aid</span></h2>
-            <p class="intro">A free mobile-friendly Bootstrap theme designed to help developers
-promote their personal projects</p>
 
-            <ul class="meta list-inline">
-                <li><a href="#" target="_blank">View on GitHub</a></li>
-                <li><a href="https://github.com/twbs/bootstrap" target="_blank">Full Documentation</a></li>
-                <li>Created by: <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> at 3rd Wave Media</li>
-            </ul><!--//meta-->
-        </div><!--//container-->
-
-    </section><!--//promo-->
 
     <!-- ******ABOUT****** -->
     <section id="about" class="about section">
@@ -203,9 +190,12 @@ promote their personal projects</p>
     <script type='text/javascript' src='app/app.js'></script>
 
     <!-- Angular controller -->
-    <script type='text/javascript' src='app/controllers/carController.js'></script>
+    <script type='text/javascript' src='app/controllers/carsController.js'></script>
 
     <!-- Angular factory -->
-    <script type='text/javascript' src='app/factories/carFactory.js'></script>
+    <script type='text/javascript' src='app/factories/carsFactory.js'></script>
+
+    <!-- Angular values -->
+    <script type='text/javascript' src='app/services/values.js'></script>
 </body>
 </html>

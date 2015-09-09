@@ -6,8 +6,8 @@
   $routeProvider
     .when('/',
           {
-            controller: 'carController',
-            controllerAs: 'carCtrl',
+            controller: 'carsController',
+            controllerAs: 'carsCtrl',
             templateUrl: 'app/views/cars.html'
           }
          )
