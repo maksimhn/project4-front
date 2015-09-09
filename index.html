@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!--> <html lang="en" ng-app="carsApp"> <!--<![endif]-->
 <head>
     <title>Car expense tracker</title>
     <!-- Meta -->
@@ -58,6 +58,8 @@
             </nav><!--//main-nav-->
         </div>
     </header><!--//header-->
+
+    <ng-view></ng-view>
 
     <!-- ******PROMO****** -->
     <section id="promo" class="promo section offset-header">
