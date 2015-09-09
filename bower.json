@@ -1,0 +1,8 @@
+{
+  "name": "wdi-angular",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "1.4",
+    "angular-chartjs-directive": "~1.0.0"
+  }
+}
