@@ -1,27 +1,69 @@
-<section id="promo" class="section offset-header">
-  <div class="container text-center">
+<section id="mainsection" class="section offset-header">
+  <div class="main container text-center">
 
     <!-- Cars row -->
     <div class="row">
-
+      <ul ng-repeat="car in carsCtrl.cars">
+        <li href="#/cars/{{car.id}}">
+          {{car.customName}}
+        </li>
+      </ul>
+      <button type="button" class="btn btn-primary btn-sm">Add car</button>
     </div><!-- //Cars row -->
+
+    <!-- Statistics -->
+    <div class="row">
+      <div class="col-md-6 col-sm-8 col-xs-12">
+        <h3>Statistics</h3>
+      </div>
+    </div><!-- // Statistics row-->
 
     <!-- Graphs row -->
     <div class="row">
 
       <div class="graph col-md-4 col-sm-6 col-xs-12">
+        <canvas id="expensecategory-graph" width="300" height="300"></canvas>
       </div>
 
       <div class="graph col-md-4 col-sm-6 col-xs-12">
+        <canvas id="avgmileage-graph" width="300" height="300"></canvas>
       </div>
 
       <div class="graph col-md-4 col-sm-6 col-xs-12">
+        <canvas id="cartocarexpenses-graph" width="300" height="300"></canvas>
       </div>
 
     </div><!-- // Graphs row -->
 
+    <!-- Expenses and Events -->
+    <div class="row">
+      <div class="col-md-6 col-sm-8 col-xs-12">
+        <h3>Expenses and Events</h3>
+      </div>
+    </div><!-- // Expenses and Events row -->
+
     <!-- Events and Expenses row -->
     <div class="row">
+
+      <div class="eventsexp col-md-4 col-sm-6 col-xs-12">
+        <div id="expenselist">
+        </div>
+
+        <div>
+          <h4>List of expenses</h4>
+          <button type="button" class="btn btn-primary btn-sm">Add expense</button>
+        </div>
+      </div>
+
+      <div class="eventsexp col-md-4 col-sm-6 col-xs-12">
+        <div id="eventlist">
+        </div>
+
+        <div>
+          <h4>List of events</h4>
+          <button type="button" class="btn btn-primary btn-sm">Add event</button>
+        </div>
+      </div>
 
     </div><!-- // Events and expenses row -->
 

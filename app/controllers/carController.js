@@ -5,14 +5,12 @@
   // Sorting and gas consumption calculations
 
 
+  var CarsController = function(carsFactory, appSettings){
+    var vm = this;
+    vm.cars =  carsFactory.cars;
 
-
-
-
-    var CarController = function(carsFactory, appSettings){
-    this.cars =  carsFactory.cars;
-    // this.customer = carsFactory.car;
-    this.appSettings = appSettings;
+    // vm.customer = carsFactory.car;
+    vm.appSettings = appSettings;
 
     function init(){
       // carsFactory.getCars();
@@ -25,6 +23,6 @@
 
 
   CarsController.$inject = ['carFactory', 'appSettings'];
-  angular.module('carApp').controller('carController', CarsController);
+  angular.module('carsApp').controller('carsController', CarsController);
 
 })();
