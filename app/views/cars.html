@@ -47,6 +47,11 @@
 
       <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
         <div id="expenselist">
+          <ul ng-repeat="expense in carsCtrl.expenses" style="list-style-type:none">
+            <li href="#">
+              {{expense.expenseName}}
+            </li>
+          </ul>
         </div>
 
         <div>
@@ -57,6 +62,11 @@
 
       <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
         <div id="eventlist">
+          <ul ng-repeat="event in carsCtrl.events" style="list-style-type:none">
+            <li href="#">
+              {{event.eventName}}
+            </li>
+          </ul>
         </div>
 
         <div>

@@ -9,7 +9,10 @@
     var vm = this;
     vm.userCredentials = {};
     vm.cars =  carsFactory.cars;
-    vm.password = 'hello';
+    vm.events = carsFactory.events;
+    vm.expenses = carsFactory.expenses;
+
+
 
     vm.login = function(){
       carsFactory.login(vm.userCredentials);

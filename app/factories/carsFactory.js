@@ -4,12 +4,27 @@
     var factory = {};
     factory.cars = [];
     factory.car = {};
+    factory.events = [];
+    factory.expenses = [];
+
+    factory.getEventsList = function(response){
+      response.forEach(function(car){
+        Array.prototype.push.apply(factory.events, car.events);
+      });
+    };
+
+    factory.getExpensesList = function(response){
+      response.forEach(function(car){
+        Array.prototype.push.apply(factory.expenses, car.expenses);
+      });
+    };
 
     factory.register = function(){};
     factory.login = function(credentials){
-      console.log(credentials);
       return $http.post(appSettings.apiURL + '/login', credentials).success(function(response) {
         angular.copy(response, factory.cars);
+        factory.getEventsList(response);
+        factory.getExpensesList(response);
       });
     };
 
