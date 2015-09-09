@@ -28,7 +28,7 @@
     <![endif]-->
 </head>
 
-<body data-spy="scroll">
+<body data-spy="scroll" ng-controller="carsController as carsCtrl">
 
     <!-- ******HEADER****** -->
     <header id="header" class="header">
@@ -121,18 +121,18 @@
           </div>
           <div class="modal-body">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="login-email">
-                <span class="input-group-addon" id="login-email">Email</span>
+                <input type="text" class="form-control" ng-model="carsCtrl.userCredentials.username" placeholder="" aria-describedby="login-email">
+                <span class="input-group-addon"  id="login-email">Email</span>
              </div>
             <p></p>
              <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="login-password">
-                <span class="input-group-addon" id="login-password">Password</span>
+                <input type="password" ng-model="carsCtrl.userCredentials.password" class="form-control" placeholder="" aria-describedby="login-password">
+                <span class="input-group-addon"  id="login-password">Password</span>
               </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-primary" ng-click="carsCtrl.login()">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
