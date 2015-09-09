@@ -50,8 +50,8 @@
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
                         <li class="nav-item"><a class="scrollto" href="#about">How...</a></li>
-                        <li class="nav-item"><a class="scrollto" data-toggle="modal" data-target="#loginModal">Login</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#docs">Register</a></li>
+                        <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                        <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
                         <li class="nav-item last"><a class="scrollto" href="#contact">Logout</a></li>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
@@ -123,22 +123,22 @@ promote their personal projects</p>
 
     <!-- ******MODALS****** -->
     <!-- Login modal -->
-    <div class="modal fade model-sm" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Please enter email and password</h4>
+            <h4 class="modal-title">Please fill the fields below</h4>
           </div>
           <div class="modal-body">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2">
-                <span class="input-group-addon" id="basic-addon2">Email</span>
+                <input type="text" class="form-control" placeholder="" aria-describedby="login-email">
+                <span class="input-group-addon" id="login-email">Email</span>
              </div>
             <p></p>
              <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2">
-                <span class="input-group-addon" id="basic-addon2">Password</span>
+                <input type="text" class="form-control" placeholder="" aria-describedby="login-password">
+                <span class="input-group-addon" id="login-password">Password</span>
               </div>
           </div>
           <div class="modal-footer">
@@ -148,6 +148,33 @@ promote their personal projects</p>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Please fill the fields below</h4>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="" aria-describedby="register-email">
+                <span class="input-group-addon" id="register-email">Email</span>
+             </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="register-password">
+              <span class="input-group-addon" id="register-password">Password</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <!-- Javascript -->
