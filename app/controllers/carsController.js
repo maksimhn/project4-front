@@ -11,6 +11,11 @@
     vm.cars =  carsFactory.cars;
     vm.events = carsFactory.events;
     vm.expenses = carsFactory.expenses;
+    vm.chartData = {
+      labels: ['Pika', 'Pony', 'Mimi'],
+      series: ['Foo', 'Bar', 'Baz'],
+      data: [45, 55, 34, 67]
+    };
 
 
 

@@ -30,7 +30,10 @@
       </div>
 
       <div class="graph col-md-4 col-sm-6 col-xs-12">
-        <canvas id="cartocarexpenses-graph" width="300" height="300"></canvas>
+        <canvas id="line" class="chart chart-line" chart-data="data"
+          chart-labels="labels" chart-legend="true" chart-series="series"
+          chart-click="onClick" width="300" height="300">
+        </canvas>
       </div>
 
     </div><!-- // Graphs row -->
@@ -48,7 +51,7 @@
       <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
         <div id="expenselist">
           <ul ng-repeat="expense in carsCtrl.expenses" style="list-style-type:none">
-            <li href="#">
+            <li href="#" id="{{expense.id}}">
               {{expense.expenseName}}
             </li>
           </ul>
@@ -63,8 +66,8 @@
       <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
         <div id="eventlist">
           <ul ng-repeat="event in carsCtrl.events" style="list-style-type:none">
-            <li href="#">
-              {{event.eventName}}
+            <li>
+              <a href="#/events/{{event.id}}">{{event.eventName}}</a>
             </li>
           </ul>
         </div>
