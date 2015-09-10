@@ -3,11 +3,19 @@
 
     <!-- Cars row -->
     <div class="row">
-      <ul ng-repeat="car in carsCtrl.cars" style="list-style-type:none">
+      <!-- <ul ng-repeat="car in carsCtrl.cars" style="list-style-type:none">
         <li>
           <a href="#/cars/{{car.id}}">{{car.customName}}</a>
         </li>
-      </ul>
+      </ul> -->
+
+      <div class="btn-group" role="group" aria-label="..." ng-repeat="car in carsCtrl.cars">
+        <button type="button" class="btn btn-default" id="{{car.carId}}" ng-click="carsCtrl.getCarsData($event)">{{car.customName}}</button>
+      </div>
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default" ng-click="carsCtrl.getCarsData($event)" id="">All cars</button>
+      </div>
+
       <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#carModal" ng-click="carsCtrl.createCar()">Add car</button>
     </div><!-- //Cars row -->
 
@@ -28,8 +36,8 @@
       </div>
 
       <div class="graph col-md-4 col-sm-6 col-xs-12">
-        <canvas id="pie" class="chart chart-pie" chart-data="carsCtrl.chartData.sumOfExpenses.data"
-          chart-labels="carsCtrl.chartData.sumOfExpenses.labels" width="200" height="200">
+        <canvas id="polar-area" class="chart chart-polar-area" chart-data="carsCtrl.chartData.sumOfExpenses.data"
+          chart-labels="carsCtrl.chartData.sumOfExpenses.labels" chart-legend="true" width="200" height="200">
         </canvas>
       </div>
 

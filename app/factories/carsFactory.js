@@ -8,7 +8,7 @@
     factory.expenses = [];
     factory.chartData = {
       expenseStructure: {
-        labels: ['Gas', 'Misc expenses'],
+        labels: [],
         data: []
       },
       sumOfExpenses: {
@@ -22,29 +22,6 @@
         data: []
       }
     };
-
-    // Doughnut chart: structure of expenses of all cars
-    // or selected car
-    // expenseStructure = {
-    //   labels: ['Gas', 'Misc expenses'],
-    //   data: []
-    // };
-
-    // Bar chart: sum of expenses of different cars
-    // or different expenses of one car
-    // factory.chartData.sumOfExpenses = {
-    //   labels: [],
-    //   series: [],
-    //   data: []
-    // };
-
-    // Line chart: gas expenses of different cars
-    // or one particular car
-    // factory.chartData.gasExpenses = {
-    //   labels: [],
-    //   series: [],
-    //   data: []
-    // };
 
     factory.chartDataForAllCars = function(response){
       console.log('we are inside chartDataForAllCars!');
@@ -62,7 +39,8 @@
       response.forEach(function(car){
         var sum = 0;
         var tankFills = [];
-        factory.chartData.gasExpenses.series.push(car.customName)
+        factory.chartData.expenseStructure.labels.push(car.customName);
+        factory.chartData.gasExpenses.series.push(car.customName);
         car.expenses.forEach(function(expense){
           if (expense.gas === true) {
             tankFills.push(expense.amountSpent);
@@ -73,7 +51,6 @@
         factory.chartData.sumOfExpenses.data.push(sum);
         factory.chartData.sumOfExpenses.labels.push(car.customName);
       });
-
 
     };
 
@@ -98,17 +75,26 @@
 
 
     factory.dataFilter = function(response, carSelected) {
-      console.log('we are inside dataFilter!');
-      if (!carSelected) {
+      factory.chartData.expenseStructure.data.splice(0,factory.chartData.expenseStructure.data.splice.length);
+      factory.chartData.sumOfExpenses.data.splice(0,factory.chartData.sumOfExpenses.data.splice.length);
+      factory.chartData.sumOfExpenses.labels.splice(0,factory.chartData.sumOfExpenses.labels.splice.length);
+      factory.chartData.sumOfExpenses.series.splice(0,factory.chartData.sumOfExpenses.series.splice.length);
+      factory.chartData.gasExpenses.labels.splice(0,factory.chartData.gasExpenses.labels.splice.length);
+      factory.chartData.gasExpenses.data.splice(0,factory.chartData.gasExpenses.data.splice.length);
+      factory.chartData.gasExpenses.series.splice(0,factory.chartData.gasExpenses.series.splice.length);
 
+      factory.events.splice(0,factory.events.length);
+      factory.expenses.splice(0,factory.expenses.length);
+
+      if (!carSelected) {
         angular.copy(response, factory.cars);
         factory.getEventsList(response);
         factory.getExpensesList(response);
         factory.chartDataForAllCars(response);
       } else {
         response.forEach(function(car){
-
-          if (car.CarId === carSelected) {
+          if (car.carId === +carSelected) {
+            factory.chartData.expenseStructure.labels.push(car.customName);
             factory.getEventsList([car]);
             factory.getExpensesList([car]);
             factory.chartDataForOneCar();
@@ -145,6 +131,12 @@
     };
 
     // Car CRUD actions
+    factory.getCarsData = function(carSelected){
+      return $http.get(appSettings.apiURL + '/cars').success(function(response){
+        factory.dataFilter(response, carSelected);
+      });
+    };
+
     factory.createCar = function(carData, carSelected){
       return $http.post(appSettings.apiURL + '/cars', carData).success(function(response){
         factory.dataFilter(response, carSelected);

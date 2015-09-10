@@ -20,9 +20,6 @@
     vm.newExpense = {};
     vm.carSelected = null;
     vm.chartData = carsFactory.chartData;
-    // vm.chartData.expenseStructure = carsFactory.chartData.expenseStructure;
-    // vm.chartData.sumOfExpenses = carsFactory.chartData.sumOfExpenses;
-    // vm.chartData.gasExpenses = carsFactory.chartData.gasExpenses;
 
     // vm.chartData = {
     //   labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -45,6 +42,9 @@
     };
 
     // Car CRUD actions
+    vm.getCarsData = function(event){
+      carsFactory.getCarsData(event.target.id);
+    };
     vm.createCar = function(){
       carsFactory.createCar(vm.newCar, vm.carSelected);
     };
