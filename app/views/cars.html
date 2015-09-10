@@ -22,21 +22,21 @@
     <div class="row">
 
       <div class="graph col-md-4 col-sm-6 col-xs-12">
-        <canvas id="doughnut" class="chart chart-doughnut" chart-data="carsCtrl.chartData.doughnutData"
-          chart-labels="carsCtrl.chartData.doughnutLabels" chart-legend="true"
+        <canvas id="doughnut" class="chart chart-doughnut" chart-data="carsCtrl.chartData.expenseStructure.data"
+          chart-labels="carsCtrl.chartData.expenseStructure.labels" chart-legend="true"
           chart-click="onClick" width="200" height="200">
       </div>
 
       <div class="graph col-md-4 col-sm-6 col-xs-12">
-        <canvas id="bar" class="chart chart-bar" chart-data="carsCtrl.chartData.data"
-          chart-labels="carsCtrl.chartData.labels" chart-legend="true" chart-series="carsCtrl.chartData.series"
-          chart-click="onClick" width="200" height="200">
+        <canvas id="pie" class="chart chart-pie" chart-data="carsCtrl.chartData.sumOfExpenses.data"
+          chart-labels="carsCtrl.chartData.sumOfExpenses.labels" width="200" height="200">
         </canvas>
       </div>
 
+
       <div class="graph col-md-4 col-sm-6 col-xs-12">
-        <canvas id="line" class="chart chart-line" chart-data="carsCtrl.chartData.data"
-          chart-labels="carsCtrl.chartData.labels" chart-legend="true" chart-series="carsCtrl.chartData.series"
+        <canvas id="line" class="chart chart-line" chart-data="carsCtrl.chartData.gasExpenses.data"
+          chart-labels="carsCtrl.chartData.gasExpenses.labels" chart-legend="true" chart-series="carsCtrl.chartData.gasExpenses.series"
           chart-click="onClick" width="200" height="200">
         </canvas>
       </div>

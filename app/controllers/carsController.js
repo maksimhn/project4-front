@@ -18,29 +18,30 @@
     vm.newCar = {};
     vm.newEvent = {};
     vm.newExpense = {};
-    vm.carSelected;
-    vm.chartData.expenseStructure = carsFactory.chartData.expenseStructure;
-    vm.chartData.sumOfExpenses = carsFactory.chartData.sumOfExpenses;
-    vm.chartData.gasConsumption = carsFactory.chartData.gasConsumption;
+    vm.carSelected = null;
+    vm.chartData = carsFactory.chartData;
+    // vm.chartData.expenseStructure = carsFactory.chartData.expenseStructure;
+    // vm.chartData.sumOfExpenses = carsFactory.chartData.sumOfExpenses;
+    // vm.chartData.gasExpenses = carsFactory.chartData.gasExpenses;
 
-    vm.chartData = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
-      series: ['Foo', 'Bar'],
-      data: [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
-      ]
-    };
-    vm.chartData.doughnutLabels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-    vm.chartData.doughnutData = [300, 500, 100];
+    // vm.chartData = {
+    //   labels: ["January", "February", "March", "April", "May", "June", "July"],
+    //   series: ['Foo', 'Bar'],
+    //   data: [
+    //     [65, 59, 80, 81, 56, 55, 40],
+    //     [28, 48, 40, 19, 86, 27, 90]
+    //   ]
+    // };
+    // vm.chartData.doughnutLabels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+    // vm.chartData.doughnutData = [300, 500, 100];
 
 
 
     vm.register = function(){
-      carsFactory.register(vm.userCredentials);
+      carsFactory.register(vm.userCredentials, vm.carSelected);
     };
     vm.login = function(){
-      carsFactory.login(vm.userCredentials);
+      carsFactory.login(vm.userCredentials, vm.carSelected);
     };
 
     // Car CRUD actions
