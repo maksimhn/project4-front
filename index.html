@@ -165,6 +165,54 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
+    <!-- Car modal -->
+    <div class="modal fade" id="carModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Car description</h4>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="" aria-describedby="car-name">
+                <span class="input-group-addon" id="car-name">Name</span>
+             </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-make">
+              <span class="input-group-addon" id="car-make">Make</span>
+            </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-model">
+              <span class="input-group-addon" id="car-model">Model</span>
+            </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-year">
+              <span class="input-group-addon" id="car-year">Year</span>
+            </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-color">
+              <span class="input-group-addon" id="car-color">Color</span>
+            </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-mileage">
+              <span class="input-group-addon" id="car-mileage">Mileage</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
 
     <!-- Javascript -->
     <!-- Vendor js files -->
@@ -195,7 +243,8 @@
 
     <!-- Angular controller -->
     <script type='text/javascript' src='app/controllers/carsController.js'></script>
-    <script type='text/javascript' src='app/controllers/lineController.js'></script>
+    <!-- FIX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    <script type='text/javascript' src='app/controllers/lineController1.js'></script>
 
     <!-- Angular factory -->
     <script type='text/javascript' src='app/factories/carsFactory.js'></script>

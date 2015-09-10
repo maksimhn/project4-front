@@ -4,8 +4,8 @@
     <!-- Cars row -->
     <div class="row">
       <ul ng-repeat="car in carsCtrl.cars" style="list-style-type:none">
-        <li href="#/cars/{{car.id}}">
-          {{car.customName}}
+        <li>
+          <a href="#/cars/{{car.id}}" data-toggle="modal" data-target="#carModal">{{car.customName}}</a>
         </li>
       </ul>
       <button type="button" class="btn btn-primary btn-sm">Add car</button>
@@ -49,32 +49,34 @@
     <div class="row">
 
       <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
-        <div id="expenselist">
-          <ul ng-repeat="expense in carsCtrl.expenses" style="list-style-type:none">
-            <li href="#" id="{{expense.id}}">
-              {{expense.expenseName}}
-            </li>
-          </ul>
-        </div>
 
         <div>
           <h4 class="mainheaders">List of expenses</h4>
           <button type="button" class="btn btn-primary btn-sm">Add expense</button>
         </div>
-      </div>
 
-      <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
-        <div id="eventlist">
-          <ul ng-repeat="event in carsCtrl.events" style="list-style-type:none">
+        <div id="expenselist">
+          <ul ng-repeat="expense in carsCtrl.expenses" style="list-style-type:none">
             <li>
-              <a href="#/events/{{event.id}}">{{event.eventName}}</a>
+              <a class="expenselinks" href="#/expenses/{{expense.id}}">{{expense.expenseName}}</a>
             </li>
           </ul>
         </div>
+      </div>
+
+      <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
 
         <div>
           <h4 class="mainheaders">List of events</h4>
           <button type="button" class="btn btn-primary btn-sm">Add event</button>
+        </div>
+
+        <div id="eventlist">
+          <ul ng-repeat="event in carsCtrl.events" style="list-style-type:none">
+            <li>
+              <a class="eventlinks" href="#/events/{{event.id}}">{{event.eventName}}</a>
+            </li>
+          </ul>
         </div>
       </div>
 

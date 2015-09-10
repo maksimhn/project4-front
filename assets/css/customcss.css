@@ -1,3 +1,8 @@
 .mainheaders {
 color: white;
 }
+
+a {
+  color: inherit;
+}
+
