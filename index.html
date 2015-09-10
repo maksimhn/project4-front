@@ -175,38 +175,38 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="car-name">
+                <input type="text" class="form-control" placeholder="" aria-describedby="car-name" ng-model="carsCtrl.newCar.customName">
                 <span class="input-group-addon" id="car-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-make">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-make" ng-model="carsCtrl.newCar.make">
               <span class="input-group-addon" id="car-make">Make</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-model">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-model" ng-model="carsCtrl.newCar.model">
               <span class="input-group-addon" id="car-model">Model</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-year">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-year" ng-model="carsCtrl.newCar.year">
               <span class="input-group-addon" id="car-year">Year</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-color">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-color" ng-model="carsCtrl.newCar.color">
               <span class="input-group-addon" id="car-color">Color</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-mileage">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-mileage" ng-model="carsCtrl.mileage.customName">
               <span class="input-group-addon" id="car-mileage">Mileage</span>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-primary" ng-click="carsCtrl.createCar()">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

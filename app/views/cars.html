@@ -5,10 +5,10 @@
     <div class="row">
       <ul ng-repeat="car in carsCtrl.cars" style="list-style-type:none">
         <li>
-          <a href="#/cars/{{car.id}}" data-toggle="modal" data-target="#carModal">{{car.customName}}</a>
+          <a href="#/cars/{{car.id}}">{{car.customName}}</a>
         </li>
       </ul>
-      <button type="button" class="btn btn-primary btn-sm">Add car</button>
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#carModal" ng-click="carsCtrl.createCar()">Add car</button>
     </div><!-- //Cars row -->
 
     <!-- Statistics -->

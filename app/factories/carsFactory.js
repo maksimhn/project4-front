@@ -28,8 +28,16 @@
       });
     };
 
+    factory.createCar = function(carData){
+      return $http.post(appSettings.apiURL + '/cars', carData).success(function(response){
+        angular.copy(response, factory.cars);
+        factory.getEventsList(response);
+        factory.getExpensesList(response);
+      });
+    };
+
+
     factory.getCars = function(){};
-    factory.createCar = function(){};
     factory.updateCar = function(){};
     factory.deleteCar = function(){};
 
