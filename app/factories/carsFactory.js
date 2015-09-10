@@ -19,7 +19,12 @@
       });
     };
 
-    factory.register = function(){};
+    factory.register = function(credentials){
+      return $http.post(appSettings.apiURL + '/signup', credentials).success(function(response) {
+        alert('You have successfully registered! Now log in...');
+      });
+    };
+
     factory.login = function(credentials){
       return $http.post(appSettings.apiURL + '/login', credentials).success(function(response) {
         angular.copy(response, factory.cars);
@@ -28,6 +33,7 @@
       });
     };
 
+    // Car CRUD actions
     factory.createCar = function(carData){
       return $http.post(appSettings.apiURL + '/cars', carData).success(function(response){
         angular.copy(response, factory.cars);
@@ -36,18 +42,75 @@
       });
     };
 
+    factory.updateCar = function(carData){
+      return $http.put(appSettings.apiURL + '/cars', carData).success(function(response){
+        angular.copy(response, factory.cars);
+        factory.getEventsList(response);
+        factory.getExpensesList(response);
+      });
+    };
 
-    factory.getCars = function(){};
-    factory.updateCar = function(){};
-    factory.deleteCar = function(){};
+    factory.deleteCar = function(carData){
+      return $http.delete(appSettings.apiURL + '/cars', carData).success(function(response){
+        angular.copy(response, factory.cars);
+        factory.getEventsList(response);
+        factory.getExpensesList(response);
+      });
+    };
 
-    factory.createEvent = function(){};
-    factory.updateEvent = function(){};
-    factory.deleteEvent = function(){};
 
-    factory.createExpense = function(){};
-    factory.updateExpense = function(){};
-    factory.deleteExpense = function(){};
+
+    // Event CRUD actions
+    factory.createEvent = function(eventData){
+      return $http.post(appSettings.apiURL + '/events', eventData).success(function(response){
+        angular.copy(response, factory.cars);
+        factory.getEventsList(response);
+        factory.getExpensesList(response);
+      });
+    };
+
+    factory.updateEvent = function(eventData){
+      return $http.put(appSettings.apiURL + '/events', eventData).success(function(response){
+        angular.copy(response, factory.cars);
+        factory.getEventsList(response);
+        factory.getExpensesList(response);
+      });
+    };
+
+    factory.deleteEvent = function(eventData){
+      return $http.delete(appSettings.apiURL + '/events', eventData).success(function(response){
+        angular.copy(response, factory.cars);
+        factory.getEventsList(response);
+        factory.getExpensesList(response);
+      });
+    };
+
+
+
+    // Expense CRUD actions
+    factory.createExpense = function(expenseData){
+      return $http.post(appSettings.apiURL + '/expenses', expenseData).success(function(response){
+        angular.copy(response, factory.cars);
+        factory.getEventsList(response);
+        factory.getExpensesList(response);
+      });
+    };
+
+    factory.updateExpense = function(expenseData){
+      return $http.put(appSettings.apiURL + '/expenses', expenseData).success(function(response){
+        angular.copy(response, factory.cars);
+        factory.getEventsList(response);
+        factory.getExpensesList(response);
+      });
+    };
+
+    factory.deleteExpense = function(expenseData){
+      return $http.delete(appSettings.apiURL + '/expenses', expenseData).success(function(response){
+        angular.copy(response, factory.cars);
+        factory.getEventsList(response);
+        factory.getExpensesList(response);
+      });
+    };
 
     return factory;
   };

@@ -9,6 +9,9 @@
     var vm = this;
     vm.appSettings = appSettings;
     vm.userCredentials = {};
+    vm.eventData = {};
+    vm.expenseData = {};
+    vm.carData = {};
     vm.cars = carsFactory.cars;
     vm.events = carsFactory.events;
     vm.expenses = carsFactory.expenses;
@@ -20,12 +23,51 @@
     //   data: [45, 55, 34, 67]
     // };
 
-    vm.createCar = function(){
-      carsFactory.createCar(vm.newCar);
+    vm.register = function(){
+      carsFactory.register(vm.userCredentials);
     };
 
     vm.login = function(){
       carsFactory.login(vm.userCredentials);
+    };
+
+    // Car CRUD actions
+    vm.createCar = function(){
+      carsFactory.createCar(vm.newCar);
+    };
+
+    vm.updateCar = function(){
+      carsFactory.updateCar(vm.carData);
+    };
+
+    vm.deleteCar = function(){
+      carsFactory.deleteCar(vm.carData);
+    };
+
+    // Event CRUD actions
+    vm.createEvent = function(){
+      carsFactory.createEvent(vm.eventData);
+    };
+
+    vm.updateEvent = function(){
+      carsFactory.updateEvent(vm.eventData);
+    };
+
+    vm.deleteEvent = function(){
+      carsFactory.deleteEvent(vm.eventData);
+    };
+
+    // Expense CRUD actions
+    vm.createExpense = function(){
+      carsFactory.createExpense(expenseData);
+    };
+
+    vm.updateExpense = function(){
+      carsFactory.updateExpense(expenseData);
+    };
+
+    vm.deleteExpense = function(){
+      carsFactory.deleteExpense(expenseData);
     };
 
 
