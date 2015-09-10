@@ -16,61 +16,64 @@
     vm.events = carsFactory.events;
     vm.expenses = carsFactory.expenses;
     vm.newCar = {};
+    vm.newEvent = {};
+    vm.newExpense = {};
+    vm.carSelected;
+    vm.chartData.expenseStructure = carsFactory.chartData.expenseStructure;
+    vm.chartData.sumOfExpenses = carsFactory.chartData.sumOfExpenses;
+    vm.chartData.gasConsumption = carsFactory.chartData.gasConsumption;
 
     vm.chartData = {
       labels: ["January", "February", "March", "April", "May", "June", "July"],
       series: ['Foo', 'Bar'],
       data: [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
-  ]
+        [65, 59, 80, 81, 56, 55, 40],
+        [28, 48, 40, 19, 86, 27, 90]
+      ]
     };
+    vm.chartData.doughnutLabels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+    vm.chartData.doughnutData = [300, 500, 100];
+
+
 
     vm.register = function(){
       carsFactory.register(vm.userCredentials);
     };
-
     vm.login = function(){
       carsFactory.login(vm.userCredentials);
     };
 
     // Car CRUD actions
     vm.createCar = function(){
-      carsFactory.createCar(vm.newCar);
+      carsFactory.createCar(vm.newCar, vm.carSelected);
     };
-
     vm.updateCar = function(){
-      carsFactory.updateCar(vm.carData);
+      carsFactory.updateCar(vm.carData, vm.carSelected);
     };
-
     vm.deleteCar = function(){
-      carsFactory.deleteCar(vm.carData);
+      carsFactory.deleteCar(vm.carData, vm.carSelected);
     };
 
     // Event CRUD actions
     vm.createEvent = function(){
-      carsFactory.createEvent(vm.eventData);
+      carsFactory.createEvent(vm.newEvent, vm.carSelected);
     };
-
     vm.updateEvent = function(){
-      carsFactory.updateEvent(vm.eventData);
+      carsFactory.updateEvent(vm.eventData, vm.carSelected);
     };
-
     vm.deleteEvent = function(){
-      carsFactory.deleteEvent(vm.eventData);
+      carsFactory.deleteEvent(vm.eventData, vm.carSelected);
     };
 
     // Expense CRUD actions
     vm.createExpense = function(){
-      carsFactory.createExpense(expenseData);
+      carsFactory.createExpense(vm.newExpense, vm.carSelected);
     };
-
     vm.updateExpense = function(){
-      carsFactory.updateExpense(expenseData);
+      carsFactory.updateExpense(expenseData, vm.carSelected);
     };
-
     vm.deleteExpense = function(){
-      carsFactory.deleteExpense(expenseData);
+      carsFactory.deleteExpense(expenseData, vm.carSelected);
     };
 
 
