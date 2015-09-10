@@ -17,11 +17,14 @@
     vm.expenses = carsFactory.expenses;
     vm.newCar = {};
 
-    // vm.chartData = {
-    //   labels: ['Pika', 'Pony', 'Mimi'],
-    //   series: ['Foo', 'Bar', 'Baz'],
-    //   data: [45, 55, 34, 67]
-    // };
+    vm.chartData = {
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      series: ['Foo', 'Bar'],
+      data: [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ]
+    };
 
     vm.register = function(){
       carsFactory.register(vm.userCredentials);

@@ -1,8 +1,10 @@
 (function carsAppIIFE(){
 
-  var app = angular.module('carsApp', ['ngRoute']);
+  var app = angular.module('carsApp', ['ngRoute', 'chart.js']);
 
-  app.config(function($routeProvider){
+
+  app.config(function($routeProvider, $httpProvider){
+  $httpProvider.defaults.withCredentials = true;
   $routeProvider
     .when('/',
           {

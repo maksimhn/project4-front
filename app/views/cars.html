@@ -22,17 +22,22 @@
     <div class="row">
 
       <div class="graph col-md-4 col-sm-6 col-xs-12">
-        <canvas id="expensecategory-graph" width="300" height="300"></canvas>
+        <canvas id="bar" class="chart chart-bar" chart-data="carsCtrl.chartData.data"
+          chart-labels="carsCtrl.chartData.labels" chart-legend="true" chart-series="carsCtrl.chartData.series"
+          chart-click="onClick" width="200" height="200">
       </div>
 
       <div class="graph col-md-4 col-sm-6 col-xs-12">
-        <canvas id="avgmileage-graph" width="300" height="300"></canvas>
+        <canvas id="bar" class="chart chart-bar" chart-data="carsCtrl.chartData.data"
+          chart-labels="carsCtrl.chartData.labels" chart-legend="true" chart-series="carsCtrl.chartData.series"
+          chart-click="onClick" width="200" height="200">
+        </canvas>
       </div>
 
       <div class="graph col-md-4 col-sm-6 col-xs-12">
-        <canvas id="line" class="chart chart-line" chart-data="data"
-          chart-labels="labels" chart-legend="true" chart-series="series"
-          chart-click="onClick" width="300" height="300">
+        <canvas id="line" class="chart chart-line" chart-data="carsCtrl.chartData.data"
+          chart-labels="carsCtrl.chartData.labels" chart-legend="true" chart-series="carsCtrl.chartData.series"
+          chart-click="onClick" width="200" height="200">
         </canvas>
       </div>
 
