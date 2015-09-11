@@ -18,8 +18,8 @@ $('#newevent-button').on('click', function(){
   $('#new-event-modal').modal('hide');
 });
 
-$('#newevent-button').on('click', function(){
-  $('#newexpense-modal').modal('hide');
+$('#newexpense-button').on('click', function(){
+  $('#new-expense-modal').modal('hide');
 });
 
 $('#logout-button').on('click', function(){

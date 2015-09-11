@@ -56,3 +56,7 @@ a {
 #navbar-collapse {
   margin-top: 20px;
 }
+
+.modal-dialog {
+  margin-top: 15%;
+}

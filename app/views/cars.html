@@ -85,7 +85,7 @@
         <div id="expenselist">
           <ul ng-repeat="expense in carsCtrl.expenses" style="list-style-type:none">
             <li>
-              <a class="expenselinks" href="#/expenses/{{expense.id}}">{{expense.expenseName}}</a>
+              <a class="expenselinks" href="#/expenses/{{expense.id}}" id="{{expense.id}}" data-toggle="modal" data-target="#update-expense-modal" ng-click="carsCtrl.updateExpense($event)">{{expense.expenseName}}</a>
             </li>
           </ul>
         </div>
