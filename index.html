@@ -303,23 +303,23 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.expenseData.expenseName">
+                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.expenseData[0].expenseName[0]">
                 <span class="input-group-addon" id="expense-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.expenseData.mileage">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.expenseData[0].mileage">
               <span class="input-group-addon" id="expense-mileage">Mileage</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.expenseData.amountSpent">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.expenseData[0].amountSpent">
               <span class="input-group-addon" id="expense-amount">Amount</span>
             </div>
             <p></p>
             <div class="checkbox">
               <label>
-                <input type="checkbox" ng-model="carsCtrl.expenseData.gas"> Gas?
+                <input type="checkbox" ng-model="carsCtrl.expenseData[0].gas"> Gas?
               </label>
             </div>
           </div>
