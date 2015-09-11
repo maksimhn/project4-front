@@ -20,6 +20,7 @@
     vm.newExpense = {};
     vm.carSelected = null;
     vm.chartData = carsFactory.chartData;
+    vm.user = carsFactory.user;
 
     // vm.chartData = {
     //   labels: ["January", "February", "March", "April", "May", "June", "July"],

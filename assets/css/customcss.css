@@ -6,3 +6,16 @@ a {
   color: inherit;
 }
 
+#statsheader {
+  margin-top: -50px;
+  margin-bottom: 50px;
+}
+
+#carbuttons, #graphsrow, #carpicheader {
+  margin-bottom: 50px;
+}
+
+#car {
+  width: 600px;
+}
+

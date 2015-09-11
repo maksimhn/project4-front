@@ -6,6 +6,7 @@
     factory.car = {};
     factory.events = [];
     factory.expenses = [];
+    factory.user = [];
     factory.chartData = {
       expenseStructure: {
         labels: [],
@@ -24,7 +25,6 @@
     };
 
     factory.chartDataForAllCars = function(response){
-      console.log('we are inside chartDataForAllCars!');
       var gasExpenses = 0;
       var miscExpenses = 0;
       var allExpenses = 0;
@@ -56,50 +56,40 @@
     };
 
     factory.chartDataForOneCar = function(){
-      console.log('we are inside chartDataForOneCar!', factory.events, factory.expenses);
       factory.chartData.gasExpenses.data = [[]];
       var gasExpenses = 0;
       var miscExpenses = 0;
       var allExpenses = 0;
 
       factory.expenses.forEach(function(expense){
-        console.log('amountSpents are ', expense.amountSpent);
         if (expense.gas === true) {
           factory.chartData.gasExpenses.data[0].push(expense.amountSpent);
           gasExpenses += expense.amountSpent;
         } else {
           miscExpenses += expense.amountSpent;
         }
-
         factory.chartData.sumOfExpenses.labels.push(expense.expenseName);
         factory.chartData.sumOfExpenses.data.push(expense.amountSpent);
       });
 
       factory.chartData.expenseStructure.labels.push('Gas expenses');
       factory.chartData.expenseStructure.labels.push('Misc expenses');
-
-      console.log('gasExpenses are ', gasExpenses);
-      console.log('miscExpenses are ', miscExpenses);
-
       factory.chartData.expenseStructure.data.push(gasExpenses);
       factory.chartData.expenseStructure.data.push(miscExpenses);
-      console.log("factory.expenses:", factory.expenses);
     };
 
 
     factory.dataFilter = function(response, carSelected) {
-      factory.chartData.expenseStructure.data.splice(0,factory.chartData.expenseStructure.data.length);
-      factory.chartData.expenseStructure.labels.splice(0,factory.chartData.expenseStructure.labels.length);
-      factory.chartData.sumOfExpenses.data.splice(0,factory.chartData.sumOfExpenses.data.length);
-      factory.chartData.sumOfExpenses.labels.splice(0,factory.chartData.sumOfExpenses.labels.length);
-      factory.chartData.sumOfExpenses.series.splice(0,factory.chartData.sumOfExpenses.series.length);
-      factory.chartData.gasExpenses.labels.splice(0,factory.chartData.gasExpenses.labels.length);
-      factory.chartData.gasExpenses.data.splice(0,factory.chartData.gasExpenses.data.length);
-      factory.chartData.gasExpenses.series.splice(0,factory.chartData.gasExpenses.series.length);
-
-      factory.events.splice(0,factory.events.length);
-      factory.expenses.splice(0,factory.expenses.length);
-      console.log('factory.expenses is', factory.expenses);
+      factory.chartData.expenseStructure.data.length = 0;
+      factory.chartData.expenseStructure.labels.length = 0;
+      factory.chartData.sumOfExpenses.data.length = 0;
+      factory.chartData.sumOfExpenses.labels.length = 0;
+      factory.chartData.sumOfExpenses.series.length = 0;
+      factory.chartData.gasExpenses.labels.length = 0;
+      factory.chartData.gasExpenses.data.length = 0;
+      factory.chartData.gasExpenses.series.length = 0;
+      factory.events.length = 0;
+      factory.expenses.length = 0;
 
       if (!carSelected) {
         angular.copy(response, factory.cars);
@@ -109,8 +99,6 @@
       } else {
         response.forEach(function(car){
           if (car.carId === +carSelected) {
-            console.log('car selected is, ', carSelected);
-            // factory.chartData.expenseStructure.labels.push(car.customName);
             factory.getEventsList([car]);
             factory.getExpensesList([car]);
             factory.chartDataForOneCar();
@@ -120,25 +108,15 @@
     };
 
     factory.getEventsList = function(response){
-      console.log('we are inside getEventsList!');
       response.forEach(function(car){
         Array.prototype.push.apply(factory.events, car.events);
       });
     };
 
     factory.getExpensesList = function(response){
-      console.log('we are inside getExpensesList!');
-      // console.log('response is ', response);
       factory.expenses.splice(0,factory.expenses.length);
-      console.log('factory.expenses are ', factory.expenses);
-      console.log('respense.expenses are ', response[0].expenses);
       response.forEach(function(car){
-
-        for (var i = 0; i < car.expenses.length; i++) {
-          factory.expenses.push(car.expenses[i]);
-        }
-
-        // Array.prototype.push.apply(factory.expenses, car.expenses);
+        Array.prototype.push.apply(factory.expenses, car.expenses);
       });
     };
 
@@ -149,8 +127,8 @@
     };
 
     factory.login = function(credentials, carSelected){
-      console.log('we are inside login!');
       return $http.post(appSettings.apiURL + '/login', credentials).success(function(response) {
+        factory.user.push("logged in");
         factory.dataFilter(response, carSelected);
       });
     };
