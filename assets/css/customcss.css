@@ -1,5 +1,5 @@
 .mainheaders {
-color: white;
+  color: white;
 }
 
 a {
@@ -19,3 +19,21 @@ a {
   width: 600px;
 }
 
+.plus {
+  margin-left: 20px;
+  font-size: 150%;
+}
+
+.lists {
+  margin-left: 50px;
+}
+
+#allcarsbutton {
+  background-color: #F7464A;
+  margin-left: 20px;
+}
+
+#donutgraphdiv, #expensesgraphdiv, #gasgraphdiv {
+  height: 390px;
+  width: 390px;
+}

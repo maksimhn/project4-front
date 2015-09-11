@@ -165,7 +165,7 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <!-- Car modal -->
+    <!-- New Car modal -->
     <div class="modal fade" id="carModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -211,6 +211,89 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <!-- New Event modal -->
+    <div class="modal fade" id="new-event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Event description</h4>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="" aria-describedby="event-name" ng-model="carsCtrl.newEvent.eventName">
+                <span class="input-group-addon" id="event-name">Name</span>
+             </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-make" ng-model="carsCtrl.newEvent.remindOnMileage">
+              <span class="input-group-addon" id="event-make">Remind on mileage</span>
+            </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-model" ng-model="carsCtrl.newEvent.remindEvery">
+              <span class="input-group-addon" id="event-model">Remind every</span>
+            </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="carsCtrl.newEvent.nextReminder">
+              <span class="input-group-addon" id="event-year">Next reminder(*)</span>
+            </div>
+            <p></p>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Done?
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="carsCtrl.createEvent()">Submit</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- New Expense modal -->
+    <div class="modal fade" id="new-expense-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Expense description</h4>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.newExpense.expenseName">
+                <span class="input-group-addon" id="expense-name">Name</span>
+             </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.newExpense.mileage">
+              <span class="input-group-addon" id="expense-mileage">Mileage</span>
+            </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.newExpense.amountSpent">
+              <span class="input-group-addon" id="expense-amount">Amount</span>
+            </div>
+            <p></p>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="carsCtrl.newExpense.gas"> Gas?
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="carsCtrl.createExpense()">Submit</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
 
 
 

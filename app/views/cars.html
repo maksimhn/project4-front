@@ -27,32 +27,34 @@
         <button type="button" class="btn btn-default" id="{{car.carId}}" ng-click="carsCtrl.getCarsData($event)">{{car.customName}}</button>
       </div>
       <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default" ng-click="carsCtrl.getCarsData($event)" ng-show="carsCtrl.user[0]" id="">All cars</button>
+        <button type="button" class="btn btn-danger" ng-click="carsCtrl.getCarsData()" ng-show="carsCtrl.user[0]" id="allcarsbutton">All cars</button>
       </div>
 
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#carModal" ng-click="carsCtrl.createCar()" ng-show="carsCtrl.user[0]">Add car</button>
+      <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#carModal" ng-click="carsCtrl.createCar()" ng-show="carsCtrl.user[0]">Add car</button> -->
+
+      <h4 class="mainheaders" ng-show="carsCtrl.user[0]"><a href="#/cars" data-toggle="modal" data-target="#carModal"><span class="plus">+</span></a></h4>
     </div><!-- //Cars row -->
 
     <!-- Graphs row -->
     <div class="row" id="graphsrow">
 
-      <div class="graph col-md-4 col-sm-6 col-xs-12">
+      <div class="col-md-4 col-sm-6 col-xs-12" id="donutgraphdiv">
         <canvas id="doughnut" class="chart chart-doughnut" chart-data="carsCtrl.chartData.expenseStructure.data"
           chart-labels="carsCtrl.chartData.expenseStructure.labels" chart-legend="true"
-          chart-click="onClick" width="200" height="200">
+          chart-click="onClick" height="340" width="340"></canvas>
       </div>
 
-      <div class="graph col-md-4 col-sm-6 col-xs-12">
+      <div class="col-md-4 col-sm-6 col-xs-12" id="expensesgraphdiv">
         <canvas id="polar-area" class="chart chart-polar-area" chart-data="carsCtrl.chartData.sumOfExpenses.data"
-          chart-labels="carsCtrl.chartData.sumOfExpenses.labels" chart-legend="true" width="200" height="200">
+          chart-labels="carsCtrl.chartData.sumOfExpenses.labels" chart-legend="true" height="340" width="340">
         </canvas>
       </div>
 
 
-      <div class="graph col-md-4 col-sm-6 col-xs-12">
+      <div class="col-md-4 col-sm-6 col-xs-12" id="gasgraphdiv">
         <canvas id="line" class="chart chart-line" chart-data="carsCtrl.chartData.gasExpenses.data"
           chart-labels="carsCtrl.chartData.gasExpenses.labels" chart-legend="true" chart-series="carsCtrl.chartData.gasExpenses.series"
-          chart-click="onClick" width="200" height="200">
+          chart-click="onClick" height="340" width="340">
         </canvas>
       </div>
 
@@ -71,8 +73,8 @@
       <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
 
         <div ng-show="carsCtrl.user[0]">
-          <h4 class="mainheaders">List of expenses</h4>
-          <button type="button" class="btn btn-primary btn-sm">Add expense</button>
+          <h4 class="mainheaders lists">List of expenses<a href="#/expenses" data-toggle="modal" data-target="#new-expense-modal"><span class="plus">+</span></a></h4>
+          <!-- <button type="button" class="btn btn-primary btn-sm">Add expense</button> -->
         </div>
 
         <div id="expenselist">
@@ -87,8 +89,8 @@
       <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
 
         <div ng-show="carsCtrl.user[0]">
-          <h4 class="mainheaders">List of events</h4>
-          <button type="button" class="btn btn-primary btn-sm">Add event</button>
+          <h4 class="mainheaders lists">List of events<a href="#/events" data-toggle="modal" data-target="#new-event-modal"><span class="plus">+</span></a></h4>
+          <!-- <button type="button" class="btn btn-primary btn-sm">Add event</button> -->
         </div>
 
         <div id="eventlist">

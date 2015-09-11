@@ -44,7 +44,13 @@
 
     // Car CRUD actions
     vm.getCarsData = function(event){
-      carsFactory.getCarsData(event.target.id);
+      if (event) {
+        appSettings.carSelected = event.target.id;
+        carsFactory.getCarsData(event.target.id);
+      } else {
+        appSettings.carSelected = null;
+        carsFactory.getCarsData();
+      }
     };
     vm.createCar = function(){
       carsFactory.createCar(vm.newCar, vm.carSelected);
@@ -58,6 +64,7 @@
 
     // Event CRUD actions
     vm.createEvent = function(){
+      vm.newEvent.carId = appSettings.carSelected;
       carsFactory.createEvent(vm.newEvent, vm.carSelected);
     };
     vm.updateEvent = function(){
@@ -69,6 +76,7 @@
 
     // Expense CRUD actions
     vm.createExpense = function(){
+      vm.newExpense.carId = appSettings.carSelected;
       carsFactory.createExpense(vm.newExpense, vm.carSelected);
     };
     vm.updateExpense = function(){

@@ -37,10 +37,11 @@
       });
       factory.chartData.expenseStructure.data.push(gasExpenses);
       factory.chartData.expenseStructure.data.push(miscExpenses);
+      factory.chartData.expenseStructure.labels.push('Gas expenses');
+      factory.chartData.expenseStructure.labels.push('Misc expenses');
       response.forEach(function(car){
         var sum = 0;
         var tankFills = [];
-        factory.chartData.expenseStructure.labels.push(car.customName);
         factory.chartData.gasExpenses.series.push(car.customName);
         car.expenses.forEach(function(expense){
           if (expense.gas === true) {
@@ -66,12 +67,13 @@
           factory.chartData.gasExpenses.data[0].push(expense.amountSpent);
           gasExpenses += expense.amountSpent;
         } else {
+          factory.chartData.sumOfExpenses.labels.push(expense.expenseName);
+          factory.chartData.sumOfExpenses.data.push(expense.amountSpent);
           miscExpenses += expense.amountSpent;
         }
-        factory.chartData.sumOfExpenses.labels.push(expense.expenseName);
-        factory.chartData.sumOfExpenses.data.push(expense.amountSpent);
       });
-
+      factory.chartData.sumOfExpenses.labels.push('Gas');
+      factory.chartData.sumOfExpenses.data.push(gasExpenses);
       factory.chartData.expenseStructure.labels.push('Gas expenses');
       factory.chartData.expenseStructure.labels.push('Misc expenses');
       factory.chartData.expenseStructure.data.push(gasExpenses);
