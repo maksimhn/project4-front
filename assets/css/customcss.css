@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Blessed';
+    src: url('../fonts/blessed.otf');
+}
+
 .mainheaders {
   color: white;
 }
@@ -36,4 +41,18 @@ a {
 #donutgraphdiv, #expensesgraphdiv, #gasgraphdiv {
   height: 390px;
   width: 390px;
+}
+
+#how-button {
+  color: #2a8889;
+}
+
+#logo-text {
+  font-family: 'Blessed';
+  font-size: 300%;
+  font-weight: normal;
+}
+
+#navbar-collapse {
+  margin-top: 20px;
 }
