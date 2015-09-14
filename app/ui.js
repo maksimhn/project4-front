@@ -26,6 +26,14 @@ $('#updatecar-button').on('click', function(){
   $('#updateCarModal').modal('hide');
 });
 
+$('#updateexpense-button').on('click', function(){
+  $('#update-expense-modal').modal('hide');
+});
+
+$('#deleteexpense-button').on('click', function(){
+  $('#update-expense-modal').modal('hide');
+});
+
 $('#updateevent-button').on('click', function(){
   $('#update-event-modal').modal('hide');
 });

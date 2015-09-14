@@ -303,29 +303,30 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.expenseData[0].expenseName[0]">
+                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.expenseToEdit.expenseName">
                 <span class="input-group-addon" id="expense-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.expenseData[0].mileage">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.expenseToEdit.mileage">
               <span class="input-group-addon" id="expense-mileage">Mileage</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.expenseData[0].amountSpent">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.expenseToEdit.amountSpent">
               <span class="input-group-addon" id="expense-amount">Amount</span>
             </div>
             <p></p>
             <div class="checkbox">
               <label>
-                <input type="checkbox" ng-model="carsCtrl.expenseData[0].gas"> Gas?
+                <input type="checkbox" ng-model="carsCtrl.expenseToEdit.gas"> Gas?
               </label>
             </div>
           </div>
           <div class="modal-footer">
+            <button type="button" class="btn btn-danger" ng-click="carsCtrl.deleteExpense()" id="deleteexpense-button">Delete</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" ng-click="carsCtrl.updateExpense()" id="updateexpense-modal">Submit</button>
+            <button type="button" class="btn btn-primary" ng-click="carsCtrl.updateExpense()" id="updateexpense-button">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

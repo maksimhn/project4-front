@@ -56,9 +56,8 @@
 
     // Event CRUD actions
     vm.getEvent = function(event){
-      console.log('we clicked on event with id ', event.target.id.substr(5, event.target.id.length - 1));
       var eventId = +event.target.id.substr(5, event.target.id.length - 1);
-      carsFactory.getEvent(eventId, vm.carSelected);
+      carsFactory.getEvent(eventId, appSettings.carSelected);
     };
 
     vm.createEvent = function(){
@@ -73,15 +72,20 @@
     };
 
     // Expense CRUD actions
+    vm.getExpense = function(event){
+      var expenseId = +event.target.id.substr(7, event.target.id.length - 1);
+      carsFactory.getExpense(expenseId, appSettings.carSelected);
+    };
+
     vm.createExpense = function(){
       vm.newExpense.carId = appSettings.carSelected;
-      carsFactory.createExpense(vm.newExpense, vm.carSelected);
+      carsFactory.createExpense(vm.newExpense, appSettings.carSelected);
     };
-    vm.updateExpense = function(event){
-      carsFactory.updateExpense(vm.expenseData[0], vm.carSelected);
+    vm.updateExpense = function(){
+      carsFactory.updateExpense(vm.expenseToEdit, appSettings.carSelected);
     };
     vm.deleteExpense = function(){
-      carsFactory.deleteExpense(expenseData, vm.carSelected);
+      carsFactory.deleteExpense(vm.expenseToEdit.id, appSettings.carSelected);
     };
 
 

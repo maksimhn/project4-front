@@ -189,7 +189,6 @@
     factory.getEvent = function(eventId, carSelected) {
       return $http.get(appSettings.apiURL + '/events/' + eventId).success(function(response){
         angular.copy(response, factory.eventToEdit);
-        console.log('eventToEdit is now ', factory.eventToEdit);
       })
     };
 
@@ -214,6 +213,12 @@
 
 
     // Expense CRUD actions
+    factory.getExpense = function(expenseId, carSelected){
+      return  $http.get(appSettings.apiURL + '/expenses/' + expenseId).success(function(response){
+        angular.copy(response, factory.expenseToEdit);
+      });
+    };
+
     factory.createExpense = function(expenseData, carSelected){
       return $http.post(appSettings.apiURL + '/expenses', expenseData).success(function(response){
         factory.dataFilter(response, carSelected);
@@ -221,13 +226,14 @@
     };
 
     factory.updateExpense = function(expenseData, carSelected){
+      console.log('expenseData is ', expenseData);
       return $http.put(appSettings.apiURL + '/expenses', expenseData).success(function(response){
         factory.dataFilter(response, carSelected);
       });
     };
 
-    factory.deleteExpense = function(expenseData, carSelected){
-      return $http.delete(appSettings.apiURL + '/expenses', expenseData).success(function(response){
+    factory.deleteExpense = function(expenseId, carSelected){
+      return $http.delete(appSettings.apiURL + '/expenses/' + expenseId).success(function(response){
         factory.dataFilter(response, carSelected);
       });
     };
