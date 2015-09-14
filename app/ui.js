@@ -46,6 +46,10 @@ $('#deleteevent-button').on('click', function(){
   $('#update-event-modal').modal('hide');
 });
 
+$('#logo-text').on('click', function(){
+  location.reload();
+});
+
 $('#logout-button').on('click', function(){
   location.reload();
 });
