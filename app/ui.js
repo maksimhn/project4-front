@@ -3,7 +3,11 @@ $('#login-close').on('click', function(){
 });
 
 $('#login-button').on('click', function(){
-  $('#loginModal').modal('hide');
+  $('#login-button').text("");
+  $('#login-button').append('<span class="glyphicon glyphicon-refresh spinning"></span>Loading...');
+  window.setTimeout(function(){
+     $('#loginModal').modal('hide');
+  }, 4600);
 });
 
 $('#register-button').on('click', function(){
