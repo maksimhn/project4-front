@@ -179,7 +179,8 @@
     };
 
     factory.deleteCar = function(carData, carSelected){
-      return $http.delete(appSettings.apiURL + '/cars', carData).success(function(response){
+      console.log('car data is ', carData);
+      return $http.delete(appSettings.apiURL + '/cars/' + carData.carId).success(function(response){
         factory.dataFilter(response, carSelected);
       });
     };

@@ -51,7 +51,7 @@
       carsFactory.updateCar(vm.carToEdit, vm.carSelected);
     };
     vm.deleteCar = function(){
-      carsFactory.deleteCar(vm.carData, vm.carSelected);
+      carsFactory.deleteCar(vm.carToEdit, vm.carSelected);
     };
 
     // Event CRUD actions
