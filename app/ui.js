@@ -22,6 +22,11 @@ $('#newexpense-button').on('click', function(){
   $('#new-expense-modal').modal('hide');
 });
 
+$('#updatecar-button').on('click', function(){
+  $('#updateCarModal').modal('hide');
+});
+
+
 $('#logout-button').on('click', function(){
   location.reload();
 });

@@ -4,6 +4,9 @@
     var factory = {};
     factory.cars = [];
     factory.car = {};
+    factory.carToEdit = {};
+    factory.eventToEdit = {};
+    factory.expenseToEdit = {};
     factory.events = [];
     factory.expenses = [];
     factory.user = [];
@@ -23,6 +26,7 @@
         data: []
       }
     };
+
 
     factory.chartDataForAllCars = function(response){
       var gasExpenses = 0;
@@ -101,6 +105,7 @@
       } else {
         response.forEach(function(car){
           if (car.carId === +carSelected) {
+            angular.copy(car, factory.carToEdit);
             factory.getEventsList([car]);
             factory.getExpensesList([car]);
             factory.chartDataForOneCar();
@@ -122,6 +127,15 @@
       });
     };
 
+
+
+
+
+    // CRUD ACTIONS
+
+
+
+    // User CRUD action
     factory.register = function(credentials, carSelected){
       return $http.post(appSettings.apiURL + '/signup', credentials).success(function(response) {
         alert('You have successfully registered! Now log in...');
@@ -136,9 +150,17 @@
     };
 
     // Car CRUD actions
+    factory.getCar = function(carId){
+      return $http.get(appSettings.apiURL + '/cars/' + carId).success(function(response){
+        angular.copy(response, factory.carToEdit);
+        // console.log('carToEdit at factory is ', factory.carToEdit);
+      })
+    };
+
     factory.getCarsData = function(carSelected){
       return $http.get(appSettings.apiURL + '/cars').success(function(response){
         factory.dataFilter(response, carSelected);
+        console.log('carToEdit at factory is ', factory.carToEdit);
       });
     };
 

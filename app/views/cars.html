@@ -29,15 +29,17 @@
     <div class="row" id="carbuttons">
 
       <div class="btn-group" role="group" aria-label="..." ng-repeat="car in carsCtrl.cars">
-        <button type="button" class="btn btn-default" id="{{car.carId}}" ng-click="carsCtrl.getCarsData($event)">{{car.customName}}</button>
+        <button type="button" class="btn btn-default" id="car{{car.carId}}" ng-click="carsCtrl.getCarsData($event)">{{car.customName}}</button>
       </div>
       <div class="btn-group" role="group" aria-label="...">
         <button type="button" class="btn btn-danger" ng-click="carsCtrl.getCarsData()" ng-show="carsCtrl.user[0]" id="allcarsbutton">All cars</button>
       </div>
 
       <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#carModal" ng-click="carsCtrl.createCar()" ng-show="carsCtrl.user[0]">Add car</button> -->
-
-      <h4 class="mainheaders" ng-show="carsCtrl.user[0]"><a href="#/cars" data-toggle="modal" data-target="#carModal"><span class="plus">+</span></a></h4>
+      <p></p>
+      <span class="glyphicon glyphicon-pencil" ng-show="carsCtrl.user[0]" data-toggle="modal" data-target="#updateCarModal"></span>
+      <span class="glyphicon glyphicon-plus" ng-show="carsCtrl.user[0]" data-toggle="modal" data-target="#carModal"></span>
+      <!-- <h4 class="mainheaders" ng-show="carsCtrl.user[0]"><a href="#/cars" data-toggle="modal" data-target="#carModal"><span class="plus">+</span></a></h4> -->
     </div><!-- //Cars row -->
 
     <!-- Graphs row -->

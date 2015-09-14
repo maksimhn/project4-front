@@ -9,8 +9,9 @@
     var vm = this;
     vm.appSettings = appSettings;
     vm.userCredentials = {};
-    vm.eventData = []; // CONNECT TO FACTORY, MAKE SPECIFIC REQUEST
-    vm.expenseData = []; // CONNECT TO FACTORY, MAKE SPECIFIC REQUEST
+    vm.eventToEdit = carsFactory.eventToEdit;
+    vm.expenseToEdit = carsFactory.expenseToEdit;
+    vm.carToEdit = carsFactory.carToEdit;
     vm.carData = {};
     vm.cars = carsFactory.cars;
     vm.events = carsFactory.events;
@@ -32,8 +33,8 @@
     // Car CRUD actions
     vm.getCarsData = function(event){
       if (event) {
-        appSettings.carSelected = event.target.id;
-        carsFactory.getCarsData(event.target.id);
+        appSettings.carSelected = +event.target.id.substr(3, event.target.id.length - 1);
+        carsFactory.getCarsData(+appSettings.carSelected);
       } else {
         appSettings.carSelected = null;
         carsFactory.getCarsData();
@@ -42,8 +43,9 @@
     vm.createCar = function(){
       carsFactory.createCar(vm.newCar, vm.carSelected);
     };
-    vm.updateCar = function(){
-      carsFactory.updateCar(vm.carData, vm.carSelected);
+    vm.updateCar = function(event){
+      // vm.carToEdit.id = +event.target.id.substr(3, event.target.id.length - 1);
+      carsFactory.updateCar(vm.carToEdit, vm.carSelected);
     };
     vm.deleteCar = function(){
       carsFactory.deleteCar(vm.carData, vm.carSelected);
