@@ -55,15 +55,21 @@
     };
 
     // Event CRUD actions
+    vm.getEvent = function(event){
+      console.log('we clicked on event with id ', event.target.id.substr(5, event.target.id.length - 1));
+      var eventId = +event.target.id.substr(5, event.target.id.length - 1);
+      carsFactory.getEvent(eventId, vm.carSelected);
+    };
+
     vm.createEvent = function(){
       vm.newEvent.carId = appSettings.carSelected;
-      carsFactory.createEvent(vm.newEvent, vm.carSelected);
+      carsFactory.createEvent(vm.newEvent, appSettings.carSelected);
     };
-    vm.updateEvent = function(event){
-      carsFactory.updateEvent(vm.eventData, vm.carSelected);
+    vm.updateEvent = function(){
+      carsFactory.updateEvent(vm.eventToEdit, appSettings.carSelected);
     };
     vm.deleteEvent = function(){
-      carsFactory.deleteEvent(vm.eventData, vm.carSelected);
+      carsFactory.deleteEvent(vm.eventToEdit.id, appSettings.carSelected);
     };
 
     // Expense CRUD actions

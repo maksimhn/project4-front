@@ -103,7 +103,7 @@
         <div id="eventlist">
           <ul ng-repeat="event in carsCtrl.events" style="list-style-type:none">
             <li>
-              <a class="eventlinks" href="#/events/{{event.id}}">{{event.eventName}}</a>
+              <a class="eventlinks" href="#/events/{{event.id}}" id="event{{event.id}}" data-toggle="modal" data-target="#update-event-modal" ng-click="carsCtrl.getEvent($event)">{{event.eventName}}</a>
             </li>
           </ul>
         </div>

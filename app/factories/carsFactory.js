@@ -153,7 +153,6 @@
     factory.getCar = function(carId){
       return $http.get(appSettings.apiURL + '/cars/' + carId).success(function(response){
         angular.copy(response, factory.carToEdit);
-        // console.log('carToEdit at factory is ', factory.carToEdit);
       })
     };
 
@@ -179,7 +178,6 @@
     };
 
     factory.deleteCar = function(carData, carSelected){
-      console.log('car data is ', carData);
       return $http.delete(appSettings.apiURL + '/cars/' + carData.carId).success(function(response){
         factory.dataFilter(response, carSelected);
       });
@@ -188,6 +186,13 @@
 
 
     // Event CRUD actions
+    factory.getEvent = function(eventId, carSelected) {
+      return $http.get(appSettings.apiURL + '/events/' + eventId).success(function(response){
+        angular.copy(response, factory.eventToEdit);
+        console.log('eventToEdit is now ', factory.eventToEdit);
+      })
+    };
+
     factory.createEvent = function(eventData, carSelected){
       return $http.post(appSettings.apiURL + '/events', eventData).success(function(response){
         factory.dataFilter(response, carSelected);
@@ -200,8 +205,8 @@
       });
     };
 
-    factory.deleteEvent = function(eventData, carSelected){
-      return $http.delete(appSettings.apiURL + '/events', eventData).success(function(response){
+    factory.deleteEvent = function(eventId, carSelected){
+      return $http.delete(appSettings.apiURL + '/events/' + eventId).success(function(response){
         factory.dataFilter(response, carSelected);
       });
     };

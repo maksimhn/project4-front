@@ -379,6 +379,49 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
+    <!-- Update Event modal -->
+    <div class="modal fade" id="update-event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Event description</h4>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="" aria-describedby="event-name" ng-model="carsCtrl.eventToEdit.eventName">
+                <span class="input-group-addon" id="event-name">Name</span>
+             </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-make" ng-model="carsCtrl.eventToEdit.remindOnMileage">
+              <span class="input-group-addon" id="event-make">Remind on mileage</span>
+            </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-model" ng-model="carsCtrl.eventToEdit.remindEvery">
+              <span class="input-group-addon" id="event-model">Remind every</span>
+            </div>
+            <p></p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="carsCtrl.eventToEdit.nextReminder">
+              <span class="input-group-addon" id="event-year">Next reminder(*)</span>
+            </div>
+            <p></p>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="carsCtrl.eventToEdit.done"> Done?
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" ng-click="carsCtrl.deleteEvent()" id="deleteevent-button">Delete</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="carsCtrl.updateEvent($event)" id="updateevent-button">Submit</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
     <!-- Javascript -->

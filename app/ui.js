@@ -26,6 +26,13 @@ $('#updatecar-button').on('click', function(){
   $('#updateCarModal').modal('hide');
 });
 
+$('#updateevent-button').on('click', function(){
+  $('#update-event-modal').modal('hide');
+});
+
+$('#deleteevent-button').on('click', function(){
+  $('#update-event-modal').modal('hide');
+});
 
 $('#logout-button').on('click', function(){
   location.reload();
