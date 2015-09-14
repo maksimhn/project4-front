@@ -20,6 +20,7 @@
     vm.newEvent = {};
     vm.newExpense = {};
     vm.carSelected = null;
+    vm.singleCar;
     vm.chartData = carsFactory.chartData;
     vm.user = carsFactory.user;
 
@@ -35,7 +36,9 @@
       if (event) {
         appSettings.carSelected = +event.target.id.substr(3, event.target.id.length - 1);
         carsFactory.getCarsData(+appSettings.carSelected);
+        vm.singleCar = appSettings.carSelected;
       } else {
+        vm.singleCar = null;
         appSettings.carSelected = null;
         carsFactory.getCarsData();
       }

@@ -60,3 +60,11 @@ a {
 .modal-dialog {
   margin-top: 15%;
 }
+
+#edit-glyphicon, #add-glyphicon {
+  padding-right: 15px;
+}
+
+#addcar-text, #editcar-text {
+  margin-left: 5px;
+}

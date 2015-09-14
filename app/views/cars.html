@@ -37,8 +37,8 @@
 
       <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#carModal" ng-click="carsCtrl.createCar()" ng-show="carsCtrl.user[0]">Add car</button> -->
       <p></p>
-      <span class="glyphicon glyphicon-pencil" ng-show="carsCtrl.user[0]" data-toggle="modal" data-target="#updateCarModal"></span>
-      <span class="glyphicon glyphicon-plus" ng-show="carsCtrl.user[0]" data-toggle="modal" data-target="#carModal"></span>
+      <a href=""><span id="edit-glyphicon" class="glyphicon glyphicon-pencil" ng-show="carsCtrl.singleCar" data-toggle="modal" data-target="#updateCarModal"><text id="editcar-text">Edit</text></span></a>
+      <a href=""><span id="add-glyphicon" class="glyphicon glyphicon-plus" ng-show="carsCtrl.user[0]" data-toggle="modal" data-target="#carModal"><text id="addcar-text">Add new</text></span></a>
       <!-- <h4 class="mainheaders" ng-show="carsCtrl.user[0]"><a href="#/cars" data-toggle="modal" data-target="#carModal"><span class="plus">+</span></a></h4> -->
     </div><!-- //Cars row -->
 
