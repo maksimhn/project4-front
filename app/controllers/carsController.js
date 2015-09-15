@@ -79,8 +79,11 @@
 
     vm.createExpense = function(){
       vm.newExpense.carId = appSettings.carSelected;
+      console.log('New expense is ', vm.newExpense);
       if (vm.newExpense.gas === null) {
         vm.newExpense.gas = false;
+      } else {
+        vm.newExpense.gas = true;
       }
       carsFactory.createExpense(vm.newExpense, appSettings.carSelected);
     };
