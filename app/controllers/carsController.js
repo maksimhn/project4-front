@@ -44,14 +44,14 @@
       }
     };
     vm.createCar = function(){
-      carsFactory.createCar(vm.newCar, vm.carSelected);
+      carsFactory.createCar(vm.newCar, appSettings.carSelected);
     };
     vm.updateCar = function(event){
       // vm.carToEdit.id = +event.target.id.substr(3, event.target.id.length - 1);
-      carsFactory.updateCar(vm.carToEdit, vm.carSelected);
+      carsFactory.updateCar(vm.carToEdit, appSettings.carSelected);
     };
     vm.deleteCar = function(){
-      carsFactory.deleteCar(vm.carToEdit, vm.carSelected);
+      carsFactory.deleteCar(vm.carToEdit, appSettings.carSelected);
     };
 
     // Event CRUD actions
@@ -80,7 +80,7 @@
     vm.createExpense = function(){
       vm.newExpense.carId = appSettings.carSelected;
       console.log('New expense is ', vm.newExpense);
-      if (vm.newExpense.gas === null) {
+      if (!vm.newExpense.gas) {
         vm.newExpense.gas = false;
       } else {
         vm.newExpense.gas = true;
