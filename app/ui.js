@@ -53,3 +53,7 @@ $('#logo-text').on('click', function(){
 $('#logout-button').on('click', function(){
   location.reload();
 });
+
+$(function () {
+    $('#newdatetimepicker').datetimepicker();
+});
