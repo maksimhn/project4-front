@@ -61,6 +61,7 @@
     };
 
     vm.createEvent = function(){
+      console.log('new event is ', vm.newEvent);
       vm.newEvent.carId = appSettings.carSelected;
       carsFactory.createEvent(vm.newEvent, appSettings.carSelected);
     };
