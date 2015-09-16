@@ -6,6 +6,8 @@
     "angular-chartjs-directive": "~1.0.0",
     "angular-route": "~1.4.5",
     "Chart.js": "~1.0.2",
-    "angular-chart.js": "~0.8.3"
+    "angular-chart.js": "~0.8.3",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37",
+    "angular-bootstrap-datetimepicker-directive": "~0.1.3"
   }
 }

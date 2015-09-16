@@ -58,7 +58,7 @@ a {
 }
 
 .modal-dialog {
-  margin-top: 15%;
+  margin-top: 17%;
 }
 
 #edit-glyphicon, #add-glyphicon {
@@ -92,4 +92,8 @@ a {
 @-webkit-keyframes spin2 {
     from { -webkit-transform: rotate(0deg); }
     to { -webkit-transform: rotate(360deg); }
+}
+
+#event-year {
+  background-color: #50C8C9;
 }

@@ -1,6 +1,6 @@
 (function carsAppIIFE(){
 
-  var app = angular.module('carsApp', ['ngRoute', 'chart.js']);
+  var app = angular.module('carsApp', ['ngRoute', 'chart.js', 'datetimepicker']);
 
 
   app.config(function($routeProvider, $httpProvider){

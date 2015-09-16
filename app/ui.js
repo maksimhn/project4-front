@@ -54,6 +54,6 @@ $('#logout-button').on('click', function(){
   location.reload();
 });
 
-// $(function () {
-//     $('#newdatetimepicker').datetimepicker();
-// });
+$(function () {
+    $('#newdatetimepicker').datetimepicker();
+});
