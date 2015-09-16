@@ -57,3 +57,16 @@ $('#logout-button').on('click', function(){
 $(function () {
     $('#newdatetimepicker').datetimepicker();
 });
+
+$(function () {
+    $('#updatedatetimepicker').datetimepicker();
+});
+
+$(function () {
+    $('#expense-newdatetimepicker').datetimepicker();
+});
+
+$(function () {
+    $('#expense-updatedatetimepicker').datetimepicker();
+});
+

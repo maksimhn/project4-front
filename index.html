@@ -277,6 +277,12 @@
               <span class="input-group-addon" id="expense-mileage">Mileage</span>
             </div>
             <p></p>
+            <div class="input-group" id="expense-newdatetimepicker">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="carsCtrl.newExpense.date" id="expense-newdatetimepicker-field" datetimepicker
+           datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}">
+              <span class="input-group-addon" id="event-year">Expense date</span>
+            </div>
+            <p></p>
             <div class="input-group">
               <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.newExpense.amountSpent">
               <span class="input-group-addon" id="expense-amount">Amount</span>
@@ -313,6 +319,12 @@
             <div class="input-group">
               <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.expenseToEdit.mileage">
               <span class="input-group-addon" id="expense-mileage">Mileage</span>
+            </div>
+            <p></p>
+            <div class="input-group" id="expense-updatedatetimepicker">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-date" ng-model="carsCtrl.expenseToEdit.date" id="expense-updatedatetimepicker-field" datetimepicker
+           datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}">
+              <span class="input-group-addon" id="expense-date">Expense date</span>
             </div>
             <p></p>
             <div class="input-group">
@@ -407,8 +419,9 @@
               <span class="input-group-addon" id="event-model">Remind every</span>
             </div>
             <p></p>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="carsCtrl.eventToEdit.nextReminder">
+            <div class="input-group" id="updatedatetimepicker">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="carsCtrl.eventToEdit.nextReminder" id="updatedatetimepicker-field" datetimepicker
+           datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}">
               <span class="input-group-addon" id="event-year">Next reminder</span>
             </div>
             <p></p>

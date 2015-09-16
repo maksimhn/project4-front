@@ -215,6 +215,7 @@
     // Expense CRUD actions
     factory.getExpense = function(expenseId, carSelected){
       return  $http.get(appSettings.apiURL + '/expenses/' + expenseId).success(function(response){
+        console.log('expense recieved is ', response);
         angular.copy(response, factory.expenseToEdit);
       });
     };
