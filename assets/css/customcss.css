@@ -59,6 +59,7 @@ a {
 
 .modal-dialog {
   margin-top: 17%;
+  width: 350px;
 }
 
 #edit-glyphicon, #add-glyphicon {
@@ -71,7 +72,7 @@ a {
 
 .btn-danger {
   background-color: #F7464A;
-  margin-right: 10px;
+  margin-right: 50px;
 }
 
 .btn-success {
@@ -94,6 +95,6 @@ a {
     to { -webkit-transform: rotate(360deg); }
 }
 
-#event-year {
-  background-color: #50C8C9;
+#event-make-addon, #eventdate-dropdown {
+  height: 34px;
 }

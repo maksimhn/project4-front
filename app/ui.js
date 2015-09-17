@@ -70,3 +70,6 @@ $(function () {
     $('#expense-updatedatetimepicker').datetimepicker();
 });
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+});

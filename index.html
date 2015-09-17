@@ -52,6 +52,7 @@
                 </div><!--//navbar-header-->
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
+                        <li class="nav-item"><a data-toggle="tooltip" data-placement="bottom" title="Under construction, please pardon bugs and database wipeouts..."><span class="glyphicon glyphicon-info-sign">Alpha</span></a></li>
                         <li class="nav-item"><a class="scrollto" href="#about" id="how-button">How...</a></li>
                         <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#loginModal" ng-hide="carsCtrl.user[0]">Login</a></li>
                         <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#registerModal" ng-hide="carsCtrl.user[0]">Register</a></li>
@@ -233,22 +234,34 @@
               <span class="input-group-addon" id="event-make">Remind on mileage</span>
             </div>
             <p></p>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="event-model" ng-model="carsCtrl.newEvent.remindEvery">
-              <span class="input-group-addon" id="event-model">Remind every</span>
-            </div>
-            <p></p>
+
             <div class="input-group date" id="newdatetimepicker">
               <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="carsCtrl.newEvent.nextReminder" id="newdatetimepicker-field" datetimepicker
            datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}">
               <span class="input-group-addon" id="event-year">Next reminder</span>
             </div>
             <p></p>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Done?
+
+            <div>
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Once
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1"> Weekly
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2"> Monthly
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option3"> Yearly
               </label>
             </div>
+            <!-- <div class="input-group">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-model" ng-model="carsCtrl.newEvent.remindEvery">
+              <span class="input-group-addon" id="event-model">Remind every</span>
+            </div> -->
+            <p></p>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
