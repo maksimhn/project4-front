@@ -23,6 +23,7 @@
     vm.singleCar;
     vm.chartData = carsFactory.chartData;
     vm.user = carsFactory.user;
+    vm.carName = carsFactory.carName;
 
     vm.register = function(){
       carsFactory.register(vm.userCredentials, vm.carSelected);
@@ -61,11 +62,14 @@
     };
 
     vm.createEvent = function(){
-      console.log('new event is ', vm.newEvent);
+      vm.newEvent.carName = appSettings.carSelectedName;
       vm.newEvent.carId = appSettings.carSelected;
+      console.log('new event is ', vm.newEvent);
       carsFactory.createEvent(vm.newEvent, appSettings.carSelected);
     };
     vm.updateEvent = function(){
+      vm.eventToEdit.carName = appSettings.carSelectedName;
+      vm.eventToEdit.carId = appSettings.carSelected;
       carsFactory.updateEvent(vm.eventToEdit, appSettings.carSelected);
     };
     vm.deleteEvent = function(){

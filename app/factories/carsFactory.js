@@ -10,6 +10,7 @@
     factory.events = [];
     factory.expenses = [];
     factory.user = [];
+    factory.carName = "";
     factory.chartData = {
       expenseStructure: {
         labels: [],
@@ -106,6 +107,7 @@
         response.forEach(function(car){
           if (car.carId === +carSelected) {
             angular.copy(car, factory.carToEdit);
+            appSettings.carSelectedName = car.customName;
             factory.getEventsList([car]);
             factory.getExpensesList([car]);
             factory.chartDataForOneCar();
@@ -153,7 +155,7 @@
     factory.getCar = function(carId){
       return $http.get(appSettings.apiURL + '/cars/' + carId).success(function(response){
         angular.copy(response, factory.carToEdit);
-      })
+      });
     };
 
     factory.getCarsData = function(carSelected){
