@@ -105,7 +105,13 @@
         factory.getExpensesList(response);
         factory.chartDataForAllCars(response);
       } else {
-        // console.log(response);
+        console.log(response);
+        // angular.copy(response, factory.carToEdit);
+        // angular.copy(response, factory.cars);
+        // appSettings.carSelectedName = car.customName;
+        // factory.getEventsList([response]);
+        // factory.getExpensesList([response]);
+        // factory.chartDataForOneCar();
         response.forEach(function(car){
           if (car.carId === +carSelected) {
             angular.copy(car, factory.carToEdit);
@@ -154,16 +160,20 @@
     };
 
     // Car CRUD actions
-    factory.getCar = function(carId){
-      return $http.get(appSettings.apiURL + '/cars/' + carId).success(function(response){
-        angular.copy(response, factory.carToEdit);
-      });
-    };
+    // factory.getCar = function(carId, period){
+    //   return $http.get(appSettings.apiURL + '/cars/' + carId + '/' + period).success(function(response){
+    //     angular.copy(response, factory.carToEdit);
+    //   });
+    // };
 
     factory.getCarsData = function(carSelected, period){
-      console.log('we are within factory.getCarsData and period is ', period);
-      return $http.get(appSettings.apiURL + '/cars/0/' + period).success(function(response){
-        console.log('response in factory is', response);
+      var carNumber;
+      if (!carSelected) {
+        carNumber = "0";
+      } else {
+        carNumber = carSelected;
+      }
+      return $http.get(appSettings.apiURL + '/cars/' + carNumber + '/' + period).success(function(response){
         factory.dataFilter(response, carSelected);
       }).catch(function(response){
         console.log('fail response from getCarsData is ', response);

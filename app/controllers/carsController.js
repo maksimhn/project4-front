@@ -43,11 +43,10 @@
 
     vm.getCarsData = function(event){
       appSettings.statsPeriod = vm.statsPeriod;
-      console.log('appSettings.statsPeriod is ', appSettings.statsPeriod);
       if (event) {
         appSettings.carSelected = +event.target.id.substr(3, event.target.id.length - 1);
-        carsFactory.getCarsData(+appSettings.carSelected, appSettings.statsPeriod);
         vm.singleCar = appSettings.carSelected;
+        carsFactory.getCarsData(+appSettings.carSelected, appSettings.statsPeriod);
       } else {
         vm.singleCar = null;
         appSettings.carSelected = null;
