@@ -94,14 +94,14 @@
       <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
 
         <div ng-show="carsCtrl.user[0]">
-          <h4 class="mainheaders lists">List of expenses<a href="#/expenses" data-toggle="modal" data-target="#new-expense-modal"><span class="plus">+</span></a></h4>
+          <h4 class="mainheaders lists">List of expenses<a href="" data-toggle="modal" data-target="#new-expense-modal"><span class="glyphicon glyphicon-plus"></span></a></h4>
           <!-- <button type="button" class="btn btn-primary btn-sm">Add expense</button> -->
         </div>
 
         <div id="expenselist">
           <ul ng-repeat="expense in carsCtrl.expenses" style="list-style-type:none">
             <li>
-              <a class="expenselinks" href="#/expenses/{{expense.id}}" id="expense{{expense.id}}" data-toggle="modal" data-target="#update-expense-modal" ng-click="carsCtrl.getExpense($event)">{{expense.expenseName}}</a>
+              <a class="expenselinks" href="" id="expense{{expense.id}}" data-toggle="modal" data-target="#update-expense-modal" ng-click="carsCtrl.getExpense($event)">{{expense.expenseName}}</a>
             </li>
           </ul>
         </div>
@@ -110,14 +110,14 @@
       <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
 
         <div ng-show="carsCtrl.user[0]">
-          <h4 class="mainheaders lists">List of events<a href="#/events" data-toggle="modal" data-target="#new-event-modal"><span class="plus">+</span></a></h4>
+          <h4 class="mainheaders lists">List of events<a href="" data-toggle="modal" data-target="#new-event-modal"><span class="glyphicon glyphicon-plus"></span></a></h4>
           <!-- <button type="button" class="btn btn-primary btn-sm">Add event</button> -->
         </div>
 
         <div id="eventlist">
           <ul ng-repeat="event in carsCtrl.events" style="list-style-type:none">
             <li>
-              <a class="eventlinks" href="#/events/{{event.id}}" id="event{{event.id}}" data-toggle="modal" data-target="#update-event-modal" ng-click="carsCtrl.getEvent($event)">{{event.eventName}}</a>
+              <a class="eventlinks" href="" id="event{{event.id}}" data-toggle="modal" data-target="#update-event-modal" ng-click="carsCtrl.getEvent($event)">{{event.eventName}}</a>
             </li>
           </ul>
         </div>

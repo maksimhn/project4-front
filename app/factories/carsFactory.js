@@ -106,12 +106,6 @@
         factory.chartDataForAllCars(response);
       } else {
         console.log(response);
-        // angular.copy(response, factory.carToEdit);
-        // angular.copy(response, factory.cars);
-        // appSettings.carSelectedName = car.customName;
-        // factory.getEventsList([response]);
-        // factory.getExpensesList([response]);
-        // factory.chartDataForOneCar();
         response.forEach(function(car){
           if (car.carId === +carSelected) {
             angular.copy(car, factory.carToEdit);
@@ -123,6 +117,21 @@
         });
       }
     };
+
+    factory.dataFilterNoRedraw = function(response, carSelected){
+      console.log('we are inside dataFilterNoRedraw, response is ', response);
+      factory.events.length = 0;
+      if (!carSelected) {
+        factory.getEventsList(response);
+      } else {
+        response.forEach(function(car){
+          if (car.carId === +carSelected) {
+            factory.getEventsList([car]);
+          }
+        });
+      }
+    };
+
 
     factory.getEventsList = function(response){
       response.forEach(function(car){
@@ -206,31 +215,45 @@
     factory.getEvent = function(eventId, carSelected) {
       return $http.get(appSettings.apiURL + '/events/' + eventId).success(function(response){
         angular.copy(response, factory.eventToEdit);
-      })
+        // if (!carSelected) {
+        //   factory.getEventsList(response);
+        // } else {
+        //   factory.getEventsList([response]);
+        // }
+      });
     };
+
 
     factory.createEvent = function(eventData, carSelected){
       return $http.post(appSettings.apiURL + '/events', eventData).success(function(response){
-        factory.dataFilter(response, carSelected);
+        factory.dataFilterNoRedraw(response, carSelected);
+        // factory.dataFilter(response, carSelected);
+        // if (!carSelected) {
+        //   factory.getEventsList(response);
+        // } else {
+        //   factory.getEventsList([response]);
+        //   console.log('we are inside createEvent response, response is ', response);
+        // }
       });
     };
 
     factory.updateEvent = function(eventData, carSelected){
       return $http.put(appSettings.apiURL + '/events', eventData).success(function(response){
-        factory.dataFilter(response, carSelected);
+        // factory.dataFilter(response, carSelected);
+        factory.dataFilterNoRedraw(response, carSelected);
       });
     };
 
     factory.deleteEvent = function(eventId, carSelected){
       return $http.delete(appSettings.apiURL + '/events/' + eventId).success(function(response){
-        factory.dataFilter(response, carSelected);
+        // factory.dataFilter(response, carSelected);
+        factory.dataFilterNoRedraw(response, carSelected);
       });
     };
 
     // Expense CRUD actions
     factory.getExpense = function(expenseId, carSelected){
       return  $http.get(appSettings.apiURL + '/expenses/' + expenseId).success(function(response){
-        console.log('expense recieved is ', response);
         angular.copy(response, factory.expenseToEdit);
       }).catch(function(response){
         console.log('fail response is ', response);

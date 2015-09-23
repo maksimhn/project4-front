@@ -54,13 +54,16 @@
       }
     };
     vm.createCar = function(){
+      vm.newCar.statsPeriod = appSettings.statsPeriod;
       carsFactory.createCar(vm.newCar, appSettings.carSelected);
     };
     vm.updateCar = function(event){
       // vm.carToEdit.id = +event.target.id.substr(3, event.target.id.length - 1);
+      vm.carToEdit.statsPeriod = appSettings.statsPeriod;
       carsFactory.updateCar(vm.carToEdit, appSettings.carSelected);
     };
     vm.deleteCar = function(){
+      vm.carToEdit.statsPeriod = appSettings.statsPeriod;
       carsFactory.deleteCar(vm.carToEdit, appSettings.carSelected);
     };
 
@@ -71,17 +74,18 @@
     };
 
     vm.createEvent = function(){
-      vm.newEvent.carName = appSettings.carSelectedName;
+      vm.newEvent.statsPeriod = appSettings.statsPeriod;
       vm.newEvent.carId = appSettings.carSelected;
       console.log('new event is ', vm.newEvent);
       carsFactory.createEvent(vm.newEvent, appSettings.carSelected);
     };
     vm.updateEvent = function(){
-      vm.eventToEdit.carName = appSettings.carSelectedName;
+      vm.eventToEdit.statsPeriod = appSettings.statsPeriod;
       vm.eventToEdit.carId = appSettings.carSelected;
       carsFactory.updateEvent(vm.eventToEdit, appSettings.carSelected);
     };
     vm.deleteEvent = function(){
+      vm.eventToEdit.statsPeriod = appSettings.statsPeriod;
       carsFactory.deleteEvent(vm.eventToEdit.id, appSettings.carSelected);
     };
 
@@ -92,6 +96,7 @@
     };
 
     vm.createExpense = function(){
+      vm.newExpense.statsPeriod = appSettings.statsPeriod;
       vm.newExpense.carId = appSettings.carSelected;
       vm.newExpense.dateInMilliseconds = new Date(vm.newExpense.date).getTime();
       console.log('New expense is ', vm.newExpense);
@@ -103,9 +108,11 @@
       carsFactory.createExpense(vm.newExpense, appSettings.carSelected);
     };
     vm.updateExpense = function(){
+      vm.expenseToEdit.statsPeriod = appSettings.statsPeriod;
       carsFactory.updateExpense(vm.expenseToEdit, appSettings.carSelected);
     };
     vm.deleteExpense = function(){
+      vm.expenseToEdit.statsPeriod = appSettings.statsPeriod;
       carsFactory.deleteExpense(vm.expenseToEdit.id, appSettings.carSelected);
     };
 
