@@ -73,3 +73,26 @@ $(function () {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
+
+// $('#periodsbutton').on('click', function(){
+
+// });
+
+
+
+// $('.periodlinks').on('click', function(event){
+//   $('.glyphicon-ok').addClass('hidden');
+//   event.preventDefault();
+//   // return false;
+//   // $('.periodlinks > .glyphicon-ok').hide();
+//   // $(this).children().show();
+//   // $(this).hide();
+//   // $('.glyphicon-ok').addClass('hidden');
+//   // $(this).children().removeClass('hidden');
+// });
+
+function doSmth(){
+  $(this).addClass('active');
+  // your code here
+  return false
+}

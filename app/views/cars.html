@@ -24,6 +24,22 @@
       </div>
     </div><!-- // Statistics row-->
 
+    <!-- Period selector -->
+    <div class="row" id="perioddiv" ng-show="carsCtrl.user[0]">
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="period0" value="30" ng-click="carsCtrl.getCarsDateWithinPeriod()" ng-model="carsCtrl.statsPeriod" class="periodselectors"> 30 days
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="period1" value="180" ng-click="carsCtrl.getCarsDateWithinPeriod()" ng-model="carsCtrl.statsPeriod" class="periodselectors"> 6 months
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="period2" value="365" ng-click="carsCtrl.getCarsDateWithinPeriod()" ng-model="carsCtrl.statsPeriod" class="periodselectors"> 1 year
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="period3" value="0" ng-click="carsCtrl.getCarsDateWithinPeriod()" ng-model="carsCtrl.statsPeriod" class="periodselectors"> From the beginning of times
+      </label>
+    </div>
+    <!-- // Period selector -->
 
     <!-- Cars row -->
     <div class="row" id="carbuttons">

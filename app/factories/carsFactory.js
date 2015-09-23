@@ -1,6 +1,7 @@
 (function carsFactoryIIFE() {
 
   var carsFactory = function($http, appSettings) {
+
     var factory = {};
     factory.cars = [];
     factory.car = {};
@@ -104,6 +105,7 @@
         factory.getExpensesList(response);
         factory.chartDataForAllCars(response);
       } else {
+        // console.log(response);
         response.forEach(function(car){
           if (car.carId === +carSelected) {
             angular.copy(car, factory.carToEdit);
@@ -158,11 +160,14 @@
       });
     };
 
-    factory.getCarsData = function(carSelected){
-      return $http.get(appSettings.apiURL + '/cars').success(function(response){
+    factory.getCarsData = function(carSelected, period){
+      console.log('we are within factory.getCarsData and period is ', period);
+      return $http.get(appSettings.apiURL + '/cars/0/' + period).success(function(response){
+        console.log('response in factory is', response);
         factory.dataFilter(response, carSelected);
-        console.log('carToEdit at factory is ', factory.carToEdit);
-      });
+      }).catch(function(response){
+        console.log('fail response from getCarsData is ', response);
+      })
     };
 
     factory.createCar = function(carData, carSelected){
@@ -212,13 +217,13 @@
       });
     };
 
-
-
     // Expense CRUD actions
     factory.getExpense = function(expenseId, carSelected){
       return  $http.get(appSettings.apiURL + '/expenses/' + expenseId).success(function(response){
         console.log('expense recieved is ', response);
         angular.copy(response, factory.expenseToEdit);
+      }).catch(function(response){
+        console.log('fail response is ', response);
       });
     };
 

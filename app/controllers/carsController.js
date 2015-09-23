@@ -24,6 +24,7 @@
     vm.chartData = carsFactory.chartData;
     vm.user = carsFactory.user;
     vm.carName = carsFactory.carName;
+    vm.statsPeriod = 0;
 
     vm.register = function(){
       carsFactory.register(vm.userCredentials, vm.carSelected);
@@ -33,15 +34,24 @@
     };
 
     // Car CRUD actions
+    vm.getCarsDateWithinPeriod = function(){
+      appSettings.statsPeriod = vm.statsPeriod;
+      console.log('appSettings.statsPeriod is ', appSettings.statsPeriod);
+      carsFactory.getCarsData(+appSettings.carSelected, appSettings.statsPeriod);
+    };
+
+
     vm.getCarsData = function(event){
+      appSettings.statsPeriod = vm.statsPeriod;
+      console.log('appSettings.statsPeriod is ', appSettings.statsPeriod);
       if (event) {
         appSettings.carSelected = +event.target.id.substr(3, event.target.id.length - 1);
-        carsFactory.getCarsData(+appSettings.carSelected);
+        carsFactory.getCarsData(+appSettings.carSelected, appSettings.statsPeriod);
         vm.singleCar = appSettings.carSelected;
       } else {
         vm.singleCar = null;
         appSettings.carSelected = null;
-        carsFactory.getCarsData();
+        carsFactory.getCarsData(null, appSettings.statsPeriod);
       }
     };
     vm.createCar = function(){
@@ -84,6 +94,7 @@
 
     vm.createExpense = function(){
       vm.newExpense.carId = appSettings.carSelected;
+      vm.newExpense.dateInMilliseconds = new Date(vm.newExpense.date).getTime();
       console.log('New expense is ', vm.newExpense);
       if (!vm.newExpense.gas) {
         vm.newExpense.gas = false;

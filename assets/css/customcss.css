@@ -98,3 +98,13 @@ a {
 #event-make-addon, #eventdate-dropdown {
   height: 34px;
 }
+
+#perioddiv {
+  margin-top: -30px;
+  margin-bottom: 20px;
+}
+
+.glyphicon-ok {
+  margin-left: 10px;
+  color: green;
+}
