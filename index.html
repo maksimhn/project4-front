@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en" ng-app="carsApp"> <!--<![endif]-->
+<html lang="en" ng-app="carsApp">
 <head>
     <title>Car expense tracker</title>
     <!-- Meta -->
@@ -24,11 +22,6 @@
     <link rel="stylesheet" href="assets/css/customcss.css">
     <!-- Datepicker CSS -->
     <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body data-spy="scroll" ng-controller="carsController as carsCtrl">
@@ -52,7 +45,7 @@
                 </div><!--//navbar-header-->
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item"><a data-toggle="tooltip" data-placement="bottom" title="Under construction, please pardon bugs and database wipeouts..."><span class="glyphicon glyphicon-info-sign">Alpha</span></a></li>
+                        <li class="nav-item" id="alpha"><a data-toggle="tooltip" data-placement="bottom" title="Under construction, please pardon bugs and database wipeouts..."><span class="glyphicon glyphicon-info-sign">Alpha</span></a></li>
                         <li class="nav-item"><a class="scrollto" href="#about" id="how-button">How...</a></li>
                         <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#loginModal" ng-hide="carsCtrl.user[0]">Login</a></li>
                         <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#registerModal" ng-hide="carsCtrl.user[0]">Register</a></li>
@@ -70,8 +63,8 @@
     <!-- ******ABOUT****** -->
     <section id="about" class="about section">
         <div class="container">
-            <h2 class="title text-center">... do I use it?</h2>
-            <p class="intro text-center">It is hard to keep track of funds you spend to keep your vehicles running. It may be even harder not to forget to do important maintainence such as changing timing belt or flush the transmision oil. This service will help you keep things organized. All you need to do is add your cars to your account and add expenses and events you would like to keep track of.</p>
+            <h2 class="title text-center">How do I use it?</h2>
+            <p class="intro text-center">It is hard to keep track of funds you spend to keep your vehicles running. It may be even harder not to forget to do important maintainence such as changing timing belt or flush the transmission oil. This service will help you keep things organized. All you need to do is add your cars to your account and add expenses and events you would like to keep track of.</p>
             <div class="row">
                 <div class="item col-md-4 col-sm-6 col-xs-12">
                     <div class="icon-holder">

@@ -1,10 +1,6 @@
 (function carsControllerIFE(){
 
 
-  // Charts logic
-  // Sorting and gas consumption calculations
-
-
   var CarsController = function(carsFactory, appSettings){
     var vm = this;
     vm.appSettings = appSettings;
@@ -28,8 +24,6 @@
 
     vm.register = function(){
       carsFactory.register(vm.userCredentials, vm.carSelected);
-      // vm.userCredentials.username = "";
-      // vm.userCredentials.password = "";
     };
     vm.login = function(){
       carsFactory.login(vm.userCredentials, vm.carSelected);
@@ -38,10 +32,8 @@
     // Car CRUD actions
     vm.getCarsDateWithinPeriod = function(){
       appSettings.statsPeriod = vm.statsPeriod;
-      console.log('appSettings.statsPeriod is ', appSettings.statsPeriod);
       carsFactory.getCarsData(+appSettings.carSelected, appSettings.statsPeriod);
     };
-
 
     vm.getCarsData = function(event){
       appSettings.statsPeriod = vm.statsPeriod;

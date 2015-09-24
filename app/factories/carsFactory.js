@@ -29,7 +29,7 @@
       }
     };
 
-
+    // Feeds the charts with data comprising many cars, not just one of them
     factory.chartDataForAllCars = function(response){
       var gasExpenses = 0;
       var miscExpenses = 0;
@@ -62,6 +62,7 @@
 
     };
 
+    // Feeds the graphs with a single car's data. Context is different if only one car is chosen
     factory.chartDataForOneCar = function(){
       factory.chartData.gasExpenses.data = [[]];
       var gasExpenses = 0;
@@ -86,7 +87,7 @@
       factory.chartData.expenseStructure.data.push(miscExpenses);
     };
 
-
+    // clears out the graphs' data and pushes events and expenses data to the factory variables
     factory.dataFilter = function(response, carSelected) {
       factory.chartData.expenseStructure.data.length = 0;
       factory.chartData.expenseStructure.labels.length = 0;
@@ -118,8 +119,8 @@
       }
     };
 
+    // Event creation doesn't require graphs redrawn so this function only changes events list
     factory.dataFilterNoRedraw = function(response, carSelected){
-      console.log('we are inside dataFilterNoRedraw, response is ', response);
       factory.events.length = 0;
       if (!carSelected) {
         factory.getEventsList(response);
@@ -132,13 +133,14 @@
       }
     };
 
-
+    // Copies events from the server to factory variable
     factory.getEventsList = function(response){
       response.forEach(function(car){
         Array.prototype.push.apply(factory.events, car.events);
       });
     };
 
+    // Copies expenses from the server to factory variable
     factory.getExpensesList = function(response){
       factory.expenses.splice(0,factory.expenses.length);
       response.forEach(function(car){
@@ -147,12 +149,7 @@
     };
 
 
-
-
-
     // CRUD ACTIONS
-
-
 
     // User CRUD action
     factory.register = function(credentials, carSelected){
@@ -169,12 +166,6 @@
     };
 
     // Car CRUD actions
-    // factory.getCar = function(carId, period){
-    //   return $http.get(appSettings.apiURL + '/cars/' + carId + '/' + period).success(function(response){
-    //     angular.copy(response, factory.carToEdit);
-    //   });
-    // };
-
     factory.getCarsData = function(carSelected, period){
       var carNumber;
       if (!carSelected) {
@@ -211,36 +202,21 @@
     };
 
 
-
     // Event CRUD actions
     factory.getEvent = function(eventId, carSelected) {
       return $http.get(appSettings.apiURL + '/events/' + eventId).success(function(response){
         angular.copy(response, factory.eventToEdit);
-        // if (!carSelected) {
-        //   factory.getEventsList(response);
-        // } else {
-        //   factory.getEventsList([response]);
-        // }
       });
     };
-
 
     factory.createEvent = function(eventData, carSelected){
       return $http.post(appSettings.apiURL + '/events', eventData).success(function(response){
         factory.dataFilterNoRedraw(response, carSelected);
-        // factory.dataFilter(response, carSelected);
-        // if (!carSelected) {
-        //   factory.getEventsList(response);
-        // } else {
-        //   factory.getEventsList([response]);
-        //   console.log('we are inside createEvent response, response is ', response);
-        // }
       });
     };
 
     factory.updateEvent = function(eventData, carSelected){
       return $http.put(appSettings.apiURL + '/events', eventData).success(function(response){
-        // factory.dataFilter(response, carSelected);
         factory.dataFilterNoRedraw(response, carSelected);
         factory.eventToEdit = {};
       });
@@ -248,7 +224,6 @@
 
     factory.deleteEvent = function(eventId, carSelected){
       return $http.delete(appSettings.apiURL + '/events/' + eventId).success(function(response){
-        // factory.dataFilter(response, carSelected);
         factory.dataFilterNoRedraw(response, carSelected);
       });
     };

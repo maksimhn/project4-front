@@ -28,11 +28,7 @@ a {
   margin-left: 20px;
   font-size: 150%;
 }
-/*
-.lists {
-  margin-left: 50px;
-}
-*/
+
 #eventlist, #expenselist {
   margin-right: 50px;
 }
@@ -83,22 +79,6 @@ a {
   background-color: #50C8C9;
 }
 
-.glyphicon.spinning {
-    margin-right: 10px;
-    animation: spin 1s infinite linear;
-    -webkit-animation: spin2 1s infinite linear;
-}
-
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg); }
-    to { transform: scale(1) rotate(360deg); }
-}
-
-@-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
-}
-
 #event-make-addon, #eventdate-dropdown {
   height: 34px;
 }
@@ -126,7 +106,7 @@ a {
   font-size: 80%;
 }
 #carpicture-div {
-      transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 @media screen and (max-width: 640px) {
@@ -141,7 +121,20 @@ a {
     height: 0px;
     text-align:center;
   }
-  canvas {
-    /*display: inline;*/
+  .modal-dialog {
+    position: absolute;
+    top: 15%;
+  }
+}
+
+@media screen and (max-width: 993px) {
+  #alpha {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-toggle {
+    margin-top: 30px;
   }
 }

@@ -4,18 +4,12 @@ $('#login-close').on('click', function(){
 });
 
 $('#login-button').on('click', function(){
-  $('#login-button').text("");
-  $('#login-button').append('<span class="glyphicon glyphicon-refresh spinning"></span>Loading...');
-  window.setTimeout(function(){
-     $('#loginModal').modal('hide');
-  }, 4600);
-  // mobileModeSlide();
+  $('#loginModal').modal('hide');
   $("#donutgraphdiv, #expensesgraphdiv, #gasgraphdiv").height("390");
 });
 
 $('#register-button').on('click', function(){
   $('#registerModal').modal('hide');
-  // mobileModeSlide();
 });
 
 $('#register-close').on('click', function(){
@@ -100,27 +94,18 @@ $(function () {
 
 var $height = $('#carpicture-div').prop('margin-top');
 
-// $('.navbar-toggle').on('click', function(){
-//   if ($('#carpicture-div').prop('margin-top') === '200px') {
-//     $('#carpicture-div').css('margin-top', '0px');
-//   } else {
-//     $('#carpicture-div').css('margin-top', '200px');
-//   }
-// });
-// margin-top: 200px;
-
 $(function() {
-  $('.navbar-toggle').on('click', function() {
+  $('.navbar-toggle, #how-button').on('click', function() {
     mobileModeSlide();
   });
 });
 
 function doSmth(){
   $(this).addClass('active');
-  // your code here
   return false
 }
 
+// pushes down body when navbar is toggled to mobile version
 var mobileModeSlide = function (){
   if ($(window).width() < 768) {
     if ($('#carpicture-div').css('padding-top') < '10px') {
