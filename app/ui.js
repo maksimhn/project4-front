@@ -1,5 +1,6 @@
 $('#login-close').on('click', function(){
   $('#login-password').val();
+  mobileModeSlide();
 });
 
 $('#login-button').on('click', function(){
@@ -8,10 +9,33 @@ $('#login-button').on('click', function(){
   window.setTimeout(function(){
      $('#loginModal').modal('hide');
   }, 4600);
+  // mobileModeSlide();
+  $("#donutgraphdiv, #expensesgraphdiv, #gasgraphdiv").height("390");
 });
 
 $('#register-button').on('click', function(){
   $('#registerModal').modal('hide');
+  // mobileModeSlide();
+});
+
+$('#register-close').on('click', function(){
+  mobileModeSlide();
+});
+
+$('#loginModal').on('hidden.bs.modal', function () {
+    mobileModeSlide();
+});
+
+$('#registerModal').on('hidden.bs.modal', function () {
+    mobileModeSlide();
+});
+
+$('#loginModal').on('hidden', function () {
+  $('body').off('click');
+});
+
+$('#registerModal').on('hidden', function () {
+  $('body').off('click');
 });
 
 $('#newcar-button').on('click', function(){
@@ -74,25 +98,35 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
 
-// $('#periodsbutton').on('click', function(){
+var $height = $('#carpicture-div').prop('margin-top');
 
+// $('.navbar-toggle').on('click', function(){
+//   if ($('#carpicture-div').prop('margin-top') === '200px') {
+//     $('#carpicture-div').css('margin-top', '0px');
+//   } else {
+//     $('#carpicture-div').css('margin-top', '200px');
+//   }
 // });
+// margin-top: 200px;
 
-
-
-// $('.periodlinks').on('click', function(event){
-//   $('.glyphicon-ok').addClass('hidden');
-//   event.preventDefault();
-//   // return false;
-//   // $('.periodlinks > .glyphicon-ok').hide();
-//   // $(this).children().show();
-//   // $(this).hide();
-//   // $('.glyphicon-ok').addClass('hidden');
-//   // $(this).children().removeClass('hidden');
-// });
+$(function() {
+  $('.navbar-toggle').on('click', function() {
+    mobileModeSlide();
+  });
+});
 
 function doSmth(){
   $(this).addClass('active');
   // your code here
   return false
 }
+
+var mobileModeSlide = function (){
+  if ($(window).width() < 768) {
+    if ($('#carpicture-div').css('padding-top') < '10px') {
+      $('#carpicture-div').css('padding-top', '+=200');
+    } else {
+      $('#carpicture-div').css('padding-top', '0px');
+    }
+  }
+};

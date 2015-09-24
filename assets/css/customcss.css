@@ -28,9 +28,13 @@ a {
   margin-left: 20px;
   font-size: 150%;
 }
-
+/*
 .lists {
   margin-left: 50px;
+}
+*/
+#eventlist, #expenselist {
+  margin-right: 50px;
 }
 
 #allcarsbutton {
@@ -59,7 +63,7 @@ a {
 
 .modal-dialog {
   margin-top: 17%;
-  width: 350px;
+  width: 390px;
 }
 
 #edit-glyphicon, #add-glyphicon {
@@ -72,7 +76,7 @@ a {
 
 .btn-danger {
   background-color: #F7464A;
-  margin-right: 50px;
+  margin-right: 100px;
 }
 
 .btn-success {
@@ -111,4 +115,33 @@ a {
 
 .glyphicon-plus {
   margin-left: 15px;
+}
+
+.car-button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.event-modal {
+  font-size: 80%;
+}
+#carpicture-div {
+      transition: all 1s ease;
+}
+
+@media screen and (max-width: 640px) {
+
+  #car {
+    width: 300px;
+  }
+  .navbar-toggle {
+    margin-top: 30px;
+  }
+  #donutgraphdiv, #expensesgraphdiv, #gasgraphdiv {
+    height: 0px;
+    text-align:center;
+  }
+  canvas {
+    /*display: inline;*/
+  }
 }

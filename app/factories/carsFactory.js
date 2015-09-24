@@ -164,7 +164,7 @@
     factory.login = function(credentials, carSelected){
       return $http.post(appSettings.apiURL + '/login', credentials).success(function(response) {
         factory.user.push("logged in");
-        factory.dataFilter(response, carSelected);
+        factory.dataFilter(response, null);
       });
     };
 
@@ -200,6 +200,7 @@
         angular.copy(response, factory.cars);
         factory.getEventsList(response);
         factory.getExpensesList(response);
+        factory.carToEdit = {};
       });
     };
 
@@ -241,6 +242,7 @@
       return $http.put(appSettings.apiURL + '/events', eventData).success(function(response){
         // factory.dataFilter(response, carSelected);
         factory.dataFilterNoRedraw(response, carSelected);
+        factory.eventToEdit = {};
       });
     };
 
@@ -270,6 +272,7 @@
       console.log('expenseData is ', expenseData);
       return $http.put(appSettings.apiURL + '/expenses', expenseData).success(function(response){
         factory.dataFilter(response, carSelected);
+        factory.expenseToEdit = {};
       });
     };
 

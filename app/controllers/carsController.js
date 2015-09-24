@@ -28,6 +28,8 @@
 
     vm.register = function(){
       carsFactory.register(vm.userCredentials, vm.carSelected);
+      // vm.userCredentials.username = "";
+      // vm.userCredentials.password = "";
     };
     vm.login = function(){
       carsFactory.login(vm.userCredentials, vm.carSelected);
@@ -78,6 +80,7 @@
       vm.newEvent.carId = appSettings.carSelected;
       console.log('new event is ', vm.newEvent);
       carsFactory.createEvent(vm.newEvent, appSettings.carSelected);
+      vm.newEvent = {};
     };
     vm.updateEvent = function(){
       vm.eventToEdit.statsPeriod = appSettings.statsPeriod;
@@ -106,6 +109,11 @@
         vm.newExpense.gas = true;
       }
       carsFactory.createExpense(vm.newExpense, appSettings.carSelected);
+      $('#newexpense-name').val("");
+      $('#newexpense-mileage').val("");
+      $('#newexpense-amount').val("");
+      $('#newexpense-gas').val(false);
+      $('#expense-newdatetimepicker-field').val("");
     };
     vm.updateExpense = function(){
       vm.expenseToEdit.statsPeriod = appSettings.statsPeriod;

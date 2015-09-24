@@ -63,7 +63,7 @@
         </div>
     </header><!--//header-->
 
-    <ng-view></ng-view>
+    <div ng-view></div>
 
 
 
@@ -161,7 +161,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="register-close">Close</button>
             <button type="button" class="btn btn-success" id="register-button" ng-click="carsCtrl.register()">Submit</button>
           </div>
         </div><!-- /.modal-content -->
@@ -242,7 +242,7 @@
             </div>
             <p></p>
 
-            <div>
+            <div class="event-modal">
               <label class="radio-inline">
                 <input type="radio" name="inlineRadioOptions" id="inlineRadio0" value="0" ng-model="carsCtrl.newEvent.remindEvery"> Never
               </label>
@@ -279,29 +279,29 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.newExpense.expenseName">
+                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.newExpense.expenseName" id="newexpense-name">
                 <span class="input-group-addon" id="expense-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.newExpense.mileage">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.newExpense.mileage" id="newexpense-mileage">
               <span class="input-group-addon" id="expense-mileage">Mileage</span>
             </div>
             <p></p>
             <div class="input-group" id="expense-newdatetimepicker">
-              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="carsCtrl.newExpense.date" id="expense-newdatetimepicker-field" datetimepicker
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-year" ng-model="carsCtrl.newExpense.date" id="expense-newdatetimepicker-field" datetimepicker
            datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}">
-              <span class="input-group-addon" id="event-year">Expense date</span>
+              <span class="input-group-addon" id="expense-year">Expense date</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.newExpense.amountSpent">
-              <span class="input-group-addon" id="expense-amount">Amount</span>
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.newExpense.amountSpent" id="newexpense-amount">
+              <span class="input-group-addon">Amount</span>
             </div>
             <p></p>
             <div class="checkbox">
               <label>
-                <input type="checkbox" ng-model="carsCtrl.newExpense.gas"> Gas?
+                <input type="checkbox" ng-model="carsCtrl.newExpense.gas" id="newexpense-gas"> Gas?
               </label>
             </div>
           </div>
@@ -432,7 +432,7 @@
             </div>
             <p></p>
 
-            <div>
+            <div class="event-modal">
               <label class="radio-inline">
                 <input type="radio" name="inlineRadioOptions" id="inlineRadio0" value="0" ng-model="carsCtrl.eventToEdit.remindEvery"> Never
               </label>
