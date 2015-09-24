@@ -29,8 +29,8 @@ a {
   font-size: 150%;
 }
 
-.lists {
-  margin-left: 50px;
+#eventlist, #expenselist {
+  margin-right: 50px;
 }
 
 #allcarsbutton {
@@ -59,7 +59,7 @@ a {
 
 .modal-dialog {
   margin-top: 17%;
-  width: 350px;
+  width: 390px;
 }
 
 #edit-glyphicon, #add-glyphicon {
@@ -72,29 +72,69 @@ a {
 
 .btn-danger {
   background-color: #F7464A;
-  margin-right: 50px;
+  margin-right: 100px;
 }
 
 .btn-success {
   background-color: #50C8C9;
 }
 
-.glyphicon.spinning {
-    margin-right: 10px;
-    animation: spin 1s infinite linear;
-    -webkit-animation: spin2 1s infinite linear;
-}
-
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg); }
-    to { transform: scale(1) rotate(360deg); }
-}
-
-@-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
-}
-
 #event-make-addon, #eventdate-dropdown {
   height: 34px;
+}
+
+#perioddiv {
+  margin-top: -30px;
+  margin-bottom: 20px;
+}
+
+.glyphicon-ok {
+  margin-left: 10px;
+  color: green;
+}
+
+.glyphicon-plus {
+  margin-left: 15px;
+}
+
+.car-button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.event-modal {
+  font-size: 80%;
+}
+#carpicture-div {
+  transition: all 1s ease;
+}
+
+@media screen and (max-width: 640px) {
+
+  #car {
+    width: 300px;
+  }
+  .navbar-toggle {
+    margin-top: 30px;
+  }
+  #donutgraphdiv, #expensesgraphdiv, #gasgraphdiv {
+    height: 0px;
+    text-align:center;
+  }
+  .modal-dialog {
+    position: absolute;
+    top: 15%;
+  }
+}
+
+@media screen and (max-width: 993px) {
+  #alpha {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-toggle {
+    margin-top: 30px;
+  }
 }

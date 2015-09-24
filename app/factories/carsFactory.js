@@ -1,6 +1,7 @@
 (function carsFactoryIIFE() {
 
   var carsFactory = function($http, appSettings) {
+
     var factory = {};
     factory.cars = [];
     factory.car = {};
@@ -10,6 +11,7 @@
     factory.events = [];
     factory.expenses = [];
     factory.user = [];
+    factory.carName = "";
     factory.chartData = {
       expenseStructure: {
         labels: [],
@@ -27,7 +29,7 @@
       }
     };
 
-
+    // Feeds the charts with data comprising many cars, not just one of them
     factory.chartDataForAllCars = function(response){
       var gasExpenses = 0;
       var miscExpenses = 0;
@@ -60,6 +62,7 @@
 
     };
 
+    // Feeds the graphs with a single car's data. Context is different if only one car is chosen
     factory.chartDataForOneCar = function(){
       factory.chartData.gasExpenses.data = [[]];
       var gasExpenses = 0;
@@ -84,7 +87,7 @@
       factory.chartData.expenseStructure.data.push(miscExpenses);
     };
 
-
+    // clears out the graphs' data and pushes events and expenses data to the factory variables
     factory.dataFilter = function(response, carSelected) {
       factory.chartData.expenseStructure.data.length = 0;
       factory.chartData.expenseStructure.labels.length = 0;
@@ -103,9 +106,11 @@
         factory.getExpensesList(response);
         factory.chartDataForAllCars(response);
       } else {
+        console.log(response);
         response.forEach(function(car){
           if (car.carId === +carSelected) {
             angular.copy(car, factory.carToEdit);
+            appSettings.carSelectedName = car.customName;
             factory.getEventsList([car]);
             factory.getExpensesList([car]);
             factory.chartDataForOneCar();
@@ -114,12 +119,28 @@
       }
     };
 
+    // Event creation doesn't require graphs redrawn so this function only changes events list
+    factory.dataFilterNoRedraw = function(response, carSelected){
+      factory.events.length = 0;
+      if (!carSelected) {
+        factory.getEventsList(response);
+      } else {
+        response.forEach(function(car){
+          if (car.carId === +carSelected) {
+            factory.getEventsList([car]);
+          }
+        });
+      }
+    };
+
+    // Copies events from the server to factory variable
     factory.getEventsList = function(response){
       response.forEach(function(car){
         Array.prototype.push.apply(factory.events, car.events);
       });
     };
 
+    // Copies expenses from the server to factory variable
     factory.getExpensesList = function(response){
       factory.expenses.splice(0,factory.expenses.length);
       response.forEach(function(car){
@@ -128,12 +149,7 @@
     };
 
 
-
-
-
     // CRUD ACTIONS
-
-
 
     // User CRUD action
     factory.register = function(credentials, carSelected){
@@ -145,22 +161,23 @@
     factory.login = function(credentials, carSelected){
       return $http.post(appSettings.apiURL + '/login', credentials).success(function(response) {
         factory.user.push("logged in");
-        factory.dataFilter(response, carSelected);
+        factory.dataFilter(response, null);
       });
     };
 
     // Car CRUD actions
-    factory.getCar = function(carId){
-      return $http.get(appSettings.apiURL + '/cars/' + carId).success(function(response){
-        angular.copy(response, factory.carToEdit);
-      })
-    };
-
-    factory.getCarsData = function(carSelected){
-      return $http.get(appSettings.apiURL + '/cars').success(function(response){
+    factory.getCarsData = function(carSelected, period){
+      var carNumber;
+      if (!carSelected) {
+        carNumber = "0";
+      } else {
+        carNumber = carSelected;
+      }
+      return $http.get(appSettings.apiURL + '/cars/' + carNumber + '/' + period).success(function(response){
         factory.dataFilter(response, carSelected);
-        console.log('carToEdit at factory is ', factory.carToEdit);
-      });
+      }).catch(function(response){
+        console.log('fail response from getCarsData is ', response);
+      })
     };
 
     factory.createCar = function(carData, carSelected){
@@ -174,6 +191,7 @@
         angular.copy(response, factory.cars);
         factory.getEventsList(response);
         factory.getExpensesList(response);
+        factory.carToEdit = {};
       });
     };
 
@@ -184,39 +202,38 @@
     };
 
 
-
     // Event CRUD actions
     factory.getEvent = function(eventId, carSelected) {
       return $http.get(appSettings.apiURL + '/events/' + eventId).success(function(response){
         angular.copy(response, factory.eventToEdit);
-      })
+      });
     };
 
     factory.createEvent = function(eventData, carSelected){
       return $http.post(appSettings.apiURL + '/events', eventData).success(function(response){
-        factory.dataFilter(response, carSelected);
+        factory.dataFilterNoRedraw(response, carSelected);
       });
     };
 
     factory.updateEvent = function(eventData, carSelected){
       return $http.put(appSettings.apiURL + '/events', eventData).success(function(response){
-        factory.dataFilter(response, carSelected);
+        factory.dataFilterNoRedraw(response, carSelected);
+        factory.eventToEdit = {};
       });
     };
 
     factory.deleteEvent = function(eventId, carSelected){
       return $http.delete(appSettings.apiURL + '/events/' + eventId).success(function(response){
-        factory.dataFilter(response, carSelected);
+        factory.dataFilterNoRedraw(response, carSelected);
       });
     };
-
-
 
     // Expense CRUD actions
     factory.getExpense = function(expenseId, carSelected){
       return  $http.get(appSettings.apiURL + '/expenses/' + expenseId).success(function(response){
-        console.log('expense recieved is ', response);
         angular.copy(response, factory.expenseToEdit);
+      }).catch(function(response){
+        console.log('fail response is ', response);
       });
     };
 
@@ -230,6 +247,7 @@
       console.log('expenseData is ', expenseData);
       return $http.put(appSettings.apiURL + '/expenses', expenseData).success(function(response){
         factory.dataFilter(response, carSelected);
+        factory.expenseToEdit = {};
       });
     };
 

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en" ng-app="carsApp"> <!--<![endif]-->
+<html lang="en" ng-app="carsApp">
 <head>
     <title>Car expense tracker</title>
     <!-- Meta -->
@@ -24,11 +22,6 @@
     <link rel="stylesheet" href="assets/css/customcss.css">
     <!-- Datepicker CSS -->
     <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body data-spy="scroll" ng-controller="carsController as carsCtrl">
@@ -52,7 +45,7 @@
                 </div><!--//navbar-header-->
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item"><a data-toggle="tooltip" data-placement="bottom" title="Under construction, please pardon bugs and database wipeouts..."><span class="glyphicon glyphicon-info-sign">Alpha</span></a></li>
+                        <li class="nav-item" id="alpha"><a data-toggle="tooltip" data-placement="bottom" title="Under construction, please pardon bugs and database wipeouts..."><span class="glyphicon glyphicon-info-sign">Alpha</span></a></li>
                         <li class="nav-item"><a class="scrollto" href="#about" id="how-button">How...</a></li>
                         <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#loginModal" ng-hide="carsCtrl.user[0]">Login</a></li>
                         <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#registerModal" ng-hide="carsCtrl.user[0]">Register</a></li>
@@ -63,15 +56,15 @@
         </div>
     </header><!--//header-->
 
-    <ng-view></ng-view>
+    <div ng-view></div>
 
 
 
     <!-- ******ABOUT****** -->
     <section id="about" class="about section">
         <div class="container">
-            <h2 class="title text-center">... do I use it?</h2>
-            <p class="intro text-center">It is hard to keep track of funds you spend to keep your vehicles running. It may be even harder not to forget to do important maintainence such as changing timing belt or flush the transmision oil. This service will help you keep things organized. All you need to do is add your cars to your account and add expenses and events you would like to keep track of.</p>
+            <h2 class="title text-center">How do I use it?</h2>
+            <p class="intro text-center">It is hard to keep track of funds you spend to keep your vehicles running. It may be even harder not to forget to do important maintainence such as changing timing belt or flush the transmission oil. This service will help you keep things organized. All you need to do is add your cars to your account and add expenses and events you would like to keep track of.</p>
             <div class="row">
                 <div class="item col-md-4 col-sm-6 col-xs-12">
                     <div class="icon-holder">
@@ -165,7 +158,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="register-close">Close</button>
             <button type="button" class="btn btn-success" id="register-button" ng-click="carsCtrl.register()">Submit</button>
           </div>
         </div><!-- /.modal-content -->
@@ -246,7 +239,10 @@
             </div>
             <p></p>
 
-            <div>
+            <div class="event-modal">
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio0" value="0" ng-model="carsCtrl.newEvent.remindEvery"> Never
+              </label>
               <label class="radio-inline">
                 <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="once" ng-model="carsCtrl.newEvent.remindEvery"> Once
               </label>
@@ -280,29 +276,29 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.newExpense.expenseName">
+                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.newExpense.expenseName" id="newexpense-name">
                 <span class="input-group-addon" id="expense-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.newExpense.mileage">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.newExpense.mileage" id="newexpense-mileage">
               <span class="input-group-addon" id="expense-mileage">Mileage</span>
             </div>
             <p></p>
             <div class="input-group" id="expense-newdatetimepicker">
-              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="carsCtrl.newExpense.date" id="expense-newdatetimepicker-field" datetimepicker
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-year" ng-model="carsCtrl.newExpense.date" id="expense-newdatetimepicker-field" datetimepicker
            datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}">
-              <span class="input-group-addon" id="event-year">Expense date</span>
+              <span class="input-group-addon" id="expense-year">Expense date</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.newExpense.amountSpent">
-              <span class="input-group-addon" id="expense-amount">Amount</span>
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.newExpense.amountSpent" id="newexpense-amount">
+              <span class="input-group-addon">Amount</span>
             </div>
             <p></p>
             <div class="checkbox">
               <label>
-                <input type="checkbox" ng-model="carsCtrl.newExpense.gas"> Gas?
+                <input type="checkbox" ng-model="carsCtrl.newExpense.gas" id="newexpense-gas"> Gas?
               </label>
             </div>
           </div>
@@ -433,7 +429,10 @@
             </div>
             <p></p>
 
-            <div>
+            <div class="event-modal">
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio0" value="0" ng-model="carsCtrl.eventToEdit.remindEvery"> Never
+              </label>
               <label class="radio-inline">
                 <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="once" ng-model="carsCtrl.eventToEdit.remindEvery"> Once
               </label>

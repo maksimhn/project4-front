@@ -1,17 +1,35 @@
 $('#login-close').on('click', function(){
   $('#login-password').val();
+  mobileModeSlide();
 });
 
 $('#login-button').on('click', function(){
-  $('#login-button').text("");
-  $('#login-button').append('<span class="glyphicon glyphicon-refresh spinning"></span>Loading...');
-  window.setTimeout(function(){
-     $('#loginModal').modal('hide');
-  }, 4600);
+  $('#loginModal').modal('hide');
+  $("#donutgraphdiv, #expensesgraphdiv, #gasgraphdiv").height("390");
 });
 
 $('#register-button').on('click', function(){
   $('#registerModal').modal('hide');
+});
+
+$('#register-close').on('click', function(){
+  mobileModeSlide();
+});
+
+$('#loginModal').on('hidden.bs.modal', function () {
+    mobileModeSlide();
+});
+
+$('#registerModal').on('hidden.bs.modal', function () {
+    mobileModeSlide();
+});
+
+$('#loginModal').on('hidden', function () {
+  $('body').off('click');
+});
+
+$('#registerModal').on('hidden', function () {
+  $('body').off('click');
 });
 
 $('#newcar-button').on('click', function(){
@@ -73,3 +91,27 @@ $(function () {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
+
+var $height = $('#carpicture-div').prop('margin-top');
+
+$(function() {
+  $('.navbar-toggle, #how-button').on('click', function() {
+    mobileModeSlide();
+  });
+});
+
+function doSmth(){
+  $(this).addClass('active');
+  return false
+}
+
+// pushes down body when navbar is toggled to mobile version
+var mobileModeSlide = function (){
+  if ($(window).width() < 768) {
+    if ($('#carpicture-div').css('padding-top') < '10px') {
+      $('#carpicture-div').css('padding-top', '+=200');
+    } else {
+      $('#carpicture-div').css('padding-top', '0px');
+    }
+  }
+};
