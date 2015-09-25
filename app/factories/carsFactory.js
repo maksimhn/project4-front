@@ -52,7 +52,6 @@
         factory.chartData.gasExpenses.series.push(car.customName);
         car.expenses.forEach(function(expense){
           if (expense.gas === true) {
-            factory.chartData.gasExpenses.labels.push(expense.date.substring(0, 10));
             tankFills.push(expense.amountSpent);
           }
           sum += expense.amountSpent;
@@ -61,7 +60,9 @@
         factory.chartData.sumOfExpenses.data.push(sum);
         factory.chartData.sumOfExpenses.labels.push(car.customName);
       });
-
+      // for (ii = 1, ii =< factory.chartData.gasExpenses.data.length, ii++) {
+      //   factory.chartData.gasExpenses.labels.push('Expense ' + ii);
+      // }
     };
 
     // Feeds the graphs with a single car's data. Context is different if only one car is chosen
