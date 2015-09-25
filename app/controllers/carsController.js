@@ -32,11 +32,13 @@
 
     // Car CRUD actions
     vm.getCarsDateWithinPeriod = function(){
+      console.log('clicked on getCarsDateWithinPeriod');
       appSettings.statsPeriod = vm.statsPeriod;
       carsFactory.getCarsData(+appSettings.carSelected, appSettings.statsPeriod);
     };
 
     vm.getCarsData = function(event){
+      console.log('clicked on getCarsData');
       appSettings.statsPeriod = vm.statsPeriod;
       if (event) {
         appSettings.carSelected = +event.target.id.substr(3, event.target.id.length - 1);
