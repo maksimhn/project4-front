@@ -52,6 +52,7 @@
         factory.chartData.gasExpenses.series.push(car.customName);
         car.expenses.forEach(function(expense){
           if (expense.gas === true) {
+            factory.chartData.gasExpenses.labels.push(expense.date.substring(0, 10));
             tankFills.push(expense.amountSpent);
           }
           sum += expense.amountSpent;
@@ -72,7 +73,8 @@
 
       factory.expenses.forEach(function(expense){
         if (expense.gas === true) {
-          factory.chartData.gasExpenses.data[0].push(expense.amountSpent);
+          factory.chartData.gasExpenses.data[0].push([expense.amountSpent]);
+          factory.chartData.gasExpenses.labels.push(expense.date.substring(0, 10));
           gasExpenses += expense.amountSpent;
         } else {
           factory.chartData.sumOfExpenses.labels.push(expense.expenseName);
@@ -100,14 +102,14 @@
       factory.chartData.gasExpenses.series.length = 0;
       factory.events.length = 0;
       factory.expenses.length = 0;
-
       if (!carSelected) {
         angular.copy(response, factory.cars);
         factory.getEventsList(response);
         factory.getExpensesList(response);
         factory.chartDataForAllCars(response);
       } else {
-        console.log(response);
+
+        // console.log(response);
         response.forEach(function(car){
           if (car.carId === +carSelected) {
             angular.copy(car, factory.carToEdit);
@@ -170,6 +172,7 @@
 
     // Car CRUD actions
     factory.getCarsData = function(carSelected, period){
+      console.log('factory ran getCarsData, carSelected is ', carSelected);
       factory.cars.forEach(function(car){
         factory.selectedCar['car' + car.carId] = false;
       });
@@ -181,6 +184,7 @@
         carNumber = carSelected;
       }
       return $http.get(appSettings.apiURL + '/cars/' + carNumber + '/' + period).success(function(response){
+        console.log('response is ', response);
         factory.dataFilter(response, carSelected);
       }).catch(function(response){
         console.log('fail response from getCarsData is ', response);
