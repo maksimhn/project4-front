@@ -21,6 +21,7 @@
     vm.user = carsFactory.user;
     vm.carName = carsFactory.carName;
     vm.statsPeriod = 0;
+    vm.selectedCar = carsFactory.selectedCar;
 
     vm.register = function(){
       carsFactory.register(vm.userCredentials, vm.carSelected);

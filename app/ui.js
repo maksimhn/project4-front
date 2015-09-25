@@ -74,6 +74,12 @@ $('#logout-button').on('click', function(){
   location.reload();
 });
 
+// $('.carpaginator-links').hover(function(){
+//   $(this).parent().addClass('active');
+// }, function(){
+//   $(this).parent().removeClass('active');
+// });
+
 $(function () {
     $('#newdatetimepicker').datetimepicker();
 });

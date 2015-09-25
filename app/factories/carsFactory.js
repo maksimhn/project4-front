@@ -12,6 +12,7 @@
     factory.expenses = [];
     factory.user = [];
     factory.carName = "";
+    factory.selectedCar = {};
     factory.chartData = {
       expenseStructure: {
         labels: [],
@@ -169,10 +170,14 @@
 
     // Car CRUD actions
     factory.getCarsData = function(carSelected, period){
+      factory.cars.forEach(function(car){
+        factory.selectedCar['car' + car.carId] = false;
+      });
       var carNumber;
       if (!carSelected) {
         carNumber = "0";
       } else {
+        factory.selectedCar['car' + carSelected] = true;
         carNumber = carSelected;
       }
       return $http.get(appSettings.apiURL + '/cars/' + carNumber + '/' + period).success(function(response){

@@ -120,6 +120,23 @@ a {
   filter: drop-shadow(5px 5px 5px #222);
 }
 
+.carpaginator-links {
+  margin-top: -20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: -20px;
+}
+
+#allcarsbutton {
+  display: inline;
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+
+#graphsrow {
+  margin-top: 20px
+}
+
 @media screen and (max-width: 993px) {
   #alpha {
     display: none;
@@ -143,6 +160,8 @@ a {
   #donutgraphdiv, #expensesgraphdiv, #gasgraphdiv {
     height: 0px;
     text-align:center;
+    height: 300px;
+    width: 300px;
   }
   .modal-dialog {
     position: absolute;
