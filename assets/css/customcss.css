@@ -109,22 +109,15 @@ a {
   transition: all 1s ease;
 }
 
-@media screen and (max-width: 640px) {
-
-  #car {
-    width: 300px;
-  }
-  .navbar-toggle {
-    margin-top: 30px;
-  }
-  #donutgraphdiv, #expensesgraphdiv, #gasgraphdiv {
-    height: 0px;
-    text-align:center;
-  }
-  .modal-dialog {
-    position: absolute;
-    top: 15%;
-  }
+#gears {
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 42%;
+  z-index: 5;
+  width: 200px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
 }
 
 @media screen and (max-width: 993px) {
@@ -138,3 +131,37 @@ a {
     margin-top: 30px;
   }
 }
+
+@media screen and (max-width: 640px) {
+
+  #car {
+    width: 300px;
+  }
+  .navbar-toggle {
+    margin-top: 18px;
+  }
+  #donutgraphdiv, #expensesgraphdiv, #gasgraphdiv {
+    height: 0px;
+    text-align:center;
+  }
+  .modal-dialog {
+    position: absolute;
+    width: 300px;
+    top: 17%;
+  }
+  .btn-danger {
+    background-color: #F7464A;
+    margin-right: 10px;
+  }
+  #gears {
+    top: 60%;
+    left: 35%;
+    width: 100px;
+  }
+  #logo-text {
+    font-size: 200%;
+  }
+}
+
+
+

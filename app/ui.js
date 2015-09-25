@@ -6,10 +6,12 @@ $('#login-close').on('click', function(){
 $('#login-button').on('click', function(){
   $('#loginModal').modal('hide');
   $("#donutgraphdiv, #expensesgraphdiv, #gasgraphdiv").height("390");
+  $('#gears').css('visibility', 'visible');
 });
 
 $('#register-button').on('click', function(){
   $('#registerModal').modal('hide');
+  $('#gears').css('visibility', 'visible');
 });
 
 $('#register-close').on('click', function(){
@@ -115,3 +117,4 @@ var mobileModeSlide = function (){
     }
   }
 };
+

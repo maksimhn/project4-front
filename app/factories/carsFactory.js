@@ -155,6 +155,7 @@
     factory.register = function(credentials, carSelected){
       return $http.post(appSettings.apiURL + '/signup', credentials).success(function(response) {
         alert('You have successfully registered! Now log in...');
+        $('#gears').css('visibility', 'hidden');
       });
     };
 
@@ -162,6 +163,7 @@
       return $http.post(appSettings.apiURL + '/login', credentials).success(function(response) {
         factory.user.push("logged in");
         factory.dataFilter(response, null);
+        $('#gears').css('visibility', 'hidden');
       });
     };
 
