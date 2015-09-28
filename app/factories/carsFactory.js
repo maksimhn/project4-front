@@ -71,6 +71,7 @@
 
     // Feeds the graphs with a single car's data. Context is different if only one car is chosen
     factory.chartDataForOneCar = function(){
+      factory.expenses.sort();
       factory.chartData.gasExpenses.data = [[]];
       var gasExpenses = 0;
       var miscExpenses = 0;

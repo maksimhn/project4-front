@@ -129,12 +129,16 @@ a {
 
 #allcarsbutton {
   display: inline;
-  margin-top: -20px;
+  margin-top: -23px;
   margin-bottom: -20px;
 }
 
 #graphsrow {
   margin-top: 20px
+}
+
+.glyphicon-info-sign {
+  padding-right: 10px;
 }
 
 @media screen and (max-width: 993px) {
