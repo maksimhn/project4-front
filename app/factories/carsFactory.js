@@ -32,6 +32,7 @@
 
     // Feeds the charts with data comprising many cars, not just one of them
     factory.chartDataForAllCars = function(response){
+      var tankFillsCount = 0;
       var gasExpenses = 0;
       var miscExpenses = 0;
       var allExpenses = 0;
@@ -56,13 +57,16 @@
           }
           sum += expense.amountSpent;
         });
+        if (tankFills.length > tankFillsCount) {
+          tankFillsCount = tankFills.length;
+        }
         factory.chartData.gasExpenses.data.push(tankFills);
         factory.chartData.sumOfExpenses.data.push(sum);
         factory.chartData.sumOfExpenses.labels.push(car.customName);
       });
-      // for (ii = 1, ii =< factory.chartData.gasExpenses.data.length, ii++) {
-      //   factory.chartData.gasExpenses.labels.push('Expense ' + ii);
-      // }
+      for (var ii = 1; ii <= tankFillsCount; ii++) {
+        factory.chartData.gasExpenses.labels.push('Fill #' + ii);
+      }
     };
 
     // Feeds the graphs with a single car's data. Context is different if only one car is chosen
