@@ -120,6 +120,7 @@
           if (car.carId === +carSelected) {
             angular.copy(car, factory.carToEdit);
             appSettings.carSelectedName = car.customName;
+            console.log('appSettings.carSelectedName is now ', appSettings.carSelectedName);
             factory.getEventsList([car]);
             factory.getExpensesList([car]);
             factory.chartDataForOneCar();

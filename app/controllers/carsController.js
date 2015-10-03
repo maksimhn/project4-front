@@ -73,6 +73,7 @@
     vm.createEvent = function(){
       vm.newEvent.statsPeriod = appSettings.statsPeriod;
       vm.newEvent.carId = appSettings.carSelected;
+      vm.newEvent.carName = appSettings.carSelectedName;
       console.log('new event is ', vm.newEvent);
       carsFactory.createEvent(vm.newEvent, appSettings.carSelected);
       vm.newEvent = {};

@@ -46,7 +46,7 @@
                 </div><!--//navbar-header-->
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item" id="alpha"><a data-toggle="tooltip" data-placement="bottom" title="Under construction, please pardon bugs and database wipeouts..."><span class="glyphicon glyphicon-info-sign"></span>Alpha</a></li>
+                        <!-- <li class="nav-item" id="alpha"><a data-toggle="tooltip" data-placement="bottom" title="Under construction, please pardon bugs and database wipeouts..."><span class="glyphicon glyphicon-info-sign"></span>Alpha</a></li> -->
                         <li class="nav-item"><a class="scrollto" href="#about" id="how-button">How...</a></li>
                         <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#loginModal" ng-hide="carsCtrl.user[0]">Login</a></li>
                         <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#registerModal" ng-hide="carsCtrl.user[0]">Register</a></li>
@@ -117,10 +117,10 @@
             <h4 class="modal-title">Please fill the fields below</h4>
           </div>
           <div class="modal-body">
-              <a data-toggle="tooltip" data-placement="bottom" title="use login and password: 'aa' to see populated account"><span class="glyphicon glyphicon-info-sign"></span>Read me please!</a>
-              <p></p>
+              <!-- <a data-toggle="tooltip" data-placement="bottom" title="use login and password: 'aa' to see populated account"><span class="glyphicon glyphicon-info-sign"></span>Read me please!</a>
+              <p></p> -->
               <div class="input-group">
-                <input type="text" class="form-control" ng-model="carsCtrl.userCredentials.username" placeholder="" aria-describedby="login-email">
+                <input type="text" class="form-control" ng-model="carsCtrl.userCredentials.username" placeholder="" aria-describedby="login-email" id="login-email-input">
                 <span class="input-group-addon"  id="login-email">Email</span>
              </div>
             <p></p>
@@ -146,10 +146,10 @@
             <h4 class="modal-title" id="myModalLabel">Please fill the fields below</h4>
           </div>
           <div class="modal-body">
-            <a data-toggle="tooltip" data-placement="bottom" title="use login and password: 'aa' to see populated account"><span class="glyphicon glyphicon-info-sign"></span>Read me please!</a>
-            <p></p>
+            <!-- <a data-toggle="tooltip" data-placement="bottom" title="use login and password: 'aa' to see populated account"><span class="glyphicon glyphicon-info-sign"></span>Read me please!</a>
+            <p></p> -->
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="register-email" ng-model="carsCtrl.userCredentials.username">
+                <input type="text" class="form-control" placeholder="" aria-describedby="register-email" ng-model="carsCtrl.userCredentials.username" id="register-modal-input">
                 <span class="input-group-addon" id="register-email">Email</span>
              </div>
             <p></p>

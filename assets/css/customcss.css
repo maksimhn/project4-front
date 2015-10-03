@@ -31,6 +31,8 @@ a {
 
 #eventlist, #expenselist {
   margin-right: 50px;
+  height: 250px;
+  overflow: scroll;
 }
 
 #allcarsbutton {

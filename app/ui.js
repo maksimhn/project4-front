@@ -22,8 +22,16 @@ $('#loginModal').on('hidden.bs.modal', function () {
     mobileModeSlide();
 });
 
+$('#loginModal').on('shown.bs.modal', function(){
+  $('#login-email-input').focus();
+});
+
 $('#registerModal').on('hidden.bs.modal', function () {
     mobileModeSlide();
+});
+
+$('#registerModal').on('shown.bs.modal', function(){
+  $('#register-email-input').focus();
 });
 
 $('#loginModal').on('hidden', function () {
