@@ -105,7 +105,7 @@
             }
 
             function deleteExpenseFailed(error) {
-                console.log('XHR Failed for Create Expense.' + error.data);
+                console.log('XHR Failed for Delete Expense.' + error.data);
             }
         }
     }

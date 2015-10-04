@@ -105,7 +105,7 @@
             }
 
             function deleteEventFailed(error) {
-                console.log('XHR Failed for Create Event.' + error.data);
+                console.log('XHR Failed for Delete Event.' + error.data);
             }
         }
     }
