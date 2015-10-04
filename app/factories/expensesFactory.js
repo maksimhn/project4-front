@@ -8,13 +8,24 @@
     factory.$inject = ['$http', 'appSettings'];
 
     function ExpensesFactory($http, appSettings) {
+        var expenses = [];
+
         var service = {
-            function: function
+            expenses: expenses,
+            getAllCarsExpenses: getAllCarsExpenses
         };
 
         return service;
 
-        function function() {
+        function getAllCarsExpenses(interval) {
+            return $http.get(appSettings.apiURL + '/expenses/' + 'all/' + interval).then(
+                function(response) {
+                    angular.copy(response, expenses);
+                }
+            ).catch(showError);
+        }
+
+        function getSelectedCarExpenses(interval) {
 
         }
     }
