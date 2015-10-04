@@ -20,19 +20,23 @@
         //
         // }
 
-        function getAllCarsExpenses(interval) {
-            return expensesFactory.getAllCarsExpenses(interval).then().catch(showError);
-        }
-
-        function getSelectedCarExpenses(interval) {
-            return expensesFactory.getSelectedCarExpenses(interval).then().catch(showError);
-        }
+        // function getAllCarsExpenses(interval) {
+        //     return expensesFactory.getAllCarsExpenses(interval).then().catch(showError);
+        // }
+        //
+        // function getSelectedCarExpenses(interval) {
+        //     return expensesFactory.getSelectedCarExpenses(interval).then().catch(showError);
+        // }
 
         function getExpenseDetails(expenseId) {
             return expensesFactory.getExpenseDetails(expenseId).then().catch(showError);
         }
 
-        function updateExpense() {
+        function createExpense() {
+            return expensesFactory.createExpense(vm.newExpenseDetails).then().catch(showError);
+        }
+
+        function updateExpense(expenseId) {
             return expensesFactory.updateExpense(vm.expenseDetails).then().catch(showError);
         }
 
