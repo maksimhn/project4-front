@@ -9,11 +9,25 @@
 
     function UsersController(usersFactory, appSettings) {
         var vm = this;
+        vm.credentials = {};
+        vm.user = {};
 
-        activate();
+        // activate();
+        //
+        // function activate() {
+        //
+        // }
 
-        function activate() {
+        function login() {
+            return usersFactory.login(vm.credentials).then(function(user){
+                vm.user = user;
+            }).catch(showError);
+        }
 
+        function register() {
+            return usersFactory.register(vm.credentials).then(function(user){
+                // show user a message with invitation to login
+            }).catch(showError);
         }
     }
 })();

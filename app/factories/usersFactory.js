@@ -9,13 +9,18 @@
 
     function UsersFactory($http, appSettings) {
         var service = {
-            function: function
+            login: login,
+            register: register
         };
 
         return service;
 
-        function function() {
+        function login(credentials) {
+            return $http.post(appSettings.apiURL + '/login', credentials).then().catch(showError);
+        }
 
+        function register(credentials) {
+            return $http.post(appSettings.apiURL + '/signup', credentials).then().catch(showError);
         }
     }
 })();
