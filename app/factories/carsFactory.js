@@ -30,6 +30,7 @@
 
             function getAllCarsComplete(response) {
                 angular.copy(response, allCars);
+                angular.copy(response, selectedItems.allCars)
             }
 
             function getAllCarsFailed(error) {
