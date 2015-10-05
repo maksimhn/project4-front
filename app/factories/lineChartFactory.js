@@ -5,9 +5,9 @@
         .module('carsApp')
         .factory('lineChartFactory', LineChartFactory);
 
-    factory.$inject = ['$http'];
+    factory.$inject = ['$http', 'selectedItems'];
 
-    function LineChartFactory($http) {
+    function LineChartFactory($http, selectedItems) {
         var labels = [];
         var data = [];
         var series = [];
@@ -25,7 +25,15 @@
                 .catch(getSelectedCarExpensesFailed);
 
             function getSelectedCarExpensesComplete(response) {
-
+                labels.length = 0;
+                data.length = 0;
+                series.length = 0;
+                response.forEach(function(expense){
+                    if (expense.gas) {
+                        labels.push(expense.date.substring(0, 10));
+                        data.push(expense.amountSpent);
+                    }
+                });
             }
 
             function getSelectedCarExpensesFailed(error) {
@@ -35,11 +43,28 @@
 
         function getAllCarsExpenses(interval) {
             return $http.get(appSettings.apiURL + '/expenses/' + 'all/' + interval)
-                .then(getExpensesComplete)
+                .then(getAllCarsExpensesComplete)
                 .catch(getAllCarsExpensesFailed);
 
-            function getAllCarsExpensesComplete(response) {
-
+            function getAllCarsExpensesComplete(response, carList) {
+                labels.length = 0;
+                data.length = 0;
+                series.length = 0;
+                var tankFillsCount = 0;
+                carList.forEach(function(car){
+                    var tankFills = [];
+                    series.push(car.customName);
+                    response.forEach(function(expense){
+                        if (car.id === expense.carId && expense.gas) {
+                            tankFills.push(expense.amountSpent);
+                        }
+                    })
+                    data.push(tankFills);
+                    tankFillsCount = tankFillsCount < tankFills.length ? tankFills.length : tankFillsCount;
+                });
+                for (var ii = 1; ii <= tankFillsCount; ii++) {
+                    labels.push('Fill#' + ii);
+                }
             }
 
             function getAllCarsExpensesFailed(error) {
