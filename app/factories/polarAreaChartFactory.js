@@ -10,6 +10,7 @@
     function PolarAreaChartFactory($http) {
         var labels = [];
         var data = [];
+        var series = [];
 
         var service = {
             getSelectedCarExpenses: getSelectedCarExpenses,

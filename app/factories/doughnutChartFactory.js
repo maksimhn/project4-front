@@ -8,7 +8,6 @@
     factory.$inject = ['$http'];
 
     function DoughnutChartFactory($http) {
-        var labels = [];
         var data = [];
 
         var service = {
@@ -18,12 +17,39 @@
 
         return service;
 
-        function getSelectedCarExpenses() {
+        function getSelectedCarExpenses(interval, carId) {
+            return $http.get(appSettings.apiURL + '/expenses/' + carId + '/' + interval)
+                .then(getExpensesComplete)
+                .catch(getSelectedCarExpensesFailed);
 
+            function getSelectedCarExpensesFailed(error) {
+                console.log('XHR Failed for Single Car Expenses (Charts).' + error.data);
+            }
         }
 
-        function getAllCarsExpenses() {
+        function getAllCarsExpenses(interval) {
+            return $http.get(appSettings.apiURL + '/expenses/' + 'all/' + interval)
+                .then(getExpensesComplete)
+                .catch(getAllCarsExpensesFailed);
 
+            function getAllCarsExpensesFailed(error) {
+                console.log('XHR Failed for All Expenses (Charts).' + error.data);
+            }
+        }
+
+        function getExpensesComplete(response) {
+            data.length = 0;
+            var sumOfGasExpenses = 0;
+            var sumOfMiscExpenses = 0;
+            response.forEach(function(expense){
+                if (expense.gas) {
+                    sumOfGasExpenses += expense.amountSpent;
+                } else {
+                    sumOfMiscExpenses += expense.amountSpent;
+                }
+            });
+            data.push(sumOfGasExpenses);
+            data.push(sumOfMiscExpenses);
         }
     }
 })();
