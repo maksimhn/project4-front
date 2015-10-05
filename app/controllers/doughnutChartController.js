@@ -9,6 +9,8 @@
 
     function DoughnutChartController(carsFactory, expensesFactory) {
         var vm = this;
+        vm.labels = ['Gas expenses', 'Miscellaneous expenses'];
+        vm.data = [];
 
         activate();
 
