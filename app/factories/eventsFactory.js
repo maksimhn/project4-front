@@ -5,9 +5,9 @@
         .module('carsApp')
         .factory('eventsFactory', EventsFactory);
 
-    factory.$inject = ['selectedItems', 'appSettings', '$http'];
+    factory.$inject = ['appSettings', '$http'];
 
-    function EventsFactory(selectedItems, appSettings, $http) {
+    function EventsFactory(appSettings, $http) {
         var allCarsEvents = [];
         var selectedCarEvents = [];
         var eventDetails = {};

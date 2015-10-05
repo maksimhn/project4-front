@@ -5,19 +5,23 @@
         .module('carsApp')
         .controller('carsController', CarsController);
 
-    Controller.$inject = ['carsFactory', 'appSettings', 'selectedItems'];
+    Controller.$inject = ['carsFactory', 'selectedItems'];
 
-    function CarsController(carsFactory, appSettings, selectedItems) {
+    function CarsController(carsFactory, selectedItems) {
         var vm = this;
         vm.allCars = carsFactory.allCars;
         vm.carDetails = carsFactory.carDetails;
         vm.newCarDetails = {};
 
-        // activate();
-        //
-        // function activate() {
-        //
-        // }
+        activate();
+
+        function activate() {
+            getAllCars();
+        }
+
+        function getAllCars() {
+            return carsFactory.getAllCars().then().catch(showError);
+        }
 
         function getCarDetails(carId) {
             return carsFactory.getCarDetails(carId).then().catch(showError);

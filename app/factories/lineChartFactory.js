@@ -5,9 +5,9 @@
         .module('carsApp')
         .factory('lineChartFactory', LineChartFactory);
 
-    factory.$inject = ['$http', 'selectedItems'];
+    factory.$inject = ['$http'];
 
-    function LineChartFactory($http, selectedItems) {
+    function LineChartFactory($http) {
         var labels = [];
         var data = [];
         var series = [];

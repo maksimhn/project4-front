@@ -5,15 +5,17 @@
         .module('carsApp')
         .controller('polarAreaChartController', PolarAreaChartController);
 
-    Controller.$inject = ['carsFactory', 'expensesFactory'];
+    Controller.$inject = ['polarAreaChartFactory'];
 
-    function PolarAreaChartController(carsFactory, expensesFactory) {
+    function PolarAreaChartController(polarAreaChartFactory) {
         var vm = this;
+        vm.labels = polarAreaChartFactory.labels;
+        vm.data = polarAreaChartFactory.data;
 
-        activate();
-
-        function activate() {
-
-        }
+        // activate();
+        //
+        // function activate() {
+        //
+        // }
     }
 })();

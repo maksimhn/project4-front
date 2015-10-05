@@ -5,28 +5,24 @@
         .module('carsApp')
         .controller('expensesController', ExpensesController);
 
-    Controller.$inject = ['expensesFactory', 'appSettings'];
+    Controller.$inject = ['expensesFactory', 'selectedItems'];
 
-    function ExpensesController(expensesFactory, appSettings) {
+    function ExpensesController(expensesFactory, selectedItems) {
         var vm = this;
         vm.allCarsExpenses = expensesFactory.allCarsExpenses;
         vm.selectedCarExpenses = expensesFactory.selectedCarExpenses;
         vm.expenseDetails = expensesFactory.expenseDetails;
         vm.newExpenseDetails = {};
 
-        // activate();
-        //
-        // function activate() {
-        //
-        // }
+        activate();
 
-        // function getAllCarsExpenses(interval) {
-        //     return expensesFactory.getAllCarsExpenses(interval).then().catch(showError);
-        // }
-        //
-        // function getSelectedCarExpenses(interval) {
-        //     return expensesFactory.getSelectedCarExpenses(interval).then().catch(showError);
-        // }
+        function activate() {
+            getAllCarsExpenses();
+        }
+
+        function getAllCarsExpenses() {
+            return expensesFactory.getAllCarsExpenses(selectedItems.interval[0]).then().catch(showError);
+        }
 
         function getExpenseDetails(expenseId) {
             return expensesFactory.getExpenseDetails(expenseId).then().catch(showError);

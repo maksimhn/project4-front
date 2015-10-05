@@ -10,7 +10,6 @@
     function UsersController(usersFactory, appSettings) {
         var vm = this;
         vm.credentials = {};
-        vm.user = {};
 
         // activate();
         //
@@ -19,9 +18,7 @@
         // }
 
         function login() {
-            return usersFactory.login(vm.credentials).then(function(user){
-                vm.user = user;
-            }).catch(showError);
+            return usersFactory.login(vm.credentials).then().catch(showError);
         }
 
         function register() {

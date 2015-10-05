@@ -14,11 +14,15 @@
         vm.eventDetails = eventsFactory.eventDetails;
         vm.newEventDetails = {};
 
-        // activate();
-        //
-        // function activate() {
-        //
-        // }
+        activate();
+
+        function activate() {
+            getAllCarsEvents();
+        }
+
+        function getAllCarsEvents() {
+            return eventsFactory.getAllCarsEvents(selectedItems.interval[0]).then().catch(showError);
+        }
 
         function getEventDetails(eventId) {
             return eventsFactory.getEventDetails(eventId).then().catch(showError);

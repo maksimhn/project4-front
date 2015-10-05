@@ -5,9 +5,9 @@
         .module('carsApp')
         .factory('doughnutChartFactory', DoughnutChartFactory);
 
-    factory.$inject = ['$http'];
+    factory.$inject = ['$http', 'appSettings'];
 
-    function DoughnutChartFactory($http) {
+    function DoughnutChartFactory($http, appSettings) {
         var data = [];
 
         var service = {

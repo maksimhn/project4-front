@@ -5,15 +5,18 @@
         .module('carsApp')
         .controller('lineChartController', LineChartController);
 
-    Controller.$inject = ['carsFactory', 'expensesFactory'];
+    Controller.$inject = ['lineChartFactory'];
 
-    function LineChartController(carsFactory, expensesFactory) {
+    function LineChartController(lineChartFactory) {
         var vm = this;
+        vm.labels = lineChartFactory.labels;
+        vm.data = lineChartFactory.data;
+        vm.series = lineChartFactory.series;
 
-        activate();
-
-        function activate() {
-
-        }
+        // activate();
+        //
+        // function activate() {
+        //
+        // }
     }
 })();
