@@ -18,6 +18,7 @@
     function UsersController(usersFactory, selectedItems, carsFactory, expensesFactory, eventsFactory, doughnutChartFactory, polarAreaChartFactory, lineChartFactory) {
         var vm = this;
         vm.credentials = {};
+        vm.user = usersFactory.user;
 
         function login() {
             return usersFactory.login(vm.credentials).then(getInitialData).catch(showError);

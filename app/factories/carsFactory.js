@@ -29,6 +29,9 @@
                 .catch(getAllCarsFailed);
 
             function getAllCarsComplete(response) {
+                cars.forEach(function(car){
+                  selectedItems.selectedCar['car' + car.id] = false;
+                });
                 angular.copy(response, allCars);
                 angular.copy(response, selectedItems.allCars)
             }

@@ -8,7 +8,10 @@
     factory.$inject = ['http', 'appSettings', 'selectedItems'];
 
     function UsersFactory($http, appSettings, selectedItems) {
+        var user = {};
+
         var service = {
+            user: user,
             login: login,
             register: register
         };
@@ -19,7 +22,7 @@
             return $http.post(appSettings.apiURL + '/login', credentials).then(loginComplete).catch(loginFailed);
 
             function loginComplete(response) {
-                selectedItems.user.push(response.username);
+                angular.copy(response, user)
             }
 
             function loginFailed(error) {

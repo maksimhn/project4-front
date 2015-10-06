@@ -17,6 +17,7 @@
         var vm = this;
         vm.interval = {};
         vm.car = {};
+        vm.user = usersFactory.user;
 
         activate();
 

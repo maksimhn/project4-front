@@ -2,8 +2,8 @@
   <div class="main container text-center">
 
     <!-- Car header and picture -->
-    <div class="row" id="carpicture-div">
-      <div class="col-md-12 col-sm-12 col-xs-12" ng-hide="carsCtrl.user[0]">
+    <div class="row" id="carpicture-div" ng-controller="usersController as usersCtrl">
+      <div class="col-md-12 col-sm-12 col-xs-12" ng-hide="usersCtrl.user.username">
         <h3 class="mainheaders" id="carpicheader">How much do your cars cost you?</h3>
         <img src="assets/images/car.png" id="car" alt="">
         <img src="assets/images/gears.gif" id="gears" alt="">
@@ -11,70 +11,70 @@
     </div>
     <!-- // Car header and picture -->
 
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12" ng-hide="carsCtrl.user[0]">
+    <div class="row" ng-controller="usersController as usersCtrl">
+      <div class="col-md-12 col-sm-12 col-xs-12" ng-hide="usersCtrl.user.username">
         <h3 class="mainheaders" id="carpicheader">Let's find out!</h3>
       </div>
     </div>
 
 
     <!-- Statistics -->
-    <div class="row" id="statsheader">
-      <div class="col-md-12 col-sm-12 col-xs-12" ng-show="carsCtrl.user[0]">
+    <div class="row" id="statsheader" ng-controller="usersController as usersCtrl">
+      <div class="col-md-12 col-sm-12 col-xs-12" ng-show="usersCtrl.user.username">
         <h3 class="mainheaders">Statistics</h3>
       </div>
     </div><!-- // Statistics row-->
 
     <!-- Period selector -->
-    <div class="row" id="perioddiv" ng-show="carsCtrl.user[0]">
-      <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" id="period0" value="30" ng-click="carsCtrl.getCarsDateWithinPeriod()" ng-model="carsCtrl.statsPeriod" class="periodselectors"> 30 days
+    <div class="row" id="perioddiv" ng-controller="intervalController as intervalCtrl">
+      <label class="radio-inline" ng-show="intervalCtrl.user.username">
+        <input type="radio" name="inlineRadioOptions" id="period0" value="30" ng-click="intervalCtrl.changeInterval()" ng-model="intervalCtrl.interval" class="periodselectors"> 30 days
       </label>
-      <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" id="period1" value="180" ng-click="carsCtrl.getCarsDateWithinPeriod()" ng-model="carsCtrl.statsPeriod" class="periodselectors"> 6 months
+      <label class="radio-inline" ng-show="intervalCtrl.user.username">
+        <input type="radio" name="inlineRadioOptions" id="period1" value="180" ng-click="intervalCtrl.changeInterval()" ng-model="intervalCtrl.interval" class="periodselectors"> 6 months
       </label>
-      <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" id="period2" value="365" ng-click="carsCtrl.getCarsDateWithinPeriod()" ng-model="carsCtrl.statsPeriod" class="periodselectors"> 1 year
+      <label class="radio-inline" ng-show="intervalCtrl.user.username">
+        <input type="radio" name="inlineRadioOptions" id="period2" value="365" ng-click="intervalCtrl.changeInterval()" ng-model="intervalCtrl.interval" class="periodselectors"> 1 year
       </label>
-      <label class="radio-inline">
-        <input type="radio" name="inlineRadioOptions" id="period3" value="0" ng-click="carsCtrl.getCarsDateWithinPeriod()" ng-model="carsCtrl.statsPeriod" class="periodselectors"> From the beginning of times
+      <label class="radio-inline" ng-show="intervalCtrl.user.username">
+        <input type="radio" name="inlineRadioOptions" id="period3" value="0" ng-click="intervalCtrl.changeInterval()" ng-model="intervalCtrl.interval" class="periodselectors"> From the beginning of times
       </label>
     </div>
     <!-- // Period selector -->
 
     <!-- Cars row -->
-    <div class="row" id="carpaginators-div">
+    <div class="row" id="carpaginators-div" ng-controller="carsController as carsCtrl">
       <nav>
         <ul role="group" class="btn-group pagination" ng-repeat="car in carsCtrl.cars">
-          <li id="carli" ng-class="{ 'active': carsCtrl.selectedCar.car{{car.carId}} }"><a id="car{{car.carId}}" class="carpaginator-links" href="javascript:void(0)" ng-click="carsCtrl.getCarsData($event)">{{car.customName}}</a></li>
+          <li id="carli" ng-class="{ 'active': carsCtrl.selectedCar.car{{car.id}} }"><a id="car{{car.id}}" class="carpaginator-links" href="javascript:void(0)" ng-click="carsCtrl.getOneCarData($event)">{{car.customName}}</a></li>
         </ul>
-        <button type="button" class="btn btn-default carbutton" ng-click="carsCtrl.getCarsData()" ng-show="carsCtrl.user[0]" id="allcarsbutton">All cars</button>
+        <button type="button" class="btn btn-default carbutton" ng-click="carsCtrl.getAllCars()" ng-show="carsCtrl.user.username" id="allcarsbutton">All cars</button>
       </nav>
 
       <p></p>
       <a href="" id="#edit-car"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil" ng-show="carsCtrl.singleCar" data-toggle="modal" data-target="#updateCarModal"><text id="editcar-text">Edit</text></span></a>
-      <a href="" id="#add-car"><span id="add-glyphicon" class="glyphicon glyphicon-plus" ng-show="carsCtrl.user[0]" data-toggle="modal" data-target="#carModal"><text id="addcar-text">Add new</text></span></a>
+      <a href="" id="#add-car"><span id="add-glyphicon" class="glyphicon glyphicon-plus" ng-show="carsCtrl.user.username" data-toggle="modal" data-target="#carModal"><text id="addcar-text">Add new</text></span></a>
     </div><!-- //Cars row -->
 
     <!-- Graphs row -->
     <div class="row" id="graphsrow">
 
-      <div class="col-md-4 col-sm-6 col-xs-12" id="donutgraphdiv">
-        <canvas id="doughnut" class="chart chart-doughnut" chart-data="carsCtrl.chartData.expenseStructure.data"
-          chart-labels="carsCtrl.chartData.expenseStructure.labels" chart-legend="true"
+      <div class="col-md-4 col-sm-6 col-xs-12" id="donutgraphdiv" ng-controller="doughnutChartController as doughnutChartCtrl">
+        <canvas id="doughnut" class="chart chart-doughnut" chart-data="doughnutChartCtrl.data"
+          chart-labels="doughnutChartCtrl.labels" chart-legend="true"
           chart-click="onClick" height="340" width="340"></canvas>
       </div>
 
-      <div class="col-md-4 col-sm-6 col-xs-12" id="expensesgraphdiv">
-        <canvas id="polar-area" class="chart chart-polar-area" chart-data="carsCtrl.chartData.sumOfExpenses.data"
-          chart-labels="carsCtrl.chartData.sumOfExpenses.labels" chart-legend="true" height="340" width="340">
+      <div class="col-md-4 col-sm-6 col-xs-12" id="expensesgraphdiv" ng-controller="polarAreaChartController as polarAreaChartCtrl">
+        <canvas id="polar-area" class="chart chart-polar-area" chart-data="polarAreaChartCtrl.data"
+          chart-labels="polarAreaChartCtrl.labels" chart-legend="true" height="340" width="340">
         </canvas>
       </div>
 
 
-      <div class="col-md-4 col-sm-6 col-xs-12" id="gasgraphdiv">
-        <canvas id="line" class="chart chart-line" chart-data="carsCtrl.chartData.gasExpenses.data"
-          chart-labels="carsCtrl.chartData.gasExpenses.labels" chart-legend="true" chart-series="carsCtrl.chartData.gasExpenses.series"
+      <div class="col-md-4 col-sm-6 col-xs-12" id="gasgraphdiv" ng-controller="lineChartController as lineChartCtrl">
+        <canvas id="line" class="chart chart-line" chart-data="lineChartCtrl.data"
+          chart-labels="lineChartCtrl.labels" chart-legend="true" chart-series="lineChartCtrl.series"
           chart-click="onClick" height="340" width="340">
         </canvas>
       </div>
@@ -82,8 +82,8 @@
     </div><!-- // Graphs row -->
 
     <!-- Expenses and Events -->
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12" ng-show="carsCtrl.user[0]">
+    <div class="row" ng-controller="usersController as usersCtrl">
+      <div class="col-md-12 col-sm-12 col-xs-12" ng-show="usersCtrl.user.username">
         <h3 class="mainheaders">Expenses and Events</h3>
       </div>
     </div><!-- // Expenses and Events row -->
@@ -91,33 +91,33 @@
     <!-- Events and Expenses row -->
     <div class="row">
 
-      <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
+      <div class="eventsexp col-md-6 col-sm-6 col-xs-12" ng-controller="expensesController as expensesCtrl">
 
-        <div ng-show="carsCtrl.user[0]">
+        <div ng-show="expensesCtrl.user.username">
           <h4 class="mainheaders lists">List of expenses<a class="add-symbol" href="" data-toggle="modal" data-target="#new-expense-modal"><span class="glyphicon glyphicon-plus"></span></a></h4>
           <!-- <button type="button" class="btn btn-primary btn-sm">Add expense</button> -->
         </div>
 
         <div id="expenselist">
-          <ul ng-repeat="expense in carsCtrl.expenses" style="list-style-type:none">
+          <ul ng-repeat="expense in expensesCtrl.allCarsExpenses" style="list-style-type:none">
             <li>
-              <a class="expenselinks" href="" id="expense{{expense.id}}" data-toggle="modal" data-target="#update-expense-modal" ng-click="carsCtrl.getExpense($event)">{{expense.expenseName}}</a>
+              <a class="expenselinks" href="" id="expense{{expense.id}}" data-toggle="modal" data-target="#update-expense-modal" ng-click="expensesCtrl.getExpenseDetails($event)">{{expense.expenseName}}</a>
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="eventsexp col-md-6 col-sm-6 col-xs-12">
+      <div class="eventsexp col-md-6 col-sm-6 col-xs-12" ng-controller="eventsController as eventsCtrl">
 
-        <div ng-show="carsCtrl.user[0]">
+        <div ng-show="eventsCtrl.user.username">
           <h4 class="mainheaders lists">List of events<a class="add-symbol" href="" data-toggle="modal" data-target="#new-event-modal"><span class="glyphicon glyphicon-plus"></span></a></h4>
           <!-- <button type="button" class="btn btn-primary btn-sm">Add event</button> -->
         </div>
 
         <div id="eventlist">
-          <ul ng-repeat="event in carsCtrl.events" style="list-style-type:none">
+          <ul ng-repeat="event in eventsCtrl.allCarsEvents" style="list-style-type:none">
             <li>
-              <a class="eventlinks" href="" id="event{{event.id}}" data-toggle="modal" data-target="#update-event-modal" ng-click="carsCtrl.getEvent($event)">{{event.eventName}}</a>
+              <a class="eventlinks" href="" id="event{{event.id}}" data-toggle="modal" data-target="#update-event-modal" ng-click="eventsCtrl.getEventDetails($event)">{{event.eventName}}</a>
             </li>
           </ul>
         </div>

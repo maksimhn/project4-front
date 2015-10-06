@@ -68,8 +68,8 @@
             }
         }
 
-        function updateExpense(expenseId) {
-            return $http.put(appSettings.apiURL + '/expenses/' + expenseId)
+        function updateExpense(expenseId, expenseDetails) {
+            return $http.put(appSettings.apiURL + '/expenses/' + expenseId, expenseDetails)
                 .then(updateExpenseComplete)
                 .catch(updateExpenseFailed);
 
@@ -97,7 +97,7 @@
         }
 
         function deleteExpense(expenseId) {
-            return $http.delete(appSettings.apiURL + '/expenseId')
+            return $http.delete(appSettings.apiURL + '/expenses/' + expenseId)
                 .then(deleteExpenseComplete)
                 .catch(deleteExpenseFailed);
 

@@ -1,7 +1,7 @@
 (function selectedItemsIIFE(){
 
   angular.module('carsApp').value('selectedItems', {
-    user: [],
+    selectedCar: {};
     interval: ['0'],
     car: ['0'],
     allCars: []

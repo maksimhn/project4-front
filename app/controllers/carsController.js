@@ -19,6 +19,8 @@
         vm.allCars = carsFactory.allCars;
         vm.carDetails = carsFactory.carDetails;
         vm.newCarDetails = {};
+        vm.user = carsFactory.user;
+        vm.selectedCar = selectedItems.selectedCar;
 
         activate();
 
@@ -29,6 +31,7 @@
         function getOneCarData(event) {
             selectedItems.car.length = 0;
             selectedItems.car.push(event.target.id.substr(3, 2));
+            selectedItems.selectedCar['car' + car.id] = true;
             expensesFactory.getSelectedCarExpenses().then().catch(showError);
             eventsFactory.getSelectedCarEvents().then().catch(showError);
             doughnutChartFactory.getSelectedCarExpenses().then().catch(showError);

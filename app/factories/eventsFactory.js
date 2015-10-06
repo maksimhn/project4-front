@@ -68,8 +68,8 @@
             }
         }
 
-        function updateEvent(eventId) {
-            return $http.put(appSettings.apiURL + '/events/' + eventId)
+        function updateEvent(eventId, eventDetails) {
+            return $http.put(appSettings.apiURL + '/events/' + eventId, eventDetails)
                 .then(updateEventComplete)
                 .catch(updateEventFailed);
 
@@ -97,7 +97,7 @@
         }
 
         function deleteEvent(eventId) {
-            return $http.delete(appSettings.apiURL + '/eventId')
+            return $http.delete(appSettings.apiURL + '/events/' + eventId)
                 .then(deleteEventComplete)
                 .catch(deleteEventFailed);
 

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="assets/css/customcss.css">
 </head>
 
-<body data-spy="scroll" ng-controller="carsController as carsCtrl">
+<body data-spy="scroll">
 
     <!-- ******HEADER****** -->
     <header id="header" class="header">
@@ -44,13 +44,13 @@
                         <span class="icon-bar"></span>
                     </button><!--//nav-toggle-->
                 </div><!--//navbar-header-->
-                <div class="navbar-collapse collapse" id="navbar-collapse">
+                <div class="navbar-collapse collapse" id="navbar-collapse" ng-controller="usersController as usersCtrl">
                     <ul class="nav navbar-nav">
                         <!-- <li class="nav-item" id="alpha"><a data-toggle="tooltip" data-placement="bottom" title="Under construction, please pardon bugs and database wipeouts..."><span class="glyphicon glyphicon-info-sign"></span>Alpha</a></li> -->
                         <li class="nav-item"><a class="scrollto" href="#about" id="how-button">How...</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#loginModal" ng-hide="carsCtrl.user[0]">Login</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#registerModal" ng-hide="carsCtrl.user[0]">Register</a></li>
-                        <li class="nav-item last"><a class="scrollto" href="#" ng-show="carsCtrl.user[0]" id="logout-button">Logout</a></li>
+                        <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#loginModal" ng-hide="usersCtrl.user.username">Login</a></li>
+                        <li class="nav-item"><a class="scrollto" href="#" data-toggle="modal" data-target="#registerModal" ng-hide="usersCtrl.user.username">Register</a></li>
+                        <li class="nav-item last"><a class="scrollto" href="#" ng-show="usersCtrl.user.username" id="logout-button">Logout</a></li>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
             </nav><!--//main-nav-->
@@ -109,7 +109,7 @@
 
     <!-- ******MODALS****** -->
     <!-- Login modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="usersController as usersCtrl">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
@@ -120,25 +120,25 @@
               <!-- <a data-toggle="tooltip" data-placement="bottom" title="use login and password: 'aa' to see populated account"><span class="glyphicon glyphicon-info-sign"></span>Read me please!</a>
               <p></p> -->
               <div class="input-group">
-                <input type="text" class="form-control" ng-model="carsCtrl.userCredentials.username" placeholder="" aria-describedby="login-email" id="login-email-input">
+                <input type="text" class="form-control" ng-model="usersCtrl.credentials.username" placeholder="" aria-describedby="login-email" id="login-email-input">
                 <span class="input-group-addon"  id="login-email">Email</span>
              </div>
             <p></p>
              <div class="input-group">
-                <input type="password" ng-model="carsCtrl.userCredentials.password" class="form-control" placeholder="" aria-describedby="login-password">
+                <input type="password" ng-model="usersCtrl.credentials.password" class="form-control" placeholder="" aria-describedby="login-password">
                 <span class="input-group-addon"  id="login-password">Password</span>
               </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" id="login-close">Close</button>
-            <button type="button" class="btn btn-success" ng-click="carsCtrl.login()" id="login-button">Submit</button>
+            <button type="button" class="btn btn-success" ng-click="usersCtrl.login()" id="login-button">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <!-- Register modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="usersController as usersCtrl">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -149,25 +149,25 @@
             <!-- <a data-toggle="tooltip" data-placement="bottom" title="use login and password: 'aa' to see populated account"><span class="glyphicon glyphicon-info-sign"></span>Read me please!</a>
             <p></p> -->
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="register-email" ng-model="carsCtrl.userCredentials.username" id="register-modal-input">
+                <input type="text" class="form-control" placeholder="" aria-describedby="register-email" ng-model="usersCtrl.credentials.username" id="register-modal-input">
                 <span class="input-group-addon" id="register-email">Email</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="register-password" ng-model="carsCtrl.userCredentials.password">
+              <input type="text" class="form-control" placeholder="" aria-describedby="register-password" ng-model="usersCtrl.credentials.password">
               <span class="input-group-addon" id="register-password">Password</span>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" id="register-close">Close</button>
-            <button type="button" class="btn btn-success" id="register-button" ng-click="carsCtrl.register()">Submit</button>
+            <button type="button" class="btn btn-success" id="register-button" ng-click="usersCtrl.register()">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <!-- New Car modal -->
-    <div class="modal fade" id="carModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="carModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="carsController as carsCtrl">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -176,27 +176,27 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="car-name" ng-model="carsCtrl.newCar.customName">
+                <input type="text" class="form-control" placeholder="" aria-describedby="car-name" ng-model="carsCtrl.newCarDetails.customName">
                 <span class="input-group-addon" id="car-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-make" ng-model="carsCtrl.newCar.make">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-make" ng-model="carsCtrl.newCarDetails.make">
               <span class="input-group-addon" id="car-make">Make</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-model" ng-model="carsCtrl.newCar.model">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-model" ng-model="carsCtrl.newCarDetails.model">
               <span class="input-group-addon" id="car-model">Model</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-year" ng-model="carsCtrl.newCar.year">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-year" ng-model="carsCtrl.newCarDetails.year">
               <span class="input-group-addon" id="car-year">Year</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-color" ng-model="carsCtrl.newCar.color">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-color" ng-model="carsCtrl.newCarDetails.color">
               <span class="input-group-addon" id="car-color">Color</span>
             </div>
             <p></p>
@@ -214,7 +214,7 @@
     </div><!-- /.modal -->
 
     <!-- New Event modal -->
-    <div class="modal fade" id="new-event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="new-event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="eventsController as eventsCtrl">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -223,18 +223,18 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="event-name" ng-model="carsCtrl.newEvent.eventName">
+                <input type="text" class="form-control" placeholder="" aria-describedby="event-name" ng-model="eventsCtrl.newEventDetails.eventName">
                 <span class="input-group-addon" id="event-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="event-make" ng-model="carsCtrl.newEvent.remindOnMileage">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-make" ng-model="eventsCtrl.newEventDetails.remindOnMileage">
               <span class="input-group-addon" id="event-make">Remind on mileage</span>
             </div>
             <p></p>
 
             <div class="input-group date" id="newdatetimepicker">
-              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="carsCtrl.newEvent.nextReminder" id="newdatetimepicker-field" datetimepicker
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="eventsCtrl.newEventDetails.nextReminder" id="newdatetimepicker-field" datetimepicker
            datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}">
               <span class="input-group-addon" id="event-year">Next reminder</span>
             </div>
@@ -242,33 +242,33 @@
 
             <div class="event-modal">
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio0" value="0" ng-model="carsCtrl.newEvent.remindEvery"> Never
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio0" value="0" ng-model="eventsCtrl.newEventDetails.remindEvery"> Never
               </label>
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="once" ng-model="carsCtrl.newEvent.remindEvery"> Once
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="once" ng-model="eventsCtrl.newEventDetails.remindEvery"> Once
               </label>
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="week" ng-model="carsCtrl.newEvent.remindEvery"> Weekly
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="week" ng-model="eventsCtrl.newEventDetails.remindEvery"> Weekly
               </label>
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="month" ng-model="carsCtrl.newEvent.remindEvery"> Monthly
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="month" ng-model="eventsCtrl.newEventDetails.remindEvery"> Monthly
               </label>
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="year" ng-model="carsCtrl.newEvent.remindEvery"> Yearly
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="year" ng-model="eventsCtrl.newEventDetails.remindEvery"> Yearly
               </label>
             </div>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" ng-click="carsCtrl.createEvent()" id="newevent-button">Submit</button>
+            <button type="button" class="btn btn-success" ng-click="eventsCtrl.createEvent()" id="newevent-button">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <!-- New Expense modal -->
-    <div class="modal fade" id="new-expense-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="new-expense-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="expensesController as expensesCtrl">
       <div class="modal-dialog modal-sm" role="document" id="new-expense-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -277,42 +277,42 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.newExpense.expenseName" id="newexpense-name">
+                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="expensesCtrl.newExpenseDetails.expenseName" id="newexpense-name">
                 <span class="input-group-addon" id="expense-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.newExpense.mileage" id="newexpense-mileage">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="expensesCtrl.newExpenseDetails.mileage" id="newexpense-mileage">
               <span class="input-group-addon" id="expense-mileage">Mileage</span>
             </div>
             <p></p>
             <div class="input-group" id="expense-newdatetimepicker">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-year" ng-model="carsCtrl.newExpense.date" id="expense-newdatetimepicker-field" datetimepicker
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-year" ng-model="expensesCtrl.newExpenseDetails.date" id="expense-newdatetimepicker-field" datetimepicker
            datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}">
               <span class="input-group-addon" id="expense-year">Expense date</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.newExpense.amountSpent" id="newexpense-amount">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="expensesCtrl.newExpenseDetails.amountSpent" id="newexpense-amount">
               <span class="input-group-addon">Amount</span>
             </div>
             <p></p>
             <div class="checkbox">
               <label>
-                <input type="checkbox" ng-model="carsCtrl.newExpense.gas" id="newexpense-gas"> Gas?
+                <input type="checkbox" ng-model="expensesCtrl.newExpenseDetails.gas" id="newexpense-gas"> Gas?
               </label>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" ng-click="carsCtrl.createExpense()" id="newexpense-button">Submit</button>
+            <button type="button" class="btn btn-success" ng-click="expensesCtrl.createExpense()" id="newexpense-button">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <!-- Update Expense modal -->
-    <div class="modal fade" id="update-expense-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="update-expense-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="expensesController as expensesCtrl">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -321,43 +321,43 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="carsCtrl.expenseToEdit.expenseName">
+                <input type="text" class="form-control" placeholder="" aria-describedby="expense-name" ng-model="expensesCtrl.expenseDetails.expenseName">
                 <span class="input-group-addon" id="expense-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="carsCtrl.expenseToEdit.mileage">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-mileage" ng-model="expensesCtrl.expenseDetails.mileage">
               <span class="input-group-addon" id="expense-mileage">Mileage</span>
             </div>
             <p></p>
             <div class="input-group" id="expense-updatedatetimepicker">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-date" ng-model="carsCtrl.expenseToEdit.date" id="expense-updatedatetimepicker-field" datetimepicker
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-date" ng-model="expensesCtrl.expenseDetails.date" id="expense-updatedatetimepicker-field" datetimepicker
            datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}">
               <span class="input-group-addon" id="expense-date">Expense date</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="carsCtrl.expenseToEdit.amountSpent">
+              <input type="text" class="form-control" placeholder="" aria-describedby="expense-model" ng-model="expensesCtrl.expenseDetails.amountSpent">
               <span class="input-group-addon" id="expense-amount">Amount</span>
             </div>
             <p></p>
             <div class="checkbox">
               <label>
-                <input type="checkbox" ng-model="carsCtrl.expenseToEdit.gas"> Gas?
+                <input type="checkbox" ng-model="expensesCtrl.expenseDetails.gas"> Gas?
               </label>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" ng-click="carsCtrl.deleteExpense()" id="deleteexpense-button">Delete</button>
+            <button type="button" class="btn btn-danger" ng-click="expensesCtrl.deleteExpense($event)" id="deleteexpense-button">Delete</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" ng-click="carsCtrl.updateExpense()" id="updateexpense-button">Submit</button>
+            <button type="button" class="btn btn-success" ng-click="expensesCtrl.updateExpense($event)" id="updateexpense-button">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <!-- Update Car modal -->
-    <div class="modal fade" id="updateCarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="updateCarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-controller="carsController as carsCtrl">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -366,39 +366,39 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="car-name" ng-model="carsCtrl.carToEdit.customName">
+                <input type="text" class="form-control" placeholder="" aria-describedby="car-name" ng-model="carsCtrl.carDetails.customName">
                 <span class="input-group-addon" id="car-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-make" ng-model="carsCtrl.carToEdit.make">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-make" ng-model="carsCtrl.carDetails.make">
               <span class="input-group-addon" id="car-make">Make</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-model" ng-model="carsCtrl.carToEdit.model">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-model" ng-model="carsCtrl.carDetails.model">
               <span class="input-group-addon" id="car-model">Model</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-year" ng-model="carsCtrl.carToEdit.year">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-year" ng-model="carsCtrl.carDetails.year">
               <span class="input-group-addon" id="car-year">Year</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-color" ng-model="carsCtrl.carToEdit.color">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-color" ng-model="carsCtrl.carDetails.color">
               <span class="input-group-addon" id="car-color">Color</span>
             </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="car-mileage" ng-model="carsCtrl.carToEdit.mileage">
+              <input type="text" class="form-control" placeholder="" aria-describedby="car-mileage" ng-model="carsCtrl.carDetails.mileage">
               <span class="input-group-addon" id="car-mileage">Mileage</span>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" ng-click="carsCtrl.deleteCar()">Delete</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" ng-click="carsCtrl.updateCar($event)" id="updatecar-button">Submit</button>
+            <button type="button" class="btn btn-success" ng-click="carsCtrl.updateCar()" id="updatecar-button">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -406,7 +406,7 @@
 
     <!-- Update Event modal -->
     <div class="modal fade" id="update-event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-dialog modal-sm" role="document" ng-controller="eventsController as eventsCtrl">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -414,17 +414,17 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-describedby="event-name" ng-model="carsCtrl.eventToEdit.eventName">
+                <input type="text" class="form-control" placeholder="" aria-describedby="event-name" ng-model="eventsCtrl.eventDetails.eventName">
                 <span class="input-group-addon" id="event-name">Name</span>
              </div>
             <p></p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="event-make" ng-model="carsCtrl.eventToEdit.remindOnMileage">
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-make" ng-model="eventsCtrl.eventDetails.remindOnMileage">
               <span class="input-group-addon" id="event-make">Remind on mileage</span>
             </div>
             <p></p>
             <div class="input-group" id="updatedatetimepicker">
-              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="carsCtrl.eventToEdit.nextReminder" id="updatedatetimepicker-field" datetimepicker
+              <input type="text" class="form-control" placeholder="" aria-describedby="event-year" ng-model="eventsCtrl.eventDetails.nextReminder" id="updatedatetimepicker-field" datetimepicker
            datetimepicker-options="{icons:{next:'glyphicon glyphicon-arrow-right',previous:'glyphicon glyphicon-arrow-left',up:'glyphicon glyphicon-arrow-up',down:'glyphicon glyphicon-arrow-down'}}">
               <span class="input-group-addon" id="event-year">Next reminder</span>
             </div>
@@ -432,28 +432,28 @@
 
             <div class="event-modal">
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio0" value="0" ng-model="carsCtrl.eventToEdit.remindEvery"> Never
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio0" value="0" ng-model="eventsCtrl.eventDetails.remindEvery"> Never
               </label>
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="once" ng-model="carsCtrl.eventToEdit.remindEvery"> Once
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="once" ng-model="eventsCtrl.eventDetails.remindEvery"> Once
               </label>
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="week" ng-model="carsCtrl.eventToEdit.remindEvery"> Weekly
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="week" ng-model="eventsCtrl.eventDetails.remindEvery"> Weekly
               </label>
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="month" ng-model="carsCtrl.eventToEdit.remindEvery"> Monthly
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="month" ng-model="eventsCtrl.eventDetails.remindEvery"> Monthly
               </label>
               <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="year" ng-model="carsCtrl.eventToEdit.remindEvery"> Yearly
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="year" ng-model="eventsCtrl.eventDetails.remindEvery"> Yearly
               </label>
             </div>
 
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" ng-click="carsCtrl.deleteEvent()" id="deleteevent-button">Delete</button>
+            <button type="button" class="btn btn-danger" ng-click="eventsCtrl.deleteEvent($event)" id="deleteevent-button">Delete</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" ng-click="carsCtrl.updateEvent($event)" id="updateevent-button">Submit</button>
+            <button type="button" class="btn btn-success" ng-click="eventsCtrl.updateEvent($event)" id="updateevent-button">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -493,13 +493,28 @@
     <!-- Angular app -->
     <script type='text/javascript' src='app/app.js'></script>
 
-    <!-- Angular controller -->
+    <!-- Angular controllers -->
     <script type='text/javascript' src='app/controllers/carsController.js'></script>
+    <script type='text/javascript' src='app/controllers/doughnutChartController.js'></script>
+    <script type='text/javascript' src='app/controllers/eventsController.js'></script>
+    <script type='text/javascript' src='app/controllers/expensesController.js'></script>
+    <script type='text/javascript' src='app/controllers/intervalController.js'></script>
+    <script type='text/javascript' src='app/controllers/lineChartController.js'></script>
+    <script type='text/javascript' src='app/controllers/polarAreaChartController.js'></script>
+    <script type='text/javascript' src='app/controllers/usersController.js'></script>
 
-    <!-- Angular factory -->
+    <!-- Angular factories -->
     <script type='text/javascript' src='app/factories/carsFactory.js'></script>
+    <script type='text/javascript' src='app/factories/doughnutChartFactory.js'></script>
+    <script type='text/javascript' src='app/factories/eventsFactory.js'></script>
+    <script type='text/javascript' src='app/factories/expensesFactory.js'></script>
+    <script type='text/javascript' src='app/factories/intervalFactory.js'></script>
+    <script type='text/javascript' src='app/factories/lineChartFactory.js'></script>
+    <script type='text/javascript' src='app/factories/polarAreaChartFactory.js'></script>
+    <script type='text/javascript' src='app/factories/usersFactory.js'></script>
 
     <!-- Angular values -->
     <script type='text/javascript' src='app/services/values.js'></script>
+    <script type='text/javascript' src='app/services/selectedItems.js'></script>
 </body>
 </html>
