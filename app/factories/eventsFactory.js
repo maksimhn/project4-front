@@ -5,9 +5,9 @@
         .module('carsApp')
         .factory('eventsFactory', EventsFactory);
 
-    factory.$inject = ['appSettings', '$http'];
+    factory.$inject = ['appSettings', '$http', 'selectedItems'];
 
-    function EventsFactory(appSettings, $http) {
+    function EventsFactory(appSettings, $http, selectedItems) {
         var allCarsEvents = [];
         var selectedCarEvents = [];
         var eventDetails = {};
@@ -17,6 +17,7 @@
             selectedCarEvents: selectedCarEvents,
             allCarsEvents: allCarsEvents,
             getAllCarsEvents: getAllCarsEvents,
+            getSelectedCarEvents: getSelectedCarEvents,
             getEventDetails: getEventDetails,
             updateEvent: updateEvent,
             createEvent: createEvent,
@@ -25,8 +26,8 @@
 
         return service;
 
-        function getAllCarsEvents(interval) {
-            return $http.get(appSettings.apiURL + '/events/' + 'all/' + interval)
+        function getAllCarsEvents() {
+            return $http.get(appSettings.apiURL + '/events')
                 .then(getAllCarsEventsComplete)
                 .catch(getAllCarsEventsFailed);
 
@@ -39,8 +40,8 @@
             }
         }
 
-        function getSelectedCarEvents(interval, carId) {
-            return $http.get(appSettings.apiURL + '/events/' + carId + '/' + interval)
+        function getSelectedCarEvents() {
+            return $http.get(appSettings.apiURL + '/events/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
                 .then(getSelectedCarEventsComplete)
                 .catch(getSelectedCarEventsFailed);
 

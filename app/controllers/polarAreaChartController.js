@@ -12,10 +12,5 @@
         vm.labels = polarAreaChartFactory.labels;
         vm.data = polarAreaChartFactory.data;
 
-        // activate();
-        //
-        // function activate() {
-        //
-        // }
     }
 })();

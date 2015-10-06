@@ -5,20 +5,21 @@
         .module('carsApp')
         .factory('doughnutChartFactory', DoughnutChartFactory);
 
-    factory.$inject = ['$http', 'appSettings'];
+    factory.$inject = ['$http', 'appSettings', 'selectedItems'];
 
-    function DoughnutChartFactory($http, appSettings) {
+    function DoughnutChartFactory($http, appSettings, selectedItems) {
         var data = [];
 
         var service = {
+            data: data,
             getSelectedCarExpenses: getSelectedCarExpenses,
             getAllCarsExpenses: getAllCarsExpenses
         };
 
         return service;
 
-        function getSelectedCarExpenses(interval, carId) {
-            return $http.get(appSettings.apiURL + '/expenses/' + carId + '/' + interval)
+        function getSelectedCarExpenses() {
+            return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
                 .then(getExpensesComplete)
                 .catch(getSelectedCarExpensesFailed);
 
@@ -27,8 +28,8 @@
             }
         }
 
-        function getAllCarsExpenses(interval) {
-            return $http.get(appSettings.apiURL + '/expenses/' + 'all/' + interval)
+        function getAllCarsExpenses() {
+            return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
                 .then(getExpensesComplete)
                 .catch(getAllCarsExpensesFailed);
 

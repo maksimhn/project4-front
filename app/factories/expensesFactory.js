@@ -17,6 +17,7 @@
             selectedCarExpenses: selectedCarExpenses,
             allCarsExpenses: allCarsExpenses,
             getAllCarsExpenses: getAllCarsExpenses,
+            getSelectedCarExpenses: getSelectedCarExpenses,
             getExpenseDetails: getExpenseDetails,
             updateExpense: updateExpense,
             createExpense: createExpense,
@@ -25,8 +26,8 @@
 
         return service;
 
-        function getAllCarsExpenses(interval) {
-            return $http.get(appSettings.apiURL + '/expenses/' + 'all/' + interval)
+        function getAllCarsExpenses() {
+            return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
                 .then(getAllCarsExpensesComplete)
                 .catch(getAllCarsExpensesFailed);
 
@@ -39,8 +40,8 @@
             }
         }
 
-        function getSelectedCarExpenses(interval, carId) {
-            return $http.get(appSettings.apiURL + '/expenses/' + carId + '/' + interval)
+        function getSelectedCarExpenses() {
+            return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
                 .then(getSelectedCarExpensesComplete)
                 .catch(getSelectedCarExpensesFailed);
 

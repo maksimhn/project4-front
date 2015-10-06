@@ -5,21 +5,23 @@
         .module('carsApp')
         .factory('polarAreaChartFactory', PolarAreaChartFactory);
 
-    factory.$inject = ['$http'];
+    factory.$inject = ['$http', 'appSettings', 'selectedItems'];
 
-    function PolarAreaChartFactory($http) {
+    function PolarAreaChartFactory($http, appSettings, selectedItems) {
         var labels = [];
         var data = [];
 
         var service = {
+            labels: labels,
+            data: data,
             getSelectedCarExpenses: getSelectedCarExpenses,
             getAllCarsExpenses: getAllCarsExpenses
         };
 
         return service;
 
-        function getSelectedCarExpenses(interval, carId) {
-            return $http.get(appSettings.apiURL + '/expenses/' + carId + '/' + interval)
+        function getSelectedCarExpenses() {
+            return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
                 .then(getSelectedCarExpensesComplete)
                 .catch(getSelectedCarExpensesFailed);
 
@@ -44,8 +46,8 @@
             }
         }
 
-        function getAllCarsExpenses(interval) {
-            return $http.get(appSettings.apiURL + '/expenses/' + 'all/' + interval)
+        function getAllCarsExpenses() {
+            return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
                 .then(getExpensesComplete)
                 .catch(getAllCarsExpensesFailed);
 

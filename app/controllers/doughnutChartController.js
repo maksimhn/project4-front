@@ -12,10 +12,5 @@
         vm.labels = ['Gas expenses', 'Miscellaneous expenses'];
         vm.data = doughnutChartFactory.data;
 
-        // activate();
-        //
-        // function activate() {
-        //
-        // }
     }
 })();

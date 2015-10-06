@@ -13,10 +13,5 @@
         vm.data = lineChartFactory.data;
         vm.series = lineChartFactory.series;
 
-        // activate();
-        //
-        // function activate() {
-        //
-        // }
     }
 })();

@@ -38,8 +38,8 @@
             }
         }
 
-        function getCarDetails(carId) {
-            return $http.get(appSettings.apiURL + '/cars/' + carId)
+        function getCarDetails() {
+            return $http.get(appSettings.apiURL + '/cars/' + selectedItems.car[0])
                 .then(getCarDetailsComplete)
                 .catch(getCarDetailsFailed);
 
@@ -52,8 +52,8 @@
             }
         }
 
-        function updateCar(carId) {
-            return $http.put(appSettings.apiURL + '/cars/' + carId)
+        function updateCar() {
+            return $http.put(appSettings.apiURL + '/cars/' + selectedItems.car[0])
                 .then(updateCarComplete)
                 .catch(updateCarFailed);
 
@@ -80,8 +80,8 @@
             }
         }
 
-        function deleteCar(carId) {
-            return $http.delete(appSettings.apiURL + '/carId')
+        function deleteCar() {
+            return $http.delete(appSettings.apiURL + '/' + selectedItems.car[0])
                 .then(deleteCarComplete)
                 .catch(deleteCarFailed);
 

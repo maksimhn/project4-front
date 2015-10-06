@@ -5,22 +5,25 @@
         .module('carsApp')
         .factory('lineChartFactory', LineChartFactory);
 
-    factory.$inject = ['$http'];
+    factory.$inject = ['$http', 'appSettings', 'selectedItems'];
 
-    function LineChartFactory($http) {
+    function LineChartFactory($http, appSettings, selectedItems) {
         var labels = [];
         var data = [];
         var series = [];
 
         var service = {
+            labels: labels,
+            data: data,
+            series: series,
             getSelectedCarExpenses: getSelectedCarExpenses,
             getAllCarsExpenses: getAllCarsExpenses
         };
 
         return service;
 
-        function getSelectedCarExpenses(interval, carId) {
-            return $http.get(appSettings.apiURL + '/expenses/' + carId + '/' + interval)
+        function getSelectedCarExpenses() {
+            return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
                 .then(getSelectedCarExpensesComplete)
                 .catch(getSelectedCarExpensesFailed);
 
@@ -41,8 +44,8 @@
             }
         }
 
-        function getAllCarsExpenses(interval) {
-            return $http.get(appSettings.apiURL + '/expenses/' + 'all/' + interval)
+        function getAllCarsExpenses() {
+            return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
                 .then(getAllCarsExpensesComplete)
                 .catch(getAllCarsExpensesFailed);
 

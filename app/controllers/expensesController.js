@@ -14,11 +14,6 @@
         vm.expenseDetails = expensesFactory.expenseDetails;
         vm.newExpenseDetails = {};
 
-        activate();
-
-        function activate() {
-            getAllCarsExpenses();
-        }
 
         function getAllCarsExpenses() {
             return expensesFactory.getAllCarsExpenses(selectedItems.interval[0]).then().catch(showError);
