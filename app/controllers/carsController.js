@@ -5,7 +5,7 @@
         .module('carsApp')
         .controller('carsController', CarsController);
 
-    Controller.$inject = [
+    CarsController.$inject = [
         'carsFactory',
         'expensesFactory',
         'eventsFactory',

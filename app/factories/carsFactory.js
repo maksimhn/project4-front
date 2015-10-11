@@ -5,13 +5,15 @@
         .module('carsApp')
         .factory('carsFactory', CarsFactory);
 
-    factory.$inject = ['selectedItems', 'appSettings', '$http'];
+    CarsFactory.$inject = ['selectedItems', 'appSettings', '$http'];
 
     function CarsFactory(selectedItems, appSettings, $http) {
         var allCars = [];
         var carDetails = {};
+        var carIds = [];
 
         var service = {
+            carIds: carIds,
             carDetails: carDetails,
             allCars: allCars,
             getAllCars: getAllCars,
@@ -30,6 +32,7 @@
 
             function getAllCarsComplete(response) {
                 cars.forEach(function(car){
+                  carIds.push(car.id);
                   selectedItems.selectedCar['car' + car.id] = false;
                 });
                 angular.copy(response, allCars);

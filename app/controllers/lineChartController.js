@@ -5,7 +5,7 @@
         .module('carsApp')
         .controller('lineChartController', LineChartController);
 
-    Controller.$inject = ['lineChartFactory'];
+    LineChartController.$inject = ['lineChartFactory'];
 
     function LineChartController(lineChartFactory) {
         var vm = this;

@@ -5,7 +5,7 @@
         .module('carsApp')
         .factory('lineChartFactory', LineChartFactory);
 
-    factory.$inject = ['$http', 'appSettings', 'selectedItems'];
+    LineChartFactory.$inject = ['$http', 'appSettings', 'selectedItems'];
 
     function LineChartFactory($http, appSettings, selectedItems) {
         var labels = [];

@@ -5,7 +5,7 @@
         .module('carsApp')
         .factory('usersFactory', UsersFactory);
 
-    factory.$inject = ['http', 'appSettings', 'selectedItems'];
+    UsersFactory.$inject = ['$http', 'appSettings', 'selectedItems'];
 
     function UsersFactory($http, appSettings, selectedItems) {
         var user = {};
@@ -19,6 +19,7 @@
         return service;
 
         function login(credentials) {
+            console.log('we are inside factory login function');
             return $http.post(appSettings.apiURL + '/login', credentials).then(loginComplete).catch(loginFailed);
 
             function loginComplete(response) {

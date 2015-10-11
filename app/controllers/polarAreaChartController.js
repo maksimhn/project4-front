@@ -5,7 +5,7 @@
         .module('carsApp')
         .controller('polarAreaChartController', PolarAreaChartController);
 
-    Controller.$inject = ['polarAreaChartFactory'];
+    PolarAreaChartController.$inject = ['polarAreaChartFactory'];
 
     function PolarAreaChartController(polarAreaChartFactory) {
         var vm = this;

@@ -5,7 +5,7 @@
         .module('carsApp')
         .factory('polarAreaChartFactory', PolarAreaChartFactory);
 
-    factory.$inject = ['$http', 'appSettings', 'selectedItems'];
+    PolarAreaChartFactory.$inject = ['$http', 'appSettings', 'selectedItems'];
 
     function PolarAreaChartFactory($http, appSettings, selectedItems) {
         var labels = [];

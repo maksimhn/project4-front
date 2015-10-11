@@ -5,7 +5,7 @@
         .module('carsApp')
         .controller('usersController', UsersController);
 
-    Controller.$inject = [
+    UsersController.$inject = [
         'usersFactory',
         'selectedItems',
         'carsFactory',
@@ -21,6 +21,7 @@
         vm.user = usersFactory.user;
 
         function login() {
+            console.log('we are inside controller login function');
             return usersFactory.login(vm.credentials).then(getInitialData).catch(showError);
 
             function getInitialData() {

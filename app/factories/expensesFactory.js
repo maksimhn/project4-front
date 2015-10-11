@@ -5,7 +5,7 @@
         .module('carsApp')
         .factory('expensesFactory', ExpensesFactory);
 
-    factory.$inject = ['$http', 'appSettings'];
+    ExpensesFactory.$inject = ['$http', 'appSettings'];
 
     function ExpensesFactory($http, appSettings) {
         var allCarsExpenses = [];
@@ -26,8 +26,8 @@
 
         return service;
 
-        function getAllCarsExpenses() {
-            return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
+        function getAllCarsExpenses(carIds) {
+            return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0], carIds)
                 .then(getAllCarsExpensesComplete)
                 .catch(getAllCarsExpensesFailed);
 
@@ -74,7 +74,7 @@
                 .catch(updateExpenseFailed);
 
             function updateExpenseComplete(response) {
-                // do something
+                getSelectedCarExpenses();
             }
 
             function updateExpenseFailed(error) {
@@ -88,7 +88,7 @@
                 .catch(createExpenseFailed);
 
             function createExpenseComplete(response) {
-                // do something
+                getSelectedCarExpenses();
             }
 
             function createExpenseFailed(error) {
@@ -102,7 +102,7 @@
                 .catch(deleteExpenseFailed);
 
             function deleteExpenseComplete(response) {
-                // do something
+                getSelectedCarExpenses();
             }
 
             function deleteExpenseFailed(error) {

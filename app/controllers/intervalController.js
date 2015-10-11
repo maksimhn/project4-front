@@ -5,15 +5,16 @@
         .module('carsApp')
         .controller('intervalController', IntervalController);
 
-    Controller.$inject = [
+    IntervalController.$inject = [
         'selectedItems',
         'expensesFactory',
         'eventsFactory',
         'doughnutChartFactory',
         'polarAreaChartFactory',
-        'lineChartFactory'];
+        'lineChartFactory',
+        'usersFactory'];
 
-    function IntervalController(selectedItems, expensesFactory, eventsFactory, doughnutChartFactory, polarAreaChartFactory, lineChartFactory) {
+    function IntervalController(selectedItems, expensesFactory, eventsFactory, doughnutChartFactory, polarAreaChartFactory, lineChartFactory, usersFactory) {
         var vm = this;
         vm.interval = {};
         vm.car = {};

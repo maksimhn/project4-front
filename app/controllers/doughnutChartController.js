@@ -5,7 +5,7 @@
         .module('carsApp')
         .controller('doughnutChartController', DoughnutChartController);
 
-    Controller.$inject = ['doughnutChartFactory'];
+    DoughnutChartController.$inject = ['doughnutChartFactory'];
 
     function DoughnutChartController(doughnutChartFactory) {
         var vm = this;
