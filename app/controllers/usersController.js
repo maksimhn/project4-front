@@ -20,24 +20,27 @@
         vm.credentials = {};
         vm.user = usersFactory.user;
 
-        function login() {
+        vm.login = function () {
             console.log('we are inside controller login function');
-            return usersFactory.login(vm.credentials).then(getInitialData).catch(showError);
+            return usersFactory.login(vm.credentials).then(getInitialData).catch();
 
             function getInitialData() {
-                carsFactory.getAllCars().then().catch(showError);
-                expensesFactory.getAllCarsExpenses().then().catch(showError);
-                eventsFactory.getAllCarsEvents().then().catch(showError);
-                doughnutChartFactory.getAllCarsExpenses().then().catch(showError);
-                polarAreaChartFactory.getAllCarsExpenses().then().catch(showError);
-                lineChartFactory.getAllCarsExpenses().then().catch(showError);
+                carsFactory.getAllCars().then(getAdditionalData).catch();
+            }
+
+            function getAdditionalData() {
+                expensesFactory.getAllCarsExpenses().then().catch();
+                eventsFactory.getAllCarsEvents().then().catch();
+                doughnutChartFactory.getAllCarsExpenses().then().catch();
+                polarAreaChartFactory.getAllCarsExpenses().then().catch();
+                lineChartFactory.getAllCarsExpenses().then().catch();
             }
         }
 
-        function register() {
+        vm.register = function () {
             return usersFactory.register(vm.credentials).then(function(user){
                 // show user a message with invitation to login
-            }).catch(showError);
+            }).catch();
         }
     }
 })();

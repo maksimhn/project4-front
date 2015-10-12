@@ -5,9 +5,9 @@
         .module('carsApp')
         .factory('expensesFactory', ExpensesFactory);
 
-    ExpensesFactory.$inject = ['$http', 'appSettings'];
+    ExpensesFactory.$inject = ['$http', 'appSettings', 'selectedItems'];
 
-    function ExpensesFactory($http, appSettings) {
+    function ExpensesFactory($http, appSettings, selectedItems) {
         var allCarsExpenses = [];
         var selectedCarExpenses = [];
         var expenseDetails = {};

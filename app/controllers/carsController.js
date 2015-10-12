@@ -22,47 +22,47 @@
         vm.user = carsFactory.user;
         vm.selectedCar = selectedItems.selectedCar;
 
-        activate();
+        // activate();
+        //
+        // function activate() {
+        //
+        // }
 
-        function activate() {
-
-        }
-
-        function getOneCarData(event) {
+        vm.getOneCarData = function (event) {
             selectedItems.car.length = 0;
             selectedItems.car.push(event.target.id.substr(3, 2));
             selectedItems.selectedCar['car' + car.id] = true;
-            expensesFactory.getSelectedCarExpenses().then().catch(showError);
-            eventsFactory.getSelectedCarEvents().then().catch(showError);
-            doughnutChartFactory.getSelectedCarExpenses().then().catch(showError);
-            polarAreaChartFactory.getSelectedCarExpenses().then().catch(showError);
-            lineChartFactory.getSelectedCarExpenses().then().catch(showError);
+            expensesFactory.getSelectedCarExpenses().then().catch();
+            eventsFactory.getSelectedCarEvents().then().catch();
+            doughnutChartFactory.getSelectedCarExpenses().then().catch();
+            polarAreaChartFactory.getSelectedCarExpenses().then().catch();
+            lineChartFactory.getSelectedCarExpenses().then().catch();
         }
 
-        function getAllCars() {
-            carsFactory.getAllCars().then().catch(showError);
-            carsFactory.getAllCars().then().catch(showError);
-            expensesFactory.getAllCarsExpenses().then().catch(showError);
-            eventsFactory.getAllCarsEvents().then().catch(showError);
-            doughnutChartFactory.getAllCarsExpenses().then().catch(showError);
-            polarAreaChartFactory.getAllCarsExpenses().then().catch(showError);
-            lineChartFactory.getAllCarsExpenses().then().catch(showError);
+        vm.getAllCars = function () {
+            carsFactory.getAllCars().then().catch();
+            carsFactory.getAllCars().then().catch();
+            expensesFactory.getAllCarsExpenses().then().catch();
+            eventsFactory.getAllCarsEvents().then().catch();
+            doughnutChartFactory.getAllCarsExpenses().then().catch();
+            polarAreaChartFactory.getAllCarsExpenses().then().catch();
+            lineChartFactory.getAllCarsExpenses().then().catch();
         }
 
-        function getCarDetails() {
-            return carsFactory.getCarDetails().then().catch(showError);
+        vm.getCarDetails = function () {
+            return carsFactory.getCarDetails().then().catch();
         }
 
-        function createCar() {
-            return carsFactory.createCar(vm.newCarDetails).then().catch(showError);
+        vm.createCar = function () {
+            return carsFactory.createCar(vm.newCarDetails).then().catch();
         }
 
-        function updateCar() {
-            return carsFactory.updateCar(vm.carDetails).then().catch(showError);
+        vm.updateCar = function () {
+            return carsFactory.updateCar(vm.carDetails).then().catch();
         }
 
-        function deleteCar() {
-            return carsFactory.deleteCar().then().catch(showError);
+        vm.deleteCar = function () {
+            return carsFactory.deleteCar().then().catch();
         }
     }
 })();

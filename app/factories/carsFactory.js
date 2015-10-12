@@ -31,7 +31,8 @@
                 .catch(getAllCarsFailed);
 
             function getAllCarsComplete(response) {
-                cars.forEach(function(car){
+                console.log('response in getAllCars is ', response);
+                response.data.forEach(function(car){
                   carIds.push(car.id);
                   selectedItems.selectedCar['car' + car.id] = false;
                 });

@@ -17,29 +17,29 @@
         vm.carIds = carsFactory.carIds;
 
 
-        function getAllCarsEvents() {
-            return eventsFactory.getAllCarsEvents(vm.carIds).then().catch(showError);
+        vm.getAllCarsEvents = function () {
+            return eventsFactory.getAllCarsEvents(vm.carIds).then().catch();
         }
 
-        function getEventDetails(event) {
+        vm.getEventDetails = function (event) {
             var eventId = +event.target.id.substr(5, 3)
-            return eventsFactory.getEventDetails(eventId).then().catch(showError);
+            return eventsFactory.getEventDetails(eventId).then().catch();
         }
 
-        function createEvent() {
+        vm.createEvent = function () {
             vm.newEventDetails.dateInMilliseconds = new Date(vm.newEventDetails.date).getTime();
-            return eventsFactory.createEvent(vm.newEventDetails).then().catch(showError);
+            return eventsFactory.createEvent(vm.newEventDetails).then().catch();
         }
 
-        function updateEvent(event) {
+        vm.updateEvent = function (event) {
             var eventId = +event.target.id.substr(5, 3)
             vm.eventDetails.dateInMilliseconds = new Date(vm.eventDetails.date).getTime();
-            return eventsFactory.updateEvent(eventId, vm.eventDetails).then().catch(showError);
+            return eventsFactory.updateEvent(eventId, vm.eventDetails).then().catch();
         }
 
-        function deleteEvent(event) {
+        vm.deleteEvent = function (event) {
             var eventId = +event.target.id.substr(5, 3)
-            return eventsFactory.deleteEvent(eventId).then().catch(showError);
+            return eventsFactory.deleteEvent(eventId).then().catch();
         }
     }
 })();

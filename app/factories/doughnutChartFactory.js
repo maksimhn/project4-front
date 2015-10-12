@@ -42,7 +42,7 @@
             data.length = 0;
             var sumOfGasExpenses = 0;
             var sumOfMiscExpenses = 0;
-            response.forEach(function(expense){
+            response.data.forEach(function(expense){
                 if (expense.gas) {
                     sumOfGasExpenses += expense.amountSpent;
                 } else {

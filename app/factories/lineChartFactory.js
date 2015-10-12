@@ -31,7 +31,7 @@
                 labels.length = 0;
                 data.length = 0;
                 series.length = 0;
-                response.forEach(function(expense){
+                response.data.forEach(function(expense){
                     if (expense.gas) {
                         labels.push(expense.date.substring(0, 10));
                         data.push(expense.amountSpent);
@@ -49,15 +49,15 @@
                 .then(getAllCarsExpensesComplete)
                 .catch(getAllCarsExpensesFailed);
 
-            function getAllCarsExpensesComplete(response, carList) {
+            function getAllCarsExpensesComplete(response) {
                 labels.length = 0;
                 data.length = 0;
                 series.length = 0;
                 var tankFillsCount = 0;
-                carList.forEach(function(car){
+                selectedItems.allCars.forEach(function(car){
                     var tankFills = [];
                     series.push(car.customName);
-                    response.forEach(function(expense){
+                    response.data.forEach(function(expense){
                         if (car.id === expense.carId && expense.gas) {
                             tankFills.push(expense.amountSpent);
                         }

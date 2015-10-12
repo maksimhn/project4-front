@@ -29,7 +29,7 @@
                 var sumOfGasExpenses = 0;
                 labels.length = 0;
                 data.length = 0;
-                response.forEach(function(expense){
+                response.data.forEach(function(expense){
                     if (expense.gas) {
                         sumOfGasExpenses += expense.amountSpent;
                     } else {
@@ -48,16 +48,16 @@
 
         function getAllCarsExpenses() {
             return $http.get(appSettings.apiURL + '/expenses/' + selectedItems.car[0] + '/' + selectedItems.interval[0])
-                .then(getExpensesComplete)
+                .then(getAllCarsExpensesComplete)
                 .catch(getAllCarsExpensesFailed);
 
-            function getAllCarsExpensesComplete(response, carsList) {
+            function getAllCarsExpensesComplete(response) {
                 labels.length = 0;
                 data.length = 0;
-                carsList.forEach(function(car){
+                selectedItems.allCars.forEach(function(car){
                     var carExpenses = 0;
                     labels.push(car.customName);
-                    response.forEach(function(expense){
+                    response.data.forEach(function(expense){
                         if (car.id === expense.carId) {
                             carExpenses += expense.amountSpent;
                         }

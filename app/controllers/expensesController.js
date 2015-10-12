@@ -17,27 +17,27 @@
         vm.carIds = carsFactory.carIds;
 
 
-        function getAllCarsExpenses() {
-            return expensesFactory.getAllCarsExpenses(vm.carIds).then().catch(showError);
+        vm.getAllCarsExpenses = function () {
+            return expensesFactory.getAllCarsExpenses(vm.carIds).then().catch();
         }
 
-        function getExpenseDetails(event) {
+        vm.getExpenseDetails = function (event) {
             var expenseId = +event.target.id.substr(7, 3);
-            return expensesFactory.getExpenseDetails(expenseId).then().catch(showError);
+            return expensesFactory.getExpenseDetails(expenseId).then().catch();
         }
 
-        function createExpense() {
-            return expensesFactory.createExpense(vm.newExpenseDetails).then().catch(showError);
+        vm.createExpense = function () {
+            return expensesFactory.createExpense(vm.newExpenseDetails).then().catch();
         }
 
-        function updateExpense(event) {
+        vm.updateExpense = function (event) {
             var expenseId = +event.target.id.substr(7, 3);
-            return expensesFactory.updateExpense(expenseId, vm.expenseDetails).then().catch(showError);
+            return expensesFactory.updateExpense(expenseId, vm.expenseDetails).then().catch();
         }
 
-        function deleteExpense(event) {
+        vm.deleteExpense = function (event) {
             var expenseId = +event.target.id.substr(7, 3);
-            return expensesFactory.deleteExpense(expenseId).then().catch(showError);
+            return expensesFactory.deleteExpense(expenseId).then().catch();
         }
     }
 })();
